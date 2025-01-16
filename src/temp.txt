@@ -1,0 +1,8 @@
+User:
+
+Name(String)
+Username(String)
+Password(String)
+Email(String)
+
+Admin(Boolean)
