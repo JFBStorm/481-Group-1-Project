@@ -44,4 +44,4 @@ Taylor Peterson
 
 ## File Descriptions
 
-```login.html``` : The login page for Momo Sushi with username and password fields. Login, signup, and reset buttons. Will be styled with style.css and uses index.js for validation and authentication. Supports Firebase for authentication and can be adapted for MongoDB integration.
+```login.html``` : Login page for Momo Sushi with username and password fields. Login, signup, and reset buttons. Will be styled with style.css and uses index.js for validation and authentication. Supports Firebase for authentication and can be adapted for MongoDB integration.
