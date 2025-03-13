@@ -1,0 +1,113 @@
+Item,Description,Price,Dairy,Gluten,Soy,Vegan,Vegetarian,Raw,Spicy
+Miso Soup,"Soybean Paste with Tofu, Scallions, Seaweed",2,0,1,0,0,0,0,0
+House Salad,"Lettuce mixed with Carrot, Cabbage, Onion, topped with Japanese Ginger Dressing",2.5,0,1,1,0,1,0,0
+Edamame,Steamed Japanese Soybeans with Salt,5.5,0,0,1,0,1,0,0
+Sunomono,"Octopus, Crab Stick, Shrimp, Japanese Radish, Sliced Cucumber, Sunomono Sauce",8.5,0,0,0,0,0,0,0
+Seaweed Salad,Marinated Seaweed Salad,5.5,0,1,0,0,0,0,0
+Octopus Salad,Marinated Squid Salad,6.5,0,1,0,0,0,0,0
+Tuna Tadaki Salad,"Seared Tuna on top of Spring Mix with Cucumber, Green Onion, and Radish. Served with Olive Oil Sauce, Ponzu Sauce, and House Wine Sauce",12,0,1,1,0,0,1,0
+Cajun Tuna Tadaki Salad,"Seared Cajun Tuna on top of Spring Mix with Cucumber, Green Onion, and Radish. Served with Olive Oil Sauce, Ponzu Sauce, and House Wine Sauce",12.5,0,1,1,0,0,1,0
+Panko Tuna Tadaki Salad,"Panko-breaded and deep-fried Tuna on top of Spring Mix with Cucumber, Green Onion, and Radish. Served with Olive Oil Sauce, Ponzu Sauce, and House Wine Sauce",12.5,0,1,1,0,0,1,0
+Salmon Tadaki Salad,"Seared Salmon on top of Spring Mix with Cucumber, Green Onion, and Radish. Served with Olive Oil Sauce, Ponzu Sauce, and House Wine Sauce",12.5,0,1,1,0,0,1,0
+Sashimi Salad,"Assortment of Fresh Fish on top of Spring Mix with Cucumber, Green Onion, and Radish. Served with Olive Oil Sauce, Ponzu Sauce, & House Wine Sauce",13,0,1,1,0,0,1,0
+Agedashi Tofu,Deep-fried Tofu served with Teriyaki Sauce,5.5,0,1,1,0,1,0,0
+Gyoza,Pork Gyoza served deep-fried or steamed with Spicy Ponzu Sauce (5 pieces),6.5,0,1,1,0,0,0,0
+Vegetable Gyoza,Vegetable Gyoza served deep-fried or steamed with Spicy Ponzu Sauce (5 pieces),6.5,0,1,1,0,1,0,0
+Katsu Shrimp Tempura,Katsu Shrimp lightly battered in Tempura & deep-fried. Served with Tempura Sauce (4 pieces),8.5,0,1,1,0,0,0,0
+Vegetable Tempura,"Zucchini, Squash, Sweet Potato, Eggplant, Asparagus, Mushroom lightly battered in Tempura then deep-fried. Served with Tempura Sauce (6 pieces",7.8,0,1,1,1,1,0,0
+Coconut Shrimp Tempura,Shrimp in a light Coconut Tempura Batter then deep-fried with Sweet Chili Sauce (4 pieces),8.5,0,1,1,0,0,0,0
+Shrimp Shumai,Steamed or deep-fried Shrimp Dumplings served with Spicy Ponzu Sauce (4 pieces),7,0,1,1,0,0,0,0
+Spider (Appetizer),Cornstarch deep-fried Soft Shell Crab served with Teriyaki Sauce,,0,0,0,0,0,0,0
+(2 pieces),9,,1,1,0,0,0,0,0
+Orange Ceviche,"Salmon, Snapper, Shrimp, and Octopus cut into bite-sized pieces mixed together with chopped cilantro. Marinated with Orange, Lime, and Spicy Ponzu Sauce",9.5,0,1,1,0,0,1,0
+Eggplant Warmer,"Mix of grilled Baby Scallops and Shrimp on top of deep-fried Eggplant with Red Cabbage, Cheddar Cheese, and Jalapeno garnish with Miso Sauce.",12,1,1,1,0,0,0,1
+Eel World,Eel lightly battered with Tempura then deep-fried. Red Cabbage and Jalapeno garnish served with Eel & Wine Sauces. (3 pieces),11.75,0,1,1,0,0,0,1
+Squid Bomb,Squid lightly battered in cornstarch then deep-fried served with Spicy Sauce,11.5,0,1,0,0,0,0,1
+Firecracker,"Jalapeno Pepper stuffed with Spicy Tuna, Spicy Crab Salad, and Cream Cheese. Panko deep-fried and drizzled with Eel and Spicy Sauces. (4 pieces)",9,1,1,1,0,0,1,1
+Momo Burrito,"Marinated Tuna and Salmon, Tamago, Tobiko, Masago, Cucumber, Avocado, Lettuce, Crunch, & Eel Sauce",16,0,1,1,0,0,1,0
+Dragon Burrito,"Eel, 2 pieces of Shrimp Tempura, Spicy Crab, Cucumber, Crunch, Eel Sauce, Chili Sauce, Sesame Oil, & Crunch",15,0,1,1,0,0,0,1
+Fireball Burrito,"Spicy Tuna, Kampyo, Masago, Cucumber, Avocado, Eel Sauce, Chili Sauce, Sesame Oil, & Crunch",14.5,0,1,1,0,0,1,1
+Philadelphia Burrito,"Marinated Smoked Salmon, Cream Cheese, Spicy Crab, Avocado, Eel Sauce, & Crunch",14,1,1,1,0,0,0,1
+Pacific Burrito,"Marinated Tuna, Spicy Crab, Avocado, Masago, and Eel Sauce",13,0,1,1,0,0,1,1
+Scotland Burrito,"Marinated Salmon, Spicy Crab, Avocado, Masago, & Eel Sauce",13,0,1,1,0,0,1,1
+Shrimp Festival Burrito,"Shrimp Tempura, Cooked Shrimp, Spicy Crab, Avocado, Eel Sauce, Chili Sauce, & Crunch",15,0,1,1,0,0,0,1
+Muenster Burrito,"Muenster Cheese, Spicy Crab, Cilantro, Kampyo, Eel Sauce, Spicy Sauce, Wasabi Sauce, & Crunch",14,1,1,1,0,0,0,1
+Bulgogi Burrito,"Marinated Beef Bulgogi, Onion, Steamed Green Cabbage, with Gochujang Sauce & Eel Sauce",16,0,1,1,0,0,0,1
+Fish Katsu Burrito,"Panko deep-fried Tilapia, Carrot, Onion, Green & Red Cabbage, with Eel Sauce & Katsu Sauce",14,0,1,1,0,0,0,0
+Chicken Katsu Burrito,"Panko deep-fried Chicken, Carrot, Onion, Green & Red Cabbage, with Eel Sauce & Katsu Sauce",14,0,1,1,0,0,0,0
+Tuna Lover,"Marinated Tuna & Spicy Tuna, Spicy Crab Salad, Edamame, Corn, Cucumber, Carrot, Sweet Potato Chips, Spring Mix",14.5,0,0,0,0,0,1,1
+Salmon Lover,"Marinated Salmon & Spicy Salmon, Spicy Crab Salad, Edamame, Corn, Cucumber, Carrot, Sweet Potato Chips, Spring Mix",13.5,0,0,0,0,0,1,1
+Scallop & Shrimp Lover,"Marinated Scallop and Shrimp & Spicy Scallop and Shrimp, Spicy Crab Salad, Edamame, Corn, Cucumber, Carrot, Sweet Potato Chips, Spring Mix",15,0,0,0,0,0,1,1
+Bulgogi,"Beef marinated in Korean Barbeque Sauce with Mushroom, Carrot, Green Onion, White Onion, Green Pepper in hot cast iron. Served with Rice.",15.5,1,1,1,0,0,0,0
+Seafood Udon,"Green Muscles, Clam, Shrimp, Squid, Scallops, White Onion, Mushroom & Udon noodles in seasoned Udon broth",16,0,1,1,0,0,0,0
+Seafood Ramen,"Green Muscles, Clam, Shrimp, Squid, Scallops, White Onion, Mushroom & Ramen Noodles in seasoned Ramen broth",15,0,1,1,0,0,0,1
+Seafood Sundubu,"Green Muscles, Clam, Shrimp, Squid, Scallops, White Onion, Mushroom & Tofu in seasoned Sundubu spicy pork broth. Served with Rice",15.5,0,1,1,0,0,0,0
+Hot Stone Bibimbap,"White Rice topped with Beef Bulgogi marinated in Korean Barbeque Sauce, Sauteed Vegetables, and Egg in a hot stone pot. Served with Gochujang Sauce. *Tofu substitution available",15.5,0,1,1,0,0,0,1
+Bibimbap,"White Rice topped with Beef Bulgogi marinated in Korean Barbeque Sauce, Sauteed Vegetables, and Egg in a Bowl. Served with Gochujang Sauce. *Tofu substitution available",13,0,1,1,0,0,0,0
+Chicken Katsu Don,Omelet with Panko deep-fried Chicken on top of White Rice with White onion and Green Onion. Topped with Donburi Sauce.,13,0,1,1,0,0,1,0
+Yellow Fin Tuna Sushi Combo,5 pieces of Tuna Sushi & Spicy Tuna Roll,20,0,0,0,0,0,1,0
+Salmon Sushi Combo,5 pieces of Salmon Sushi & Spicy Salmon Roll,19,0,0,0,0,0,1,0
+Sushi Regular Combo,5 pieces of Chef’s Choice Sushi & California Roll,19,0,0,0,0,0,1,0
+Sushi Deluxe Combo,8 pieces of Chef’s Choice Sushi & California Roll,27,0,0,0,0,0,1,0
+Sashimi Regular Combo,12 pieces of Chef’s Choice Sashimi & side of White Rice,35,0,0,0,0,0,1,0
+Sashimi Deluxe Combo,18 pieces of Chef’s Choice Sashimi & side of White Rice,48,0,0,0,0,0,1,0
+Sushi & Sashimi Festival,6 pieces of Chef’s Choice Sushi & 9 pieces of Chef’s Choice Sashimi & side of White Rice,41,0,0,0,0,0,1,0
+California Roll Combo,"California Roll, Special California Roll, & Spicy California Roll. (24 pieces)",16.5,0,0,0,0,0,1,1
+Spicy Roll Combo,"Spicy California Roll, Spicy Tuna Roll, & Spicy Salmon Roll. (24 pieces)",17.5,0,0,0,0,0,1,1
+Vegetable Roll Combo,"Fresh Veggie Roll, CAC Roll, & AAC Roll. (21 pieces)",15.5,0,0,0,0,0,1,0
+Asparagus Roll,5 pieces,4.5,0,0,0,1,1,0,0
+Avocado Roll,5 pieces,4.5,0,0,0,1,1,0,0
+Cucumber Roll,5 pieces,4.5,0,0,0,1,1,0,0
+Carrot Roll,5 pieces,4.5,0,0,0,1,1,0,0
+Kampyo Roll,Sweet Pumpkin Skin (5 pieces),5,0,0,0,1,1,0,0
+Osinko Roll,Sweet Pickled Radish (5 pieces),4,0,0,0,1,1,0,0
+Avocado & Cucumber Roll,8 pieces,5.25,0,0,0,1,1,0,0
+AAC Roll,"Asparagus, Avocado, & Cucumber (8 pieces)",5.75,0,0,0,1,1,0,0
+CAC Roll,"Carrot, Avocado, & Cucumber (8 pieces)",5.75,0,0,0,1,1,0,0
+Fresh Vegetable Roll,"Fresh Lettuce Asparagus, Osinko, Kampyo, Carrot, Cucumber, Avocado (5 pieces).",7.5,0,0,0,1,1,0,0
+Crab Roll,Crab Stick (5 pieces),4.25,0,0,0,0,0,0,0
+Salmon Roll,(5 pieces),6,0,0,0,0,0,1,0
+Tuna Roll,(5 pieces),6.5,0,0,0,0,0,1,0
+Yellow Tail Roll,(5 pieces),6.5,0,0,0,0,0,1,0
+California Roll,"Crab Salad, Avocado, topped with Masago  (8 pieces)",6.75,0,0,0,0,0,0,0
+Special California Roll,"Crab Stick, Cucumber, & Avocado (8 pieces)",6.5,0,0,0,0,0,0,0
+Philadelphia Roll,"Smoked Salmon, Cream Cheese, Avocado (8 pieces)",7.75,1,0,0,0,0,0,0
+Shrimp Tempura Roll,"Shrimp Panko Tempura, Crab Stick, Cucumber, Avocado  topped with Eel Sauce (5 pieces)",9,0,1,1,0,0,0,0
+Chicken Tempura Roll,Chicken Tempura topped with Eel Sauce (5 pieces),6.5,0,1,1,0,0,0,0
+Sweet Potato Tempura Roll,Sweet Potato Tempura topped with Eel Sauce (5 pieces),6,0,1,1,1,1,0,0
+"Shrimp, Avocado, Cucumber Roll",(8 pieces),7,0,0,0,0,0,0,0
+"Tuna, Avocado Cucumber Roll",(8 pieces),7.25,0,0,0,0,0,1,0
+"Salmon, Avocado, Cucumber Roll",(8 pieces),7,0,0,0,0,0,1,0
+"Eel, Avocado, Cucumber Roll",Topped with Eel Sauce (8 pieces),8,0,1,1,0,0,0,0
+Spicy California,Spicy Crab Salad & Avocado (8 pieces),7,0,0,0,0,0,0,1
+Spicy Salmon Roll,Spicy Salmon & Cucumber (8 pieces),7,0,0,0,0,0,0,1
+Spicy Tuna Roll,Spicy Tuna & Cucumber (8 pieces),7.25,0,0,0,0,0,0,1
+Spicy Yellow Tail,Spicy Yellow Tail & Cucumber (8 pieces),7.25,0,0,0,0,0,0,1
+Spicy Escolar Roll,Spicy Escolar & Cucumber (8 pieces),7,0,0,0,0,0,0,1
+Spicy Scallop & Shrimp Roll,Spicy Baby Scallop & Shrimp & Cucumber (5  pieces),8.25,0,0,0,0,0,0,1
+Spicy Tuna & Shrimp Tempura Roll,"Shrimp Panko Tempura, Spicy Tuna, Avocado, & Cucumber topped with Eel Sauce (10 pieces)",10.75,0,1,1,0,0,0,1
+Spicy Salmon & Shrimp Tempura Roll,"Shrimp Panko Tempura, Spicy Salmon, Avocado, & Cucumber topped with Eel Sauce (10 pieces)",10.75,0,1,1,0,0,0,1
+Atlanta Roll,"Baked roll with  Shrimp Tempura Roll, topped with Spicy Escolar, served with Eel Sauce, Spicy Sauce, & Wasabi Sauce (8 pieces)",15.5,0,1,1,0,0,1,1
+San Francisco Roll,"Seared roll with Spring Mix, Cucumber, Cilantro, Red/Green Pepper inside, topped with seared Cajun Tuna. Served with Spicy Ponzu Sauce & Lime Juice (8 pieces)",15.5,0,1,1,0,0,1,0
+Ann Arbor Roll,"Baked roll with Kampyo, Crunch, Cucumber, topped with Muenster Cheese & Edamame. Served Wasabi Sauce, & Eel Sauce (8 pieces)",15.5,1,1,1,0,1,0,0
+Michigan Roll,"Baked Shrimp Tempura roll (Shrimp Tempura, Crab Stick, Avocado, & Cucumber), topped with Spicy Baby Scallop, Shrimp, & Cheddar Cheese. Served with Eel Sauce (8 pieces)",17.25,1,1,1,0,0,1,1
+LA Roll,"Shrimp Tempura Roll, topped with Furikake, Green Onion, & Seared Spicy Yellow Tail. Served with Wine Sauce, (8 pieces)",15.75,0,1,1,0,0,1,1
+New York Roll,"Spicy Salmon roll, topped with  Seared Salmon & Sweet Potato Chips. Served with Honey Sauce (8 pieces)",15.5,0,0,0,0,0,1,1
+,,,0,0,0,0,0,0,0
+Japan Roll,"Panko deep-fried Asparagus, Avocado, & Cucumber Roll, topped with Spicy Tuna. Served with Sesame Oil, Eel Sauce, & Gochujang Sauce (8 pieces)",15.5,0,1,1,0,0,0,1
+Scotland Roll,"Tempura deep-fried roll with Eel, Cream Cheese, Masago, Avocado, & Spicy Crab Salad. Served with Eel Sauce, Olive Oil Sauce, & Chili Sauce (8 pieces)",15.5,1,1,1,0,0,0,1
+Greenland Roll,"Green Tempura deep-fried roll with Salmon, Muenster Cheese, Crab Salad, & Avocado. Served with Wine Sauce & Sriracha (8 pieces)",16.5,1,1,1,0,0,1,0
+Mexican Roll,"Red Tempura deep-fried roll with Spicy Baby Scallop, Shrimp, Tuna, Salmon, & Cucumber. Served with Eel Sauce & Wasabi Sauce (8 pieces)",16.5,0,1,1,0,0,1,1
+Bulgogi Roll,"Beef Bulgogi Roll with Cucumber, wrapped in Green Cabbage. Served with Gochujang Sauce & Eel Sauce. (8 pieces)",15.5,1,1,1,0,0,0,1
+Cinderella Roll,"Tuna, Salmon, Crab Salad, Avocado, & Tamago, wrapped in Cucumber. Served with Spicy Ponzu Sauce. (5 pieces)",13.5,0,1,1,0,0,1,0
+Momo Roll,"Shrimp Tempura Roll (Shrimp Tempura, Crab Stick. Avocado, Cucumber), topped with fried Eel. Served with Eel Sauce and Gold Flakes. Our House Specialty! (8 pieces)",18,0,1,1,0,0,0,0
+Fireball Roll,"Spicy Tuna, Cucumber, & Crunch. Topped with Masago, Eel Sauce, Sriracha, Sesame Oil & 3 types of Tobiko (8 pieces)",15.5,0,1,1,0,0,1,1
+Fresh Air Roll,"Seaweed Salad, Radish, Tamago, Avocado, Cucumber, Kampyo, & Osinko wrapped in Rice Paper. Served with Sunomono Sauce (5 pieces)",13,0,0,0,0,1,0,0
+Amberjack Roll,"Crab, Avocado, Cucumber roll. Topped with Yellowtail & Green Onion. Served with Spicy Ponzu Sauce (8 pieces)",16,0,1,1,0,0,1,0
+Mango Roll,"Salmon, Osinko, Asparagus, Cream Cheese, wrapped in Rice Paper, topped with Mango & Coconut flakes. Served with Olive Oil Sauce & Avocado Sake Sauce. (8 pieces)",15,1,1,1,0,0,1,0
+Rainbow Roll,"Special California Roll (Crab Stick, Avocado, Cucumber) topped with 5 different fish (8 pieces)",15.5.,0,0,0,0,0,1,0
+Mademoiselle Roll,"Spicy Crab Salad, Shrimp Tempura, Cucumber, Spicy Sauce,  wrapped in Soybean Paper (8 pieces)",13.5,0,1,1,0,0,0,1
+Monster Roll,"Smoked Salmon, Cucumber, Dill, & Cream Cheese, topped with Marinated Smoked Salmon. Served with Wine Sauce (8 pieces)",14,1,1,1,0,0,0,0
+Seamonster Roll,"Cornstarch deep-fried Squid, Lettuce, & Cucumber. Topped with Wasabi-Tobiko, Eel Sauce, & Spicy Sauce (8 pieces)",15.25,0,1,1,0,0,0,1
+Spider Roll,"Cornstarch deep-fried Soft Shell Crab, Spring Mix, Crab Salad, & Cucumber. Served with Wine Sauce & Wasabi Sauce (8 pieces)",14,0,1,1,0,0,0,1
+White Bear Roll,"Crab Stick, Cucumber, & Avocado. Topped with Real Crab Salad. Served with Wine Sauce (8 pieces)",16,0,1,1,0,0,0,0
