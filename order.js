@@ -4,7 +4,10 @@ if (document.readyState == 'loading') {
     ready()
 }
 
+var menuOpen = false;
+
 function ready() {
+
     var removeCartItemButtons = document.getElementsByClassName('btn-danger')
     for (var i = 0; i < removeCartItemButtons.length; i++) {
         var button = removeCartItemButtons[i]
@@ -23,6 +26,9 @@ function ready() {
         button.addEventListener('click', addToCartClicked)
     }
 
+    document.getElementsByClassName("cart-icon")[0].addEventListener('click', openAndCloseMenu)
+    document.getElementsByClassName("btn-closeCart")[0].addEventListener('click', openAndCloseMenu)
+
     document.getElementsByClassName('btn-purchase')[0].addEventListener('click', purchaseClicked)
 
     var cartItems = document.getElementsByClassName('cart-items')[0]
@@ -30,15 +36,6 @@ function ready() {
         cartItems.removeChild(cartItems.firstChild)
     }
 }
-/*
-function CartItem(title, price, quantity, imageSrc) {
-    this.title = title;
-    this.price = price;
-    this.quantity = quantity;
-    this.imageSrc = imageSrc;
-}
-
- */
 
 function purchaseClicked() {
     //alert('Thank you for your purchase')
@@ -55,43 +52,6 @@ function purchaseClicked() {
 
         }
         updateCartTotal()
-
-
-/*
-        var cartList = [];
-
-        for (var i = 0; i < cartItems.length; i++) {
-
-            var title = cartItems.getElementsByClassName("cart-item-title")[0].innerText;
-            var price = cartItems.getElementsByClassName("cart-item-price")[0].innerText;
-            var quantity = cartItems.getElementsByClassName("cart-quantity cart-column")[0].value;
-            var src = cartItems.getElementsByClassName("cart-item-image")[0].src;
-
-            cartList[i] = new CartItem(title, price, quantity, src);
-            document.getElementByID("test log").innerText = cartList[i];
-
-        }
-*//*
-        var cartItemContainer = document.getElementsByClassName('cart-items')[0]
-        var cartRows = cartItemContainer.getElementsByClassName('cart-row')
-
-
-
-        for (var i = 0; i < cartRows.length; i++) {
-            var cartRow = cartRows[i]
-            var priceElement = cartRow.getElementsByClassName('cart-price')[0]
-            var quantityElement = cartRow.getElementsByClassName('cart-quantity-input')[0]
-            var price = parseFloat(priceElement.innerText.replace('$', ''))
-            var quantity = quantityElement.value
-            var titleElement = cartRow.getElementsByClassName('cart-item-title')[0].innerText
-            var imageSrc = cartRow.getElementsByClassName('cart-item-image')[0].src
-
-            cartitem = new CartItem(titleElement, price, quantity, imageSrc);
-        }
-        sessionStorage.cartRows = cartItems;
-        window.location.href = 'checkout.html';
-        */
-
     }
 }
 
@@ -162,4 +122,19 @@ function updateCartTotal() {
     }
     total = Math.round(total * 100) / 100
     document.getElementsByClassName('cart-total-price')[0].innerText = '$' + total
+
 }
+
+function openAndCloseMenu(event) {
+    if(menuOpen) {
+        document.getElementsByClassName('cart-tab')[0].style.inset = "0 -400px 0 auto";
+        //alert("this will close the menu");
+        menuOpen = false;
+    }
+    else {
+        document.getElementsByClassName('cart-tab')[0].style.inset = "0 0 0 auto";
+        //alert("this will open the menu");
+        menuOpen = true;
+    }
+}
+
