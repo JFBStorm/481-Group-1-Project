@@ -138,3 +138,18 @@ function openAndCloseMenu(event) {
     }
 }
 
+// Toggle dropdown menu
+document.querySelector('.menu-toggle').addEventListener('click', function() {
+    document.querySelector('.dropdown').classList.toggle('active');
+});
+
+// Close dropdown when clicking outside
+window.addEventListener('click', function(event) {
+    if (!event.target.matches('.menu-toggle')) {
+        const dropdown = document.querySelector('.dropdown');
+        if (dropdown.classList.contains('active')) {
+            dropdown.classList.remove('active');
+        }
+    }
+});
+

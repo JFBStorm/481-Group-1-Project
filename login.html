@@ -14,20 +14,31 @@
   <body>
 
     <div class="navbar">
-      <nav>
-        <ul>
-          <div class="navbar-float-left">
-            <li><a href="home.html">Home</a></li>
-            <li><a href="menu.html">Order Now</a></li>
-            <li><a href="">Leave A Review</a></li>
-            <li><a href="">Reservations</a></li>
-            <li><a href="">Contact Us</a></li>
+      <nav class="top-nav">
+        <div class="logo">Momo Sushi</div>
+        <div class="nav-links">
+          <a href="menu.html">Menu</a>
+          <a href="#reserve">Reserve</a>
+          <a href="#contact">Contact</a>
+          <a href="#about">About</a>
+          <a href="login.html" id="logout-button">Logout</a>
+          <div class="dropdown">
+            <div class="menu-toggle">☰</div>
+            <div class="dropdown-content">
+              <a href="menu.html">Menu</a>
+              <a href="menu.html">Order Now</a>
+              <a href="#deals">Deals</a>
+              <a href="#rewards">Rewards</a>
+              <a href="#reservation">Reservation</a>
+              <a href="#profile">Profile</a>
+              <a href="#chat">Chat/Support</a>
+              <a href="#contact">Contact</a>
+              <a href="#about">About</a>
+              <a href="#socials">Socials</a>
+              <a href="login.html" id="dropdown-logout">Logout</a>
+            </div>
           </div>
-          <div class="navbar-float-right">
-            <li><a href="login.html">Login</a></li>
-            <li><a href="signup.html">Sign Up</a></li>
-          </div>
-        </ul>
+        </div>
       </nav>
     </div>
 
@@ -47,5 +58,21 @@
     </div>
         <script src="index.js"></script>
         <script src="mongodb.js"></script>
+        <script>
+          // Toggle dropdown menu
+          document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.dropdown').classList.toggle('active');
+          });
+
+          // Close dropdown when clicking outside
+          window.addEventListener('click', function(event) {
+            if (!event.target.matches('.menu-toggle')) {
+              const dropdown = document.querySelector('.dropdown');
+              if (dropdown.classList.contains('active')) {
+                dropdown.classList.remove('active');
+              }
+            }
+          });
+        </script>
   </body>
 </html>
