@@ -7,15 +7,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Welcome to Your Dashboard</h2>
-    <p>You are now logged in!</p>
-    <button id="logout-button">Logout</button>
+    <div class="navbar">
+        <nav>
+            <ul>
+                <div class="navbar-float-left">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="menu.html">Order Now</a></li>
+                    <li><a href="">Leave A Review</a></li>
+                    <li><a href="">Reservations</a></li>
+                    <li><a href="">Contact Us</a></li>
+                </div>
+                <div class="navbar-float-right">
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                </div>
+            </ul>
+        </nav>
+    </div>
+    <div class="page-content-container">
+        <h2>Welcome to Your Dashboard</h2>
+        <p>You are now logged in!</p>
+        <button id="logout-button">Logout</button>
 
-    <script>
-        document.getElementById("logout-button").addEventListener("click", function() {
-            alert("Logout clicked (Add logic here)");
-            window.location.href = "login.html";
-        });
-    </script>
+        <script>
+            document.getElementById("logout-button").addEventListener("click", function() {
+                alert("Logout clicked (Add logic here)");
+                window.location.href = "login.html";
+            });
+        </script>
+    </div>
 </body>
 </html>

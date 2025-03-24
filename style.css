@@ -63,12 +63,54 @@ button {
     }
 }
 
+.navbar {
+    width: 100%;
+    position:fixed;
+    top: -16px;
+}
+nav ul {
+    background-color: #b22222;
+    text-align: center;
+    color: #dddddd;
+    overflow: hidden;
+}
+nav ul li {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: inline-block;
+}
+
+.navbar-float-left { float: left; }
+.navbar-float-right { float: right; }
+
+nav ul li a {
+    background-color: #b22222;
+    text-align: center;
+    color: #dddddd;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    text-decoration: none;
+    padding: 14px 16px;
+}
+
+
+nav ul li a:hover {
+    color: #b22222;
+    background-color: #dddddd;
+}
+
+.page-content-container{
+    padding-top: 60px;
+}
+
 .menu-header-container{
-    width: 900px;
+    padding-top: 60px;
+    width: 90%;
     max-width: 90vw;
     margin: auto;
     text-align: center;
-    padding: 10px;
     transition: transform 0.5s;
 }
 
