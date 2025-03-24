@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="navbar">
+    <nav class="top-nav">
+        <div class="logo">Momo Sushi</div>
+        <div class="nav-links">
+            <a href="menu.php">Menu</a>
+            <a href="#reserve">Reserve</a>
+            <a href="reviews_page.php">Reviews</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+            <a href="login.php" id="logout-button">Logout</a>
+            <div class="dropdown">
+                <div class="menu-toggle">☰</div>
+                <div class="dropdown-content">
+                    <a href="menu.php">Menu</a>
+                    <a href="menu.php">Order Now</a>
+                    <a href="#deals">Deals</a>
+                    <a href="#rewards">Rewards</a>
+                    <a href="#reservation">Reservation</a>
+                    <a href="#profile">Profile</a>
+                    <a href="#chat">Chat/Support</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#about">About</a>
+                    <a href="#socials">Socials</a>
+                    <a href="login.php" id="dropdown-logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+    <div class="login-container">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+            <input type="text" id="signup-email" placeholder="Email" required>
+            <input type="password" id="signup-password" placeholder="Password" required>
+            <button type="button" id="register-button">Register</button>
+        </form>
+        <p id="signup-error" style="color:red; display:none;"></p>
+    </div>
+
+    <script src="index.js"></script>
+    <script>
+        // Toggle dropdown menu
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.dropdown').classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('.menu-toggle')) {
+                const dropdown = document.querySelector('.dropdown');
+                if (dropdown.classList.contains('active')) {
+                    dropdown.classList.remove('active');
+                }
+            }
+        });
+    </script>
