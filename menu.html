@@ -1,42 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+require 'layout.html';
+?>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu - Momo Sushi</title>
     <script src="order.js" async></script>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="navbar">
-        <nav class="top-nav">
-            <div class="logo">Momo Sushi</div>
-            <div class="nav-links">
-                <a href="menu.html">Menu</a>
-                <a href="#reserve">Reserve</a>
-                <a href="#contact">Contact</a>
-                <a href="#about">About</a>
-                <a href="login.html" id="logout-button">Logout</a>
-                <div class="dropdown">
-                    <div class="menu-toggle">☰</div>
-                    <div class="dropdown-content">
-                        <a href="menu.html">Menu</a>
-                        <a href="menu.html">Order Now</a>
-                        <a href="#deals">Deals</a>
-                        <a href="#rewards">Rewards</a>
-                        <a href="#reservation">Reservation</a>
-                        <a href="#profile">Profile</a>
-                        <a href="#chat">Chat/Support</a>
-                        <a href="#contact">Contact</a>
-                        <a href="#about">About</a>
-                        <a href="#socials">Socials</a>
-                        <a href="login.html" id="dropdown-logout">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </div>
-
     <div class="menu-header-container">
         <header class="menu-section-header">
             <div class="menu-header-title">Menu</div>
