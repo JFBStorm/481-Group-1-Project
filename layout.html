@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Title</title>
+    <script src="" async></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="navbar">
+    <nav class="top-nav">
+        <div class="logo">Momo Sushi</div>
+        <div class="nav-links">
+            <a href="menu.php">Menu</a>
+            <a href="#reserve">Reserve</a>
+			<a href="reviews_page.php">Reviews</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+            <a href="login.php" id="logout-button">Logout</a>
+            <div class="dropdown">
+                <div class="menu-toggle">☰</div>
+                <div class="dropdown-content">
+                    <a href="menu.php">Menu</a>
+                    <a href="menu.php">Order Now</a>
+                    <a href="#deals">Deals</a>
+                    <a href="#rewards">Rewards</a>
+                    <a href="#reservation">Reservation</a>
+                    <a href="#profile">Profile</a>
+                    <a href="#chat">Chat/Support</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#about">About</a>
+                    <a href="#socials">Socials</a>
+                    <a href="login.php" id="dropdown-logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+    <div class="page-content-container">
+	
+	<script>
+		window.addEventListener('load', movePageContent);
+		window.addEventListener('resize', movePageContent);
+
+		function movePageContent() {
+			const navbar = document.querySelector('.navbar');
+			const content = document.querySelector('.page-content-container');
+
+			if (navbar && content) {
+			  const navHeight = navbar.offsetHeight;
+			  content.style.marginTop = navHeight + 'px';
+			}
+		}
+	</script>
