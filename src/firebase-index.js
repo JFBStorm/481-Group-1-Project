@@ -23,13 +23,31 @@ getDocs(colRef).then((snapshot) => {
 		Menu.push({ ...doc.data() })
 	})
 	console.log(Menu)
-	displayMenu(Menu);
+	Menu.forEach(entry => {
+		const disMenu = document.getElementById("menu-section");
+		let html = `<div class="menu-items">
+							<div class="menu-item">
+								<span class="menu-item-title">${entry.Item}</span>
+								<img class="menu-item-image" src="" width="100" height="100">
+								<div class="menu-item-details" data-title="Description"> ${entry.Description}
+									<div class="menu-item-price">Price: $${entry.Price}</div>
+									<button class="btn diet-facts menu-item-button" type="button">View Dietary Facts</button>
+									<div class="show-diet-facts">
+										<span class="diet-facts"> Dairy ${entry.Dairy}</span>
+										<span class="diet-facts"> Gluten ${entry.Gluten}</span>
+										<span class="diet-facts"> Raw ${entry.Raw}</span>
+										<span class="diet-facts"> Soy ${entry.Soy}</span>
+										<span class="diet-facts"> Spicy ${entry.Spicy}</span>
+										<span class="diet-facts"> Vegan ${entry.Vegan}</span>
+										<span class="diet-facts"> Vegetarian ${entry.Vegetarian}</span>
+									</div>
+									<button class="btn btn-primary menu-item-button" type="button">ADD TO CART</button>
+								</div>
+							</div>
+						</div>`;
+		disMenu.insertAdjacentHTML("afterend", html);
+	})
 })
 	.catch(err => {
 		console.log(err.message)
 	})
-
-function displayMenu(arr) {
-	console.log("testing 123")
-	insertAdjacentHTML("afterbegin, 'hello')
-}

@@ -208,3 +208,37 @@ svg{
     color: #b22222;
 }
 
+.menu-items {
+    width: 200px;
+    padding: 20px;
+    margin: 15px 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+}
+
+.menu-item-image {
+    width: 150px;
+    height: 150px;
+}
+.menu-item-details {
+    text-align: center;
+}
+
+.menu-item-price {
+    text-align: center;
+}
+
+.show-diet-facts {
+    visibility: hidden;
+    display: block;
+}
+
+.btn diet-facts menu-item-button:hover + .show-diet-facts {
+    visibility: visible;
+    display: inline-block;
+    background-color: blue;
+    color: black;
+}
