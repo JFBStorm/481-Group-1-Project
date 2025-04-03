@@ -18,41 +18,8 @@ require 'layout.html';
         </header>
     </div>
 
-    <section class="container content-section">
-        <div class="menu-items">
-            <div class="menu-item">
-                <span class="menu-item-title">Meal 1</span>
-                <img class="menu-item-image" src="" width="100" height="100">
-                <div class="menu-item-details">
-                    <span class="menu-item-price">$12.99</span>
-                    <button class="btn btn-primary menu-item-button" type="button">ADD TO CART</button>
-                </div>
-            </div>
-            <div class="menu-item">
-                <span class="menu-item-title">Meal 2</span>
-                <img class="menu-item-image" src="" width="100" height="100">
-                <div class="menu-item-details">
-                    <span class="menu-item-price">$14.99</span>
-                    <button class="btn btn-primary menu-item-button"type="button">ADD TO CART</button>
-                </div>
-            </div>
-            <div class="menu-item">
-                <span class="menu-item-title">Meal 3</span>
-                <img class="menu-item-image" src="" width="100" height="100">
-                <div class="menu-item-details">
-                    <span class="menu-item-price">$9.99</span>
-                    <button class="btn btn-primary menu-item-button" type="button">ADD TO CART</button>
-                </div>
-            </div>
-            <div class="menu-item">
-                <span class="menu-item-title">Meal 4</span>
-                <img class="menu-item-image" src="" width="100" height="100">
-                <div class="menu-item-details">
-                    <span class="menu-item-price">$19.99</span>
-                    <button class="btn btn-primary menu-item-button" type="button">ADD TO CART</button>
-                </div>
-            </div>
-        </div>
+    <section id="menu-section" class="container content-section">
+        <script src="bundle.js"></script>
     </section>
 
     <section class="container content-section">
