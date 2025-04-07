@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - Momo Sushi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<style>
+    body {
+        background-color: #8b2323;
+    }
+    .review_box {
+        background-color: #fabca0;
+    }
+    #review-content {
+    width: 100%; /* or 80%, or 600px, whatever you like */
+    max-width: 800px; /* optional limit */
+    padding: 10px;
+    font-size: 16px;
+}
+
+</style>
+
+    <!-- Navigation -->
+    <nav class="top-nav">
+        <div class="logo"><a href="index.html">Momo Sushi</a></div>
+        <div class="nav-links">
+            <a href="menu.html">Menu</a>
+            <a href="#reserve">Reserve</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+            <a href="login.html" id="logout-button">Logout</a>
+            <div class="dropdown">
+                <div class="menu-toggle">☰</div>
+                <div class="dropdown-content">
+                    <a href="menu.html">Menu</a>
+                    <a href="menu.html">Order Now</a>
+                    <a href="#deals">Deals</a>
+                    <a href="#rewards">Rewards</a>
+                    <a href="#reservation">Reservation</a>
+		    <a href="reviews.html">Reviews</a>
+                    <a href="#profile">Profile</a>
+                    <a href="#chat">Chat/Support</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#about">About</a>
+                    <a href="#socials">Socials</a>
+                    <a href="login.html" id="dropdown-logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-content-container">
+    
+        <h1>All Reviews</h1>
+
+        <!-- Only shows if logged in -->
+        <div id="user-section" style="display:block;">
+          <p id="welcome-message"></p>
+          <button id="open-close-review" onclick="toggleForm()">Leave a Review</button>
+    
+          <div id="review-form" style="display:none;">
+            <input type="text" id="review-title" placeholder="Review Title" required><br><br>
+            <textarea id="review-content" rows="5" placeholder="Your review..." required></textarea><br>
+            <button onclick="postReview()">Post</button>
+          </div>
+        </div>
+    
+        <!-- Shows if NOT logged in -->
+        <div id="login-prompt" style="display:none;">
+          <p>Care to leave a review? <a href="login.html">Log in</a> or <a href="signup.html">sign up</a>.</p>
+        </div>
+    
+        <hr>
+
+    <p>Reviews</p>
+    <div id="reviews-container">
+        <!-- Reviews will load here -->
+
+    </div>
+
+<script src="index.bundle.js" defer></script>
+<script src="firebase-reviews.bundle.js" defer></script>
+
+</body>
+</html>
