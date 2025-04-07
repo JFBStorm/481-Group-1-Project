@@ -42,7 +42,7 @@
                     <a href="#deals">Deals</a>
                     <a href="#rewards">Rewards</a>
                     <a href="#reservation">Reservation</a>
-		    <a href="reviews.html">Reviews</a>
+		            <a href="reviews.html">Reviews</a>
                     <a href="#profile">Profile</a>
                     <a href="#chat">Chat/Support</a>
                     <a href="#contact">Contact</a>
@@ -56,7 +56,7 @@
 
     <div class="page-content-container">
     
-        <h1>All Reviews</h1>
+        <h1>Reviews</h1>
 
         <!-- Only shows if logged in -->
         <div id="user-section" style="display:block;">
@@ -77,14 +77,27 @@
     
         <hr>
 
-    <p>Reviews</p>
+    <p>All reviews</p>
     <div id="reviews-container">
         <!-- Reviews will load here -->
 
     </div>
 
-<script src="index.bundle.js" defer></script>
-<script src="firebase-reviews.bundle.js" defer></script>
+    <script>
+        // Toggle dropdown menu
+        document.querySelector('.menu-toggle').addEventListener('click', function () {
+            document.querySelector('.dropdown').classList.toggle('active');
+        });
 
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function (event) {
+            if (!event.target.matches('.menu-toggle')) {
+                const dropdown = document.querySelector('.dropdown');
+                if (dropdown.classList.contains('active')) {
+                    dropdown.classList.remove('active');
+                }
+            }
+        });
+    </script>
 </body>
 </html>
