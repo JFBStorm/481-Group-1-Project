@@ -4,76 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu - Momo Sushi</title>
-    <script src="order.js" async></script>
-    <link rel="stylesheet" href="style.css">
+    <script src="order2.js" type="module"></script>
+    <link rel="stylesheet" href="style_menu_and_orders.css">
 </head>
 <body>
-    <div class="navbar">
-        <nav class="top-nav">
-            <div class="logo">Momo Sushi</div>
-            <div class="nav-links">
-                <a href="menu.html">Menu</a>
-                <a href="#reserve">Reserve</a>
-                <a href="#contact">Contact</a>
-                <a href="#about">About</a>
-                <a href="login.html" id="logout-button">Logout</a>
-                <div class="dropdown">
-                    <div class="menu-toggle">☰</div>
-                    <div class="dropdown-content">
-                        <a href="menu.html">Menu</a>
-                        <a href="menu.html">Order Now</a>
-                        <a href="#deals">Deals</a>
-                        <a href="#rewards">Rewards</a>
-                        <a href="#reservation">Reservation</a>
-                        <a href="#profile">Profile</a>
-                        <a href="#chat">Chat/Support</a>
-                        <a href="#contact">Contact</a>
-                        <a href="#about">About</a>
-                        <a href="#socials">Socials</a>
-                        <a href="login.html" id="dropdown-logout">Logout</a>
-                    </div>
+<div class="navbar">
+    <nav class="top-nav">
+        <div class="logo">Momo Sushi</div>
+        <div class="nav-links">
+            <a href="menu.html">Menu</a>
+            <a href="#reserve">Reserve</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+            <a href="login.html" id="logout-button">Logout</a>
+            <div class="dropdown">
+                <div class="menu-toggle">☰</div>
+                <div class="dropdown-content">
+                    <a href="menu.html">Menu</a>
+                    <a href="menu.html">Order Now</a>
+                    <a href="#deals">Deals</a>
+                    <a href="#rewards">Rewards</a>
+                    <a href="#reservation">Reservation</a>
+                    <a href="#profile">Profile</a>
+                    <a href="#chat">Chat/Support</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#about">About</a>
+                    <a href="#socials">Socials</a>
+                    <a href="login.html" id="dropdown-logout">Logout</a>
                 </div>
             </div>
-        </nav>
-    </div>
-
-    <div class="menu-header-container">
-        <header class="menu-section-header">
-            <div class="menu-header-title">Menu</div>
-            <div class="cart-icon">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
-                </svg>
-                <span class="cart-icon-span">0</span>
-            </div>
-        </header>
-    </div>
-
-    <section id="menu-section" class="container content-section">
-        <script src="bundle.js"></script>
-    </section>
-
-    <section class="container content-section">
-        <div class="cart-tab">
-            <h2 class="section-header">CART</h2>
-            <div class="cart-row">
-                <span class="cart-item cart-header cart-column">ITEM</span>
-                <span class="cart-price cart-header cart-column">PRICE</span>
-                <span class="cart-quantity cart-header cart-column">QUANTITY</span>
-            </div>
-            <div class="cart-items">
-                <div class="cart-row">
-                   <! Cart Item Elements added by Order.js>
-                </div>
-            </div>
-            <div class="cart-total">
-                <strong class="cart-total-title">Total</strong>
-                <span class="cart-total-price">$0.00</span>
-            </div>
-            <button class="btn btn-primary btn-purchase" type="button">Check Out</button>
-            <button class="btn btn-primary btn-closeCart" type="button">Close</button>
         </div>
-    </section>
+    </nav>
+</div>
 
+
+<div class="menu-header-container">
+    <header class="menu-section-header">
+        <h2>Filter Options</h2>
+        <div class="menu-filter-form" id="menu-filter-form">
+            <label class="menu-filter-form" for="Vegetarian-checkbox">Vegetarian</label>
+            <input class="menu-filter-form" type="checkbox" id="Vegetarian-checkbox">
+            <label class="menu-filter-form" for="Vegan-checkbox">Vegan</label>
+            <input class="menu-filter-form" type="checkbox" id="Vegan-checkbox">
+            <label class="menu-filter-form" for="Raw-checkbox">Raw</label>
+            <input class="menu-filter-form" type="checkbox" id="Raw-checkbox">
+            <label class="menu-filter-form" for="Spicy-checkbox">Spicy</label>
+            <input class="menu-filter-form" type="checkbox" id="Spicy-checkbox">
+            <label class="menu-filter-form" for="Dairy-checkbox">Dairy Free</label>
+            <input class="menu-filter-form" type="checkbox" id="Dairy-checkbox">
+            <label class="menu-filter-form" for="Gluten-checkbox">Gluten Free</label>
+            <input class="menu-filter-form" type="checkbox" id="Gluten-checkbox">
+            <label class="menu-filter-form" for="Soy-checkbox">Soy Free</label>
+            <input class="menu-filter-form" type="checkbox" id="Soy-checkbox">
+        </div>
+        <div><input class="menu-filter-form-button" type="button" id="filter-button" value="Apply Filters"></div>
+        <div>
+            <input class="menu-filter-form" type="text" id="searchInput" value="" placeholder="Search">
+            <input class="menu-filter-form" type="button" id="search-button" value="Search">
+        </div>
+        <div id="admin-options">
+            <h2>Admin Options</h2>
+            <button id="add-menu-button" class="admin-options-button">Add Menu Item</button>
+            <button id="delete-menu-button" class="admin-options-button">Delete Menu Item</button>
+            <div id="admin-input-section"></div>
+        </div>
+    </header>
+</div>
+
+<div class="menu-and-cart-wrapper">
+    <div class="menu-and-cart">
+        <h2 class="menu-header-title">Menu</h2>
+        <section id="menu-section" class="container content-section">
+            <!--Menu Created in Order2.js-->
+
+
+
+        </section>
+    </div>
+    <div class="menu-and-cart">
+        <section class="container content-section">
+            <div class="cart-tab">
+                <h2 class="section-header">CART</h2>
+                <div id="cart-items" class="cart-items">
+
+
+
+
+                </div>
+                <div class="cart-total">
+                    <strong class="cart-total-title">Total</strong>
+                    <span class="cart-total-price">$0.00</span>
+                </div>
+                <button id="checkout-button" class="btn btn-primary btn-purchase" type="button">Check Out</button>
+                <button id="load-meal-button" class="btn btn-primary btn-saveMeal" type="button">Load Saved Meal</button>
+            </div>
+        </section>
+    </div>
+</div>
 </body>
 </html>

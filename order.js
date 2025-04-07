@@ -6,6 +6,7 @@ if (document.readyState == 'loading') {
 
 var menuOpen = false;
 
+
 function ready() {
 
     var removeCartItemButtons = document.getElementsByClassName('btn-danger')

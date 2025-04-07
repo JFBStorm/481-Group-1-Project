@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Momo Sushi</title>
+    <script src="order2.js" type="module"></script>
+    <link rel="stylesheet" href="style_menu_and_orders.css">
+</head>
+<body>
+<div class="navbar">
+    <nav class="top-nav">
+        <div class="logo">Momo Sushi</div>
+        <div class="nav-links">
+            <a href="menu2.html">Menu</a>
+            <a href="#reserve">Reserve</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+            <a href="login.html" id="logout-button">Logout</a>
+            <div class="dropdown">
+                <div class="menu-toggle">☰</div>
+                <div class="dropdown-content">
+                    <a href="menu2.html">Menu</a>
+                    <a href="menu2.html">Order Now</a>
+                    <a href="#deals">Deals</a>
+                    <a href="#rewards">Rewards</a>
+                    <a href="#reservation">Reservation</a>
+                    <a href="#profile">Profile</a>
+                    <a href="#chat">Chat/Support</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#about">About</a>
+                    <a href="#socials">Socials</a>
+                    <a href="login.html" id="dropdown-logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+<div class="menu-header-container">
+    <header class="menu-section-header">
+        <h2>Filter Options</h2>
+        <div class="menu-filter-form" id="menu-filter-form">
+            <label class="menu-filter-form" for="Vegetarian-checkbox">Vegetarian</label>
+            <input class="menu-filter-form" type="checkbox" id="Vegetarian-checkbox">
+            <label class="menu-filter-form" for="Vegan-checkbox">Vegan</label>
+            <input class="menu-filter-form" type="checkbox" id="Vegan-checkbox">
+            <label class="menu-filter-form" for="Raw-checkbox">Raw</label>
+            <input class="menu-filter-form" type="checkbox" id="Raw-checkbox">
+            <label class="menu-filter-form" for="Spicy-checkbox">Spicy</label>
+            <input class="menu-filter-form" type="checkbox" id="Spicy-checkbox">
+            <label class="menu-filter-form" for="Dairy-checkbox">Dairy Free</label>
+            <input class="menu-filter-form" type="checkbox" id="Dairy-checkbox">
+            <label class="menu-filter-form" for="Gluten-checkbox">Gluten Free</label>
+            <input class="menu-filter-form" type="checkbox" id="Gluten-checkbox">
+            <label class="menu-filter-form" for="Soy-checkbox">Soy Free</label>
+            <input class="menu-filter-form" type="checkbox" id="Soy-checkbox">
+        </div>
+        <div><input class="menu-filter-form-button" type="button" id="filter-button" value="Apply Filters"></div>
+        <div>
+            <input class="menu-filter-form" type="text" id="searchInput" value="" placeholder="Search">
+            <input class="menu-filter-form" type="button" id="search-button" value="Search">
+        </div>
+        <div id="admin-options">
+            <h2>Admin Options</h2>
+            <button id="add-menu-button" class="admin-options-button">Add Menu Item</button>
+            <button id="delete-menu-button" class="admin-options-button">Delete Menu Item</button>
+            <div id="admin-input-section"></div>
+        </div>
+    </header>
+</div>
+
+<div class="menu-and-cart-wrapper">
+    <div class="menu-and-cart">
+        <h2 class="menu-header-title">Menu</h2>
+        <section id="menu-section" class="container content-section">
+            <!--Menu Created in Order2.js-->
+
+
+
+        </section>
+    </div>
+    <div class="menu-and-cart">
+        <section class="container content-section">
+            <div class="cart-tab">
+                <h2 class="section-header">CART</h2>
+                <div id="cart-items" class="cart-items">
+
+
+
+
+                </div>
+                <div class="cart-total">
+                    <strong class="cart-total-title">Total</strong>
+                    <span class="cart-total-price">$0.00</span>
+                </div>
+                <button id="checkout-button" class="btn btn-primary btn-purchase" type="button">Check Out</button>
+                <button id="load-meal-button" class="btn btn-primary btn-saveMeal" type="button">Load Saved Meal</button>
+            </div>
+        </section>
+    </div>
+</div>
+</body>
+</html>

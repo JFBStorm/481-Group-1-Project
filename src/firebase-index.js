@@ -28,7 +28,7 @@ getDocs(colRef).then((snapshot) => {
 		let html = `<div class="menu-items">
 							<div class="menu-item">
 								<span class="menu-item-title">${entry.Item}</span>
-								<img class="menu-item-image" src="" width="100" height="100">
+
 								<div class="menu-item-details" data-title="Description"> ${entry.Description}
 									<div class="menu-item-price">Price: $${entry.Price}</div>
 									<button class="btn diet-facts menu-item-button" type="button">View Dietary Facts</button>

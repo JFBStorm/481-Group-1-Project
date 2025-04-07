@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout - Momo Sushi</title>
+    <script src="checkout2.js" type="module"></script>
+    <link rel="stylesheet" href="style_menu_and_orders.css">
+</head>
+<body>
+<section class="menu-and-cart-wrapper">
+    <div class="menu-and-cart">
+        <div class="cart-tab">
+            <h2 class="section-header">CART</h2>
+            <div id="cart-items" class="cart-items">
+
+
+
+
+            </div>
+            <div class="cart-total">
+                <strong class="cart-total-title">Total</strong>
+                <span id="cart-total-price" class="cart-total-price">$0.00</span>
+            </div>
+            <div>
+                <label class="checkout-label" id="cart-tax" class="cart-tax">Tax: $0.00</label>
+                <div id="tip-section" class="tip-section">
+                    <h3>Tip</h3>
+                    <button id="10perTip" class="tip-section">10%</button>
+                    <button id="15perTip" class="tip-section">15%</button>
+                    <button id="20perTip" class="tip-section">20%</button>
+                    <button id="customTip" class="tip-section">Custom Tip</button>
+                    <input class="checkout-input" id="custom-tip-textbox" class="tip-section" type="number" placeholder="Custom Tip ($0.00)">
+                    <div><label class="checkout-label" id="cart-tip" class="cart-Tax">Tip: $0.00</label></div>
+                    <div><label class="checkout-label-grand-total" id="grand-total">Grand Total: $0.00</label></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="menu-and-cart">
+        <div class="checkout-form">
+            <div class="row">
+                <div class="col-50">
+                    <h2>Customer Info</h2>
+                    <label class="checkout-label" for="fname"><i class="fa fa-user"></i> Full Name</label>
+                    <input class="checkout-input" type="text" id="fname" name="firstname" placeholder="John M. Doe">
+                    <label class="checkout-label" for="email"><i class="fa fa-envelope"></i> Email</label>
+                    <input class="checkout-input" type="text" id="email" name="email" placeholder="john@example.com">
+                    <label class="checkout-label" for="phone"><i class="fa fa-envelope"></i> Phone</label>
+                    <input class="checkout-input" type="text" id="phone" name="phone" placeholder="000-000-0000">
+                </div>
+
+
+                <div class="col-50">
+                    <h2>Payment</h2>
+                    <label class="checkout-label" for="cname">Name on Card</label>
+                    <input class="checkout-input" type="text" id="cname" name="cardname" placeholder="John More Doe">
+                    <label class="checkout-label" for="ccnum">Credit card number</label>
+                    <input class="checkout-input" type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+                    <label class="checkout-label" for="expmonth">Exp Month</label>
+                    <input class="checkout-input" type="text" id="expmonth" name="expmonth" placeholder="September">
+                    <label class="checkout-label" for="expyear">Exp Year</label>
+                    <input class="checkout-input" type="text" id="expyear" name="expyear" placeholder="2018">
+                    <label class="checkout-label" for="cvv">CVV</label>
+                    <input class="checkout-input" type="text" id="cvv" name="cvv" placeholder="352">
+                </div>
+            </div>
+        </div>
+        <div class="place-order-button">
+            <button id="place-order" class="place-order">Place Order</button>
+        </div>
+    </div>
+</section>
+</body>
