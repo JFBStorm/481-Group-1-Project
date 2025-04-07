@@ -2,7 +2,9 @@ import '../style.css';
 
 console.log("Hi");
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
+//import { addDoc } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
 	apiKey: "AIzaSyAfnO5kVQtrD-aStBluASDwzJLF4iPIixc",
@@ -17,6 +19,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
 
 // display review form on button click
 function toggleForm() {
@@ -42,23 +45,23 @@ textarea.addEventListener("input", () => {
   textarea.style.height = textarea.scrollHeight + "px"; // Set new height
 });
 
-
 // get review info from form and add to database
 window.postReview = async function () {
-  const title = document.getElementById("review-title").value;
-  const content = document.getElementById("review-content").value;
+  const formTitle = document.getElementById("review-title").value;
+  const formContent = document.getElementById("review-content").value;
   //const user = auth.currentUser;
-  const userid = "";
+  const userid = "anon";
 
   //if (!user) return;
-  if (!user) userid = "anon";
-  else userid = user.username;
+  //if (!user) userid = "anon";
+  //else userid = user.username;
 
-  await db.collection("Reviews").add({
-    title,
-    content,
-    username: userid,
-    date: firebase.firestore.FieldValue.serverTimestamp()
+  //await db.collection("Reviews").add({
+  const docRef = await addDoc(collection(db, "Reviews"), {
+    date: new Date().toDateString(),
+    message: formContent,
+    title: formTitle,
+    username: userid
   });
 
   document.getElementById("review-title").value = "";
@@ -86,9 +89,9 @@ async function loadReviews() {
       const reviewDiv = document.createElement('div');
       reviewDiv.className = 'review-card';
       reviewDiv.innerHTML = `<hr><div class="review-box">
-        <span>${review.date}<h3>${review.title || "Anonymous"}</h3>
+        <span>${review.date}</span><h3>${review.title || "Anonymous"}</h3>
         <p>${review.message || "No comment provided."}</p>
-        <span><span>Posted by ${review.username}</span></div>
+        <small>Posted by ${review.username}</small></div>
       `;
       container.appendChild(reviewDiv);
     });
