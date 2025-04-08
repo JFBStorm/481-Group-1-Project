@@ -33,16 +33,17 @@
             <a href="reviews.html">Reviews</a>
             <a href="#contact">Contact</a>
             <a href="#about">About</a>
-            <a href="login.html" id="logout-button">Logout</a>
+            <a href="login.html" id="dropdown-logout">Logout</a>
             <div class="dropdown">
                 <div class="menu-toggle">☰</div>
                 <div class="dropdown-content">
+		    <a href="profile.html" id="userProfileStatus">Not signed in</a>
                     <a href="menu.html">Menu</a>
                     <a href="menu.html">Order Now</a>
                     <a href="#deals">Deals</a>
                     <a href="#rewards">Rewards</a>
                     <a href="#reservation">Reservation</a>
-		            <a href="reviews.html">Reviews</a>
+		    <a href="reviews.html">Reviews</a>
                     <a href="#profile">Profile</a>
                     <a href="#chat">Chat/Support</a>
                     <a href="#contact">Contact</a>
@@ -83,6 +84,9 @@
 
     </div>
 
+    <script src="firebaseadmin.js"></script>
+    <script src="firebaseauth.js"></script>
+    <script src="firebasereviews.js"></script>
     <script>
         // Toggle dropdown menu
         document.querySelector('.menu-toggle').addEventListener('click', function () {
