@@ -1,7 +1,7 @@
+import '../style.css';
 
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
-//import { addDoc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
@@ -17,9 +17,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth();
-const user = auth.currentUser;
-console.log(user.email)
+const auth = getAuth(app);
+
 // display review form on button click
 function toggleForm() {
   const form = document.getElementById("review-form");
@@ -33,15 +32,14 @@ function toggleForm() {
     }
   
 }
-// export function to window
-window.toggleForm = toggleForm;
+window.toggleForm = toggleForm; // export function to window
 
 // expand size of review form as user types
 const textarea = document.getElementById("review-content");
 
 textarea.addEventListener("input", () => {
-  textarea.style.height = "auto"; // Reset height
-  textarea.style.height = textarea.scrollHeight + "px"; // Set new height
+  textarea.style.height = "auto"; // reset height
+  textarea.style.height = textarea.scrollHeight + "px"; // set new height
 });
 
 // get review info from form and add to database
@@ -49,19 +47,12 @@ window.postReview = async function () {
   const formTitle = document.getElementById("review-title").value;
   const formContent = document.getElementById("review-content").value;
   //const user = auth.currentUser;
-  if(user) {
-	  console.log(user.user)
-	  const userid = user.displayName;
-  }
-  else {
-	  const userid = "anon";
-  }
+  const userid = "anon";
 
   //if (!user) return;
   //if (!user) userid = "anon";
   //else userid = user.username;
 
-  //await db.collection("Reviews").add({
   const docRef = await addDoc(collection(db, "Reviews"), {
     date: new Date().toDateString(),
     message: formContent,
@@ -74,8 +65,7 @@ window.postReview = async function () {
   toggleForm();
   loadReviews();
 };
-// export function to window
-window.postReview = postReview;
+window.postReview = postReview; // export function to window
 
 // display reviews
 async function loadReviews() {
@@ -83,14 +73,11 @@ async function loadReviews() {
   container.innerHTML = '<p>Loading reviews...</p>';
 
   try {
-    //const querySnapshot = await db.collection("Reviews").orderBy("date", "desc").get();
     const querySnapshot = await getDocs(collection(db, "Reviews")); 
     container.innerHTML = '';
 
     querySnapshot.forEach((doc) => {
       const review = doc.data();
-      console.log('Loaded review:', review);  // Verify the data being fetched
-
       const reviewDiv = document.createElement('div');
       reviewDiv.className = 'review-card';
       reviewDiv.innerHTML = `<hr><div class="review-box">
