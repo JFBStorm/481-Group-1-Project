@@ -260,7 +260,7 @@ function checkout(event){
     }
     getCartSessionStorage();
     setUserCartMeal();
-    window.location.href = "checkout2.html";
+    window.location.href = "checkout.html";
 }
 
 async function setUserCartMeal(){

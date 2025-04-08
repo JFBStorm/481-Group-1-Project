@@ -190,7 +190,7 @@ async function placeOrder(){
         }
     );
     saveOrDeleteMeal();
-    window.location.href = "Placed_Orders.html"
+    window.location.href = "current_orders.html"
 }
 
 async function saveOrDeleteMeal() {
