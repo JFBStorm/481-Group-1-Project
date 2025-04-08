@@ -24,7 +24,7 @@
         <div class="logo"><a href="index.html">Momo Sushi</a></div>
         <div class="nav-links">
             <a href="menu.html">Menu</a>
-            <a href="#reserve">Reserve</a>
+            <a href="reservations.html">Reserve</a>
             <a href="reviews.html">Reviews</a>
             <a href="#contact">Contact</a>
             <a href="#about">About</a>
@@ -37,7 +37,7 @@
                     <a href="menu.html">Order Now</a>
                     <a href="#deals">Deals</a>
                     <a href="#rewards">Rewards</a>
-                    <a href="#reservation">Reservation</a>
+                    <a href="reservations.html">Reservation</a>
 		    <a href="reviews.html">Reviews</a>
                     <a href="#profile">Profile</a>
                     <a href="#chat">Chat/Support</a>
@@ -51,53 +51,54 @@
     </nav>
 
     <div class="page-content-container">
-    
+
         <h1>Reviews</h1>
 
         <!-- Form to leave a review -->
         <!-- Only shows if logged in -->
         <div id="user-section" style="display:block;">
-          <p id="welcome-message"></p>
-          <button id="open-close-review" onclick="toggleForm()">Leave a Review</button>
-    
-          <div id="review-form" style="display:none;">
-            <input type="text" id="review-title" placeholder="Review Title" required><br><br>
-            <textarea id="review-content" placeholder="Your review..." required></textarea><br>
-            <button onclick="postReview()">Post</button>
-          </div>
+            <p id="welcome-message"></p>
+            <button id="open-close-review" onclick="toggleForm()">Leave a Review</button>
+
+            <div id="review-form" style="display:none;">
+                <input type="text" id="review-title" placeholder="Review Title" required><br><br>
+                <textarea id="review-content" placeholder="Your review..." required></textarea><br>
+                <button onclick="postReview()">Post</button>
+            </div>
         </div>
-    
+
         <!-- If user is not loggd in -->
         <div id="login-prompt" style="display:none;">
-          <p>Care to leave a review? <a href="login.html">Log in</a> or <a href="signup.html">sign up</a>.</p>
+            <p>Care to leave a review? <a href="login.html">Log in</a> or <a href="signup.html">sign up</a>.</p>
         </div>
-    
+
         <hr>
 
-    <p>All reviews</p>
-    <div id="reviews-container">
-        <!-- Reviews will load here -->
+        <p>All reviews</p>
+        <div id="reviews-container">
+            <!-- Reviews will load here -->
 
-    </div>
+        </div>
 
-    <script src="firebaseadmin.js"></script>
-    <script src="firebaseauth.js"></script>
-    <script src="firebasereviews.js"></script>
-    <script>
-        // Toggle dropdown menu
-        document.querySelector('.menu-toggle').addEventListener('click', function () {
-            document.querySelector('.dropdown').classList.toggle('active');
-        });
+        <script src="index.js"></script>
+        <script src="firebaseadmin.js"></script>
+        <script src="firebaseauth.js"></script>
+        <script src="firebasereviews.js"></script>
+        <script>
+            // Toggle dropdown menu
+            document.querySelector('.menu-toggle').addEventListener('click', function () {
+                document.querySelector('.dropdown').classList.toggle('active');
+            });
 
-        // Close dropdown when clicking outside
-        window.addEventListener('click', function (event) {
-            if (!event.target.matches('.menu-toggle')) {
-                const dropdown = document.querySelector('.dropdown');
-                if (dropdown.classList.contains('active')) {
-                    dropdown.classList.remove('active');
+            // Close dropdown when clicking outside
+            window.addEventListener('click', function (event) {
+                if (!event.target.matches('.menu-toggle')) {
+                    const dropdown = document.querySelector('.dropdown');
+                    if (dropdown.classList.contains('active')) {
+                        dropdown.classList.remove('active');
+                    }
                 }
-            }
-        });
-    </script>
+            });
+        </script>
 </body>
 </html>
