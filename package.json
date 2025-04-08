@@ -1,0 +1,25 @@
+{
+  "name": "481-group-1-project",
+  "version": "1.0.0",
+  "description": "Sam Jacobson | \r Anurag Singh Rawat |\r Chigozirim Akubugwo |\r Connor Hoey |\r Evan Prieskorn |\r Hana Daniel Tolera |\r Joshua Barren |\r Kade Bruner |\r Taylor Peterson",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JFBStorm/481-Group-1-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JFBStorm/481-Group-1-Project/issues"
+  },
+  "homepage": "https://github.com/JFBStorm/481-Group-1-Project#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "node-fetch": "^3.3.2"
+  }
+}

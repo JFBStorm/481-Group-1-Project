@@ -100,7 +100,7 @@
     </div>
     <div class="info-item">
       <strong>Phone</strong>
-      <p>(123) 456-7890</p>
+      <p>(734) 800-4909</p>
     </div>
     <div class="info-item">
       <strong>Hours</strong>
@@ -204,16 +204,18 @@
   <!-- Dropdown Toggle Logic -->
   <script>
     document.querySelector(".menu-toggle").addEventListener("click", function () {
-document.querySelector(".dropdown").classList.toggle("active");
-});
+      document.querySelector(".dropdown").classList.toggle("active");
+    });
 
-window.addEventListener("click", function (event) {
-if (!event.target.closest(".dropdown")) {
-document.querySelector(".dropdown").classList.remove("active");
-}
-});
-
-</script>
+    window.addEventListener("click", function (event) {
+      if (!event.target.matches(".menu-toggle")) {
+        const dropdown = document.querySelector(".dropdown");
+        if (dropdown.classList.contains("active")) {
+          dropdown.classList.remove("active");
+        }
+      }
+    });
+  </script>
 
 <script type="module">
   import { auth } from './FirebaseConfig.js';
