@@ -124,10 +124,11 @@
             <a href="reviews.html">Reviews</a>
             <a href="#contact">Contact</a>
             <a href="#about">About</a>
-            <a href="login.html" id="logout-button">Logout</a>
+            <a href="login.html" id="dropdown-logout">Logout</a>
             <div class="dropdown">
                 <div class="menu-toggle">☰</div>
                 <div class="dropdown-content">
+		    <a href="profile.html" id="userProfileStatus">Not signed in</a>
                     <a href="menu.html">Menu</a>
                     <a href="menu.html">Order Now</a>
                     <a href="#deals">Deals</a>
@@ -180,7 +181,9 @@
       <button class="action-button">Chat</button>
       <button class="action-button">Cart</button>
     </div>
-
+	  
+    <script src="firebaseadmin.js"></script>
+    <script src="firebaseauth.js"></script>
     <script>
       // Toggle dropdown menu
       document
