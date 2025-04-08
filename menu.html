@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu - Momo Sushi</title>
     <script src="src/order.js" async></script>
+
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,13 +24,13 @@
             <div class="dropdown">
                 <div class="menu-toggle">☰</div>
                 <div class="dropdown-content">
-		    <a href="profile.html" id="userProfileStatus">Not signed in</a>
+                    <a href="profile.html" id="userProfileStatus">Not signed in</a>
                     <a href="menu.html">Menu</a>
                     <a href="menu.html">Order Now</a>
                     <a href="#deals">Deals</a>
                     <a href="#rewards">Rewards</a>
                     <a href="#reservation">Reservation</a>
-		    <a href="reviews.html">Reviews</a>
+                    <a href="reviews.html">Reviews</a>
                     <a href="#profile">Profile</a>
                     <a href="#chat">Chat/Support</a>
                     <a href="#contact">Contact</a>
@@ -38,13 +41,13 @@
             </div>
         </div>
     </nav>
-    
+
     <div class="menu-header-container">
         <header class="menu-section-header">
             <div class="menu-header-title">Menu</div>
             <div class="cart-icon">
                 <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
                 </svg>
                 <span class="cart-icon-span">0</span>
             </div>
@@ -65,7 +68,7 @@
             </div>
             <div class="cart-items">
                 <div class="cart-row">
-                   <! Cart Item Elements added by Order.js>
+                    <! Cart Item Elements added by Order.js>
                 </div>
             </div>
             <div class="cart-total">
@@ -76,6 +79,8 @@
             <button class="btn btn-primary btn-closeCart" type="button">Close</button>
         </div>
     </section>
+
+    <script src="index.js"></script>
     <script src="firebaseadmin.js"></script>
     <script src="firebaseauth.js"></script>
     <script>
