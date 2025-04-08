@@ -12,14 +12,9 @@
     body {
         background-color: #8b2323;
     }
-    .review_box {
-        background-color: #fabca0;
-    }
     #review-content {
-    width: 100%; /* or 80%, or 600px, whatever you like */
-    max-width: 800px; /* optional limit */
+    width: 80%; 
     padding: 10px;
-    font-size: 16px;
 }
 
 </style>
@@ -58,6 +53,7 @@
     
         <h1>Reviews</h1>
 
+        <!-- Form to leave a review -->
         <!-- Only shows if logged in -->
         <div id="user-section" style="display:block;">
           <p id="welcome-message"></p>
@@ -65,12 +61,12 @@
     
           <div id="review-form" style="display:none;">
             <input type="text" id="review-title" placeholder="Review Title" required><br><br>
-            <textarea id="review-content" rows="5" placeholder="Your review..." required></textarea><br>
+            <textarea id="review-content" placeholder="Your review..." required></textarea><br>
             <button onclick="postReview()">Post</button>
           </div>
         </div>
     
-        <!-- Shows if NOT logged in -->
+        <!-- If user is not loggd in -->
         <div id="login-prompt" style="display:none;">
           <p>Care to leave a review? <a href="login.html">Log in</a> or <a href="signup.html">sign up</a>.</p>
         </div>
