@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu - Momo Sushi</title>
-    <script src="src/order.js" async></script>
+    <script src="order.js" type="module"></script>
 
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style_menu_and_orders.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -44,60 +44,66 @@
 
     <div class="menu-header-container">
         <header class="menu-section-header">
-            <div class="menu-header-title">Menu</div>
-            <div class="cart-icon">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
-                </svg>
-                <span class="cart-icon-span">0</span>
+            <h2>Filter Options</h2>
+            <div class="menu-filter-form" id="menu-filter-form">
+                <label class="menu-filter-form" for="Vegetarian-checkbox">Vegetarian</label>
+                <input class="menu-filter-form" type="checkbox" id="Vegetarian-checkbox">
+                <label class="menu-filter-form" for="Vegan-checkbox">Vegan</label>
+                <input class="menu-filter-form" type="checkbox" id="Vegan-checkbox">
+                <label class="menu-filter-form" for="Raw-checkbox">Raw</label>
+                <input class="menu-filter-form" type="checkbox" id="Raw-checkbox">
+                <label class="menu-filter-form" for="Spicy-checkbox">Spicy</label>
+                <input class="menu-filter-form" type="checkbox" id="Spicy-checkbox">
+                <label class="menu-filter-form" for="Dairy-checkbox">Dairy Free</label>
+                <input class="menu-filter-form" type="checkbox" id="Dairy-checkbox">
+                <label class="menu-filter-form" for="Gluten-checkbox">Gluten Free</label>
+                <input class="menu-filter-form" type="checkbox" id="Gluten-checkbox">
+                <label class="menu-filter-form" for="Soy-checkbox">Soy Free</label>
+                <input class="menu-filter-form" type="checkbox" id="Soy-checkbox">
+            </div>
+            <div><input class="menu-filter-form-button" type="button" id="filter-button" value="Apply Filters"></div>
+            <div>
+                <input class="menu-filter-form" type="text" id="searchInput" value="" placeholder="Search">
+                <input class="menu-filter-form" type="button" id="search-button" value="Search">
+            </div>
+            <div id="admin-options">
+                <h2>Admin Options</h2>
+                <button id="add-menu-button" class="admin-options-button">Add Menu Item</button>
+                <button id="delete-menu-button" class="admin-options-button">Delete Menu Item</button>
+                <div id="admin-input-section"></div>
             </div>
         </header>
     </div>
 
-    <section id="menu-section" class="container content-section">
-        <script src="firebasemenu.js"></script>
-    </section>
+    <div class="menu-and-cart-wrapper">
+        <div class="menu-and-cart">
+            <h2 class="menu-header-title">Menu</h2>
+            <section id="menu-section" class="container content-section">
+                <!--Menu Created in Order2.js-->
 
-    <section class="container content-section">
-        <div class="cart-tab">
-            <h2 class="section-header">CART</h2>
-            <div class="cart-row">
-                <span class="cart-item cart-header cart-column">ITEM</span>
-                <span class="cart-price cart-header cart-column">PRICE</span>
-                <span class="cart-quantity cart-header cart-column">QUANTITY</span>
-            </div>
-            <div class="cart-items">
-                <div class="cart-row">
-                    <! Cart Item Elements added by Order.js>
-                </div>
-            </div>
-            <div class="cart-total">
-                <strong class="cart-total-title">Total</strong>
-                <span class="cart-total-price">$0.00</span>
-            </div>
-            <button class="btn btn-primary btn-purchase" type="button">Check Out</button>
-            <button class="btn btn-primary btn-closeCart" type="button">Close</button>
+
+
+            </section>
         </div>
-    </section>
+        <div class="menu-and-cart">
+            <section class="container content-section">
+                <div class="cart-tab">
+                    <h2 class="section-header">CART</h2>
+                    <div id="cart-items" class="cart-items">
 
-    <script src="index.js"></script>
-    <script src="firebaseadmin.js"></script>
-    <script src="firebaseauth.js"></script>
-    <script>
-        // Toggle dropdown menu
-        document.querySelector('.menu-toggle').addEventListener('click', function () {
-            document.querySelector('.dropdown').classList.toggle('active');
-        });
 
-        // Close dropdown when clicking outside
-        window.addEventListener('click', function (event) {
-            if (!event.target.matches('.menu-toggle')) {
-                const dropdown = document.querySelector('.dropdown');
-                if (dropdown.classList.contains('active')) {
-                    dropdown.classList.remove('active');
-                }
-            }
-        });
-    </script>
+
+
+                    </div>
+                    <div class="cart-total">
+                        <strong class="cart-total-title">Total</strong>
+                        <span class="cart-total-price">$0.00</span>
+                    </div>
+                    <button id="checkout-button" class="btn btn-primary btn-purchase" type="button">Check Out</button>
+                    <button id="load-meal-button" class="btn btn-primary btn-saveMeal" type="button">Load Saved Meal</button>
+                </div>
+            </section>
+        </div>
+    </div>
 </body>
 </html>

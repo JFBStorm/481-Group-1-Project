@@ -1,0 +1,266 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+
+.login-container {
+    width: 350px;
+    margin: 100px auto;
+    padding: 25px;
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+
+/* Headings: */
+h2 {
+    color: #b22222;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+
+/* input fields */
+/*
+input {
+   width: 100%;
+   padding: 12px;
+   margin: 10px 0;
+   border: 2px solid #ddd;
+   border-radius: 5px;
+   font-size: 16px;
+   outline: none;
+   transition: border 0.3s ease-in-out;
+}
+*/
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #b22222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+
+/* Error Message */
+#error-message, #signup-error {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    display: none;
+}
+
+
+@media (max-width: 500px) {
+    .login-container {
+        width: 90%;
+    }
+}
+
+
+/* Navigation Styles */
+.top-nav {
+    background-color: #8B2323;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+}
+
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+
+.dropdown-content a {
+    padding: 12px 16px;
+    display: block;
+    text-align: left;
+}
+
+
+.dropdown.active .dropdown-content {
+    display: block;
+}
+
+
+.menu-toggle {
+    cursor: pointer;
+    font-size: 24px;
+}
+
+
+/* menu page */
+.menu-section-header {
+    display: inline-block;
+    align-items: center;
+}
+
+.menu-filter-form {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    padding: 6px;
+    margin: 10px 5px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+}
+
+.menu-filter-form-button {
+    display: block;
+    align-items: center;
+    width: 25%;
+    padding: 6px;
+    margin: 10px 5px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+}
+
+.menu-filter-form-button:hover {
+    cursor: pointer;
+}
+
+.menu-filter-form:hover {
+    cursor: pointer;
+}
+
+.menu-and-cart-wrapper{
+    display: inline-flex;
+}
+
+.menu-and-cart{
+    display: inline-block;
+    border: 2px solid #ddd;
+    margin: 15px 0;
+    padding: 20px;
+
+}
+
+.menu-items {
+    display: inline-block;
+    width: 200px;
+    padding: 20px;
+    margin: 15px 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+}
+
+
+.menu-item-details {
+    text-align: center;
+}
+
+
+.menu-item-price {
+    text-align: center;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-Bottom: 10px;
+}
+
+
+.show-diet-facts {
+    margin-top: 10px;
+    display: block;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+}
+
+
+.btn diet-facts menu-item-button:hover + .show-diet-facts {
+    visibility: visible;
+    display: inline-block;
+    background-color: blue;
+    color: black;
+}
+
+.cart-quantity-input {
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+}
+
+.checkout-input{
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+}
+
+.checkout-label-grand-total {
+    font-size: 24px;
+}
+
+.order-label {
+    padding: 10px;
+    margin: 10px;
+    margin-right: -5px;
+    font-size: 16px;
+
+}
+
+.your-orders {
+    padding: 10px;
+    margin: 10px 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+}
