@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Reservation Staff System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1{
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        h2 {
+            text-align: center;
+        }
+        .table {
+            background-color: #ddd;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .reserved {
+            background-color: #ff6961;
+            color: white;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container input, .form-container select {
+            display: flex;
+            flex-direction: column;
+        }
+        .form-container button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .reservation-list {
+            margin-top: 20px;
+        }
+
+        .reservation-item {
+            margin-bottom: 10px;
+        }
+
+        .reservation-item button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .reservation-item button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Restaurant Reservation Staff System</h1>
+
+<h2>Available Tables</h2>
+
+<div id="tables-container">
+    <!-- Tables will be dynamically created here -->
+</div>
+
+<div class="form-container">
+    <h2>Make a Reservation</h2>
+    <form id="reservation-form">
+        <label for="full-name">Full Name:</label>
+        <input type="text" id="full-name" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" required>
+
+        <label for="phone-number">Phone Number:</label>
+        <input type="text" id="phone-number" required>
+
+        <label for="num-people">Number of People:</label>
+        <input type="number" id="num-people" min="1" max="16" required>
+
+        <label for="res-date">Reservation Date:</label>
+        <input type="date" id="res-date" required>
+
+        <label for="res-time">Reservation Time:</label>
+        <input type="time" id="res-time" required>
+
+        <button type="submit">Reserve</button>
+    </form>
+</div>
+
+<div class="reservation-list">
+    <h2>Current Reservations</h2>
+    <ul id="reservation-list">
+        <!-- Reservations will be displayed here -->
+    </ul>
+</div>
+
+<script>
+    // Initialize tables (8 tables, each with 4 seats)
+    const tables = Array.from({ length: 8 }, (_, i) => ({
+        id: i + 1,
+        seats: 4,
+        reserved: false,
+        reservation: null
+    }));
+
+    const reservations = [];
+
+    // Function to update the table display
+    function updateTableDisplay() {
+        const tablesContainer = document.getElementById('tables-container');
+        tablesContainer.innerHTML = ''; // Clear current table display
+        
+        tables.forEach(table => {
+            const tableDiv = document.createElement('div');
+            tableDiv.classList.add('table');
+            if (table.reserved) {
+                tableDiv.classList.add('reserved');
+                tableDiv.innerHTML = `Table ${table.id}<br>Reserved`;
+            } else {
+                tableDiv.innerHTML = `Table ${table.id}<br>Available`;
+                tableDiv.addEventListener('click', () => reserveTable(table.id));
+            }
+            tablesContainer.appendChild(tableDiv);
+        });
+    }
+
+    // Function to handle table reservation
+    function reserveTable(tableId) {
+        const fullName = document.getElementById('full-name').value;
+        const email = document.getElementById('email').value;
+        const phoneNumber = document.getElementById('phone-number').value;
+        const numPeople = parseInt(document.getElementById('num-people').value);
+        const resDate = document.getElementById('res-date').value;
+        const resTime = document.getElementById('res-time').value;
+        
+        if (!fullName || !email || !phoneNumber || isNaN(numPeople) || numPeople < 1 || numPeople > 16 || !resDate || !resTime) {
+            alert('Please fill out all fields.');
+            return;
+        }
+
+        // If reservation is more than 4 people, try to merge tables
+        if (numPeople > 4) {
+            const mergedTables = mergeTables(numPeople);
+            if (mergedTables) {
+                const reservation = {
+                    fullName,
+                    email,
+                    phoneNumber,
+                    numPeople,
+                    resDate,
+                    resTime,
+                    tables: mergedTables
+                };
+                reservations.push(reservation);
+                mergedTables.forEach(tableId => {
+                    tables[tableId - 1].reserved = true;
+                    tables[tableId - 1].reservation = reservation;
+                });
+                alert(`Reservation made for ${fullName} at tables ${mergedTables.join(', ')}`);
+            } else {
+                alert('Not enough available tables to merge for the required number of people.');
+            }
+        } else {
+            // For 4 or fewer people, reserve a single table
+            const availableTable = tables.find(table => !table.reserved);
+            if (availableTable) {
+                const reservation = {
+                    fullName,
+                    email,
+                    phoneNumber,
+                    numPeople,
+                    resDate,
+                    resTime,
+                    tables: [availableTable.id]
+                };
+                reservations.push(reservation);
+                availableTable.reserved = true;
+                availableTable.reservation = reservation;
+                alert(`Reservation made for ${fullName} at table ${availableTable.id}`);
+            } else {
+                alert('No available tables.');
+            }
+        }
+
+        // Update the table display and reservation list
+        updateTableDisplay();
+        updateReservationList();
+    }
+
+    // Function to merge tables for larger reservations
+    function mergeTables(numPeople) {
+        const requiredTables = Math.ceil(numPeople / 4);
+        const availableTables = tables.filter(table => !table.reserved);
+        
+        if (availableTables.length >= requiredTables) {
+            // If enough available tables, return the IDs of those tables
+            return availableTables.slice(0, requiredTables).map(table => table.id);
+        }
+
+        return null; // Not enough tables available
+    }
+
+    // Function to update the reservation list display
+    function updateReservationList() {
+        const reservationList = document.getElementById('reservation-list');
+        reservationList.innerHTML = ''; // Clear current list
+
+        reservations.forEach((reservation, index) => {
+            const li = document.createElement('li');
+            li.classList.add('reservation-item');
+            li.innerHTML = `${reservation.fullName} - ${reservation.numPeople} people | Date: ${reservation.resDate} | Time: ${reservation.resTime} | Tables: ${reservation.tables.join(', ')} <br> Email: ${reservation.email} | Phone: ${reservation.phoneNumber}`;
+            
+            // Add delete button to each reservation
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = 'Delete';
+            deleteButton.addEventListener('click', () => deleteReservation(index));
+            li.appendChild(deleteButton);
+
+            reservationList.appendChild(li);
+        });
+    }
+
+    // Function to delete a reservation
+    function deleteReservation(index) {
+        const reservation = reservations[index];
+        reservation.tables.forEach(tableId => {
+            tables[tableId - 1].reserved = false;
+            tables[tableId - 1].reservation = null;
+        });
+        reservations.splice(index, 1);
+        alert('Reservation deleted.');
+
+        // Update the table display and reservation list
+        updateTableDisplay();
+        updateReservationList();
+    }
+
+    // Initialize the table display
+    updateTableDisplay();
+</script>
+
+</body>
+</html>
