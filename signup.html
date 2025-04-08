@@ -15,6 +15,7 @@
     <nav class="top-nav">
         <div class="logo">Momo Sushi</div>
         <div class="nav-links">
+<<<<<<< HEAD
             <a href="./menu.html">Menu</a>
             <a href="./reservations.html">Reserve</a>
             <a href="./contact.html">Contact</a>
@@ -32,6 +33,30 @@
                     <a href="./contact.html">Contact</a>
                     <a href="./aboutus.html">About Us</a>
                     <a href="#logout" id="dropdown-logout">Logout</a>
+=======
+            <a href="menu.html">Menu</a>
+            <a href="#reserve">Reserve</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+            <a href="login.html" id="dropdown-logout">Logout</a>
+            <div class="dropdown">
+                <div class="menu-toggle">☰</div>
+                <div class="dropdown-content">
+		    <a href="profile.html" id="userProfileStatus">Not signed in</a>
+                    <a href="menu.html">Menu</a>
+                    <a href="menu.html">Order Now</a>
+                    <a href="#deals">Deals</a>
+                    <a href="#rewards">Rewards</a>
+                    <a href="#reservation">Reservation</a>
+		    <a href="reviews.html">Reviews</a>
+                    <a href="#profile">Profile</a>
+                    <a href="#chat">Chat/Support</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#about">About</a>
+                    <a href="#socials">Socials</a>
+                    <a href="login.html" id="dropdown-logout">Logout</a>
+>>>>>>> c8ce6089cb4558fab90cc9523aa991543496698d
                 </div>
             </div>
         </div>
@@ -40,11 +65,13 @@
     <div class="login-container">
         <h2>Sign Up</h2>
         <form id="signup-form">
-            <input type="text" id="signup-email" placeholder="Email" required>
-            <input type="password" id="signup-password" placeholder="Password" required>
-            <button type="button" id="register-button">Register</button>
+            <input type="text" id="signupEmailBox" placeholder="Email" required>
+            <input type="text" id="signupUsernameBox" placeholder="Username" required>
+            <input type="password" id="signupPasswordBox" placeholder="Password" required>
+            <button type="button" id="registerButton">Register</button>
+            <button href="login.html" type="button" id="loginRedirect">Have an account? Login</button>
         </form>
-        <p id="signup-error" style="color:red; display:none;"></p>
+        <p id="errorTest"></p>
     </div>
 
     <script src="firebaseadmin.js"></script>

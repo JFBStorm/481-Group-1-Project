@@ -12,14 +12,9 @@
     body {
         background-color: #8b2323;
     }
-    .review_box {
-        background-color: #fabca0;
-    }
     #review-content {
-    width: 100%; /* or 80%, or 600px, whatever you like */
-    max-width: 800px; /* optional limit */
+    width: 80%; 
     padding: 10px;
-    font-size: 16px;
 }
 
 </style>
@@ -28,6 +23,7 @@
     <nav class="top-nav">
         <div class="logo">Momo Sushi</div>
         <div class="nav-links">
+<<<<<<< HEAD
             <a href="./menu.html">Menu</a>
             <a href="./reservations.html">Reserve</a>
             <a href="./contact.html">Contact</a>
@@ -45,6 +41,30 @@
                     <a href="./contact.html">Contact</a>
                     <a href="./aboutus.html">About Us</a>
                     <a href="#logout" id="dropdown-logout">Logout</a>
+=======
+            <a href="menu.html">Menu</a>
+            <a href="#reserve">Reserve</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+            <a href="login.html" id="dropdown-logout">Logout</a>
+            <div class="dropdown">
+                <div class="menu-toggle">☰</div>
+                <div class="dropdown-content">
+		    <a href="profile.html" id="userProfileStatus">Not signed in</a>
+                    <a href="menu.html">Menu</a>
+                    <a href="menu.html">Order Now</a>
+                    <a href="#deals">Deals</a>
+                    <a href="#rewards">Rewards</a>
+                    <a href="#reservation">Reservation</a>
+		    <a href="reviews.html">Reviews</a>
+                    <a href="#profile">Profile</a>
+                    <a href="#chat">Chat/Support</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#about">About</a>
+                    <a href="#socials">Socials</a>
+                    <a href="login.html" id="dropdown-logout">Logout</a>
+>>>>>>> c8ce6089cb4558fab90cc9523aa991543496698d
                 </div>
             </div>
         </div>
@@ -54,6 +74,7 @@
     
         <h1>Reviews</h1>
 
+        <!-- Form to leave a review -->
         <!-- Only shows if logged in -->
         <div id="user-section" style="display:block;">
           <p id="welcome-message"></p>
@@ -61,12 +82,12 @@
     
           <div id="review-form" style="display:none;">
             <input type="text" id="review-title" placeholder="Review Title" required><br><br>
-            <textarea id="review-content" rows="5" placeholder="Your review..." required></textarea><br>
+            <textarea id="review-content" placeholder="Your review..." required></textarea><br>
             <button onclick="postReview()">Post</button>
           </div>
         </div>
     
-        <!-- Shows if NOT logged in -->
+        <!-- If user is not loggd in -->
         <div id="login-prompt" style="display:none;">
           <p>Care to leave a review? <a href="login.html">Log in</a> or <a href="signup.html">sign up</a>.</p>
         </div>
@@ -79,6 +100,9 @@
 
     </div>
 
+    <script src="firebaseadmin.js"></script>
+    <script src="firebaseauth.js"></script>
+    <script src="firebasereviews.js"></script>
     <script>
         // Toggle dropdown menu
         document.querySelector('.menu-toggle').addEventListener('click', function () {
