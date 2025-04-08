@@ -1,3 +1,4 @@
+import '../style.css';
 
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
@@ -16,9 +17,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const auth = getAuth();
-const user = auth.currentUser;
-console.log(user.email)
+const auth = getAuth(app);
+
 // display review form on button click
 function toggleForm() {
   const form = document.getElementById("review-form");
@@ -47,13 +47,7 @@ window.postReview = async function () {
   const formTitle = document.getElementById("review-title").value;
   const formContent = document.getElementById("review-content").value;
   //const user = auth.currentUser;
-  if(user) {
-	  console.log(user.user)
-	  const userid = user.displayName;
-  }
-  else {
-	  const userid = "anon";
-  }
+  const userid = "anon";
 
   //if (!user) return;
   //if (!user) userid = "anon";
