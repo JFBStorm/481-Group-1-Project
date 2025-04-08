@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Rewards - Momo Sushi</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .top-nav {
+            background-color: #f4f4f4;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .section-1 {
+            background-color: #8B2323;
+            padding: 20px;
+            min-height: 400px;
+            position: relative;
+            color: white;
+        }
+
+        .crab-logo {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 8px;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+
+        .about-content {
+            width: 60%;
+            background: white;
+            color: #333;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .about-content h2 {
+            margin-top: 0;
+        }
+
+        .section-2 {
+            background-color: #f4e4bc;
+            padding: 40px 20px;
+            text-align: left;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .section-2 h3 {
+            color: #8B2323;
+            margin-bottom: 30px;
+        }
+
+        .tier-heading {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .tier-description {
+            margin-bottom: 30px;
+        }
+
+        .action-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: #f9f9f9;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            padding: 12px 16px;
+            display: block;
+            text-align: left;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        .menu-toggle {
+            cursor: pointer;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="top-nav">
+    <div class="logo">Momo Sushi</div>
+    <div class="nav-links">
+        <a href="./menu.html">Menu</a>
+        <a href="./reservations.html">Reserve</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./aboutus.html">About</a>
+        <a href="#logout" id="logout-button">Logout</a>
+        <div class="dropdown">
+            <div class="menu-toggle">☰</div>
+            <div class="dropdown-content">
+                <a href="./menu.html">Menu</a>
+                <a href="./order.html">Order Now</a>
+                <a href="./deals.html">Deals</a>
+                <a href="./rewards.html">Rewards</a>
+                <a href="./reservations.html">Reservation</a>
+                <a href="./account.html">Account</a>
+                <a href="./contact.html">Contact</a>
+                <a href="./aboutus.html">About Us</a>
+                <a href="#logout" id="dropdown-logout">Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Section 1: Rewards Introduction -->
+<section class="section-1">
+    <div class="crab-logo">
+        <img src="images/crab-logo.png" alt="Crab Logo" style="width: 100%; height: 100%; object-fit: contain;">
+    </div>
+    <div class="about-content">
+        <h2>Momo Rewards</h2>
+        <p>Earn delicious perks with every bite! Join our Momo Sushi Rewards program and unlock exclusive offers, discounts, and free menu items just for being a loyal guest.</p>
+        <p>Collect points every time you order, and redeem them for special treats. Whether you're dining in, ordering online, or grabbing takeout, you’ll always be rewarded.</p>
+        <p>Sign up for an account to start earning and tracking your points today!</p>
+    </div>
+</section>
+
+<!-- Section 2: Rewards Tiers -->
+<section class="section-2">
+    <h3>Reward Tiers</h3>
+
+    <div class="tier">
+        <div class="tier-heading">Bronze — 20 to 40 Points</div>
+        <div class="tier-description">
+            Receive 5% off your next order. It’s our small way of saying thanks for coming back!
+        </div>
+    </div>
+
+    <div class="tier">
+        <div class="tier-heading">Silver — 41 to 60 Points</div>
+        <div class="tier-description">
+            Enjoy a free miso soup and 10% off your entire order. You’re one of our favorites!
+        </div>
+    </div>
+
+    <div class="tier">
+        <div class="tier-heading">Gold — 61+ Points</div>
+        <div class="tier-description">
+            Treat yourself to a free roll of your choice and take 15% off your full meal. You've reached the top!
+        </div>
+    </div>
+
+    <p>Points are automatically tracked when you place orders while logged into your Momo account. The more you order, the more you earn!</p>
+</section>
+
+<!-- Chat and Cart Buttons -->
+<div class="action-buttons">
+    <button class="action-button">Chat</button>
+    <button class="action-button">Cart</button>
+</div>
+
+<script>
+    document.querySelector('.menu-toggle')?.addEventListener('click', function() {
+        document.querySelector('.dropdown')?.classList.toggle('active');
+    });
+
+    window.addEventListener('click', function(event) {
+        if (!event.target.matches('.menu-toggle')) {
+            const dropdown = document.querySelector('.dropdown');
+            if (dropdown?.classList.contains('active')) {
+                dropdown.classList.remove('active');
+            }
+        }
+    });
+
+    document.getElementById('logout-button')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'login.html';
+    });
+
+    document.getElementById('dropdown-logout')?.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'login.html';
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deals - Momo Sushi</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff;
+      color: #333;
+    }
+
+    .top-nav {
+      background-color: #f4f4f4;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .section-header {
+      background-color: #8B2323;
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .deals-section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .deal-block {
+      margin-bottom: 40px;
+    }
+
+    .deal-block h3 {
+      color: #8B2323;
+      margin-bottom: 10px;
+    }
+
+    .deal-block p {
+      margin-top: 0;
+    }
+
+    .action-buttons {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .action-button {
+      background: #333;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #f9f9f9;
+      min-width: 200px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      padding: 12px 16px;
+      display: block;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .dropdown.active .dropdown-content {
+      display: block;
+    }
+
+    .menu-toggle {
+      cursor: pointer;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="top-nav">
+  <div class="logo">Momo Sushi</div>
+  <div class="nav-links">
+    <a href="./menu.html">Menu</a>
+    <a href="./reservations.html">Reserve</a>
+    <a href="./contact.html">Contact</a>
+    <a href="./aboutus.html">About</a>
+    <a href="#logout" id="logout-button">Logout</a>
+    <div class="dropdown">
+      <div class="menu-toggle">☰</div>
+      <div class="dropdown-content">
+        <a href="./menu.html">Menu</a>
+        <a href="./order.html">Order Now</a>
+        <a href="./deals.html">Deals</a>
+        <a href="./rewards.html">Rewards</a>
+        <a href="./reservations.html">Reservation</a>
+        <a href="./account.html">Account</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./aboutus.html">About Us</a>
+        <a href="#logout" id="dropdown-logout">Logout</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Header -->
+<div class="section-header">
+  <h1>Special Deals at Momo Sushi</h1>
+  <p>Discover your new favorite combos, lunch sets, and limited-time pairings.</p>
+</div>
+
+<!-- Deals Section -->
+<div class="deals-section">
+
+  <div class="deal-block">
+    <h3>Lunch Specials (11:00 AM – 2:30 PM)</h3>
+    <p>Enjoy a balanced midday meal, and when you dine in, a house salad or miso soup is included.</p>
+    <ul>
+      <li><strong>Pick Two Rolls – $12.50</strong></li>
+      <li><strong>Pick Three Rolls – $17.50</strong></li>
+      <li><strong>Combo Plate:</strong> California Roll + Udon – $11</li>
+      <li><strong>Chicken Katsu Don / Bibimbob – $12.50</strong></li>
+      <li><strong>Add Any Lunch Roll to a Special Roll – Just $2 More!</strong></li>
+    </ul>
+  </div>
+
+  <div class="deal-block">
+    <h3>Family Feast</h3>
+    <p>Perfect for sharing! A hearty sushi bundle built for 3–4 people.</p>
+    <ul>
+      <li><strong>4 Specialty Rolls</strong> of your choice</li>
+      <li><strong>1 Appetizer:</strong> Edamame or Gyoza</li>
+      <li><strong>Drinks Included</strong> (choice of sodas or green tea)</li>
+      <li><strong>Only $39.99</strong></li>
+    </ul>
+  </div>
+
+  <div class="deal-block">
+    <h3>Spicy Roll Combo – $19.50</h3>
+    <p>Turn up the heat with this trio of rolls.</p>
+    <ul>
+      <li>Spicy Tuna Roll</li>
+      <li>Spicy Salmon Roll</li>
+      <li>Spicy California Roll</li>
+      <li><em>Total: 24 pieces</em></li>
+    </ul>
+  </div>
+
+  <div class="deal-block">
+    <h3>Vegetarian Roll Combo – $18.00</h3>
+    <p>A colorful spread of fresh veggie-forward rolls.</p>
+    <ul>
+      <li>Fresh Vegetable Roll</li>
+      <li>CAC Roll (Carrot, Avocado, Cucumber)</li>
+      <li>AAC Roll (Asparagus, Avocado, Cucumber)</li>
+      <li><em>Total: 21 pieces</em></li>
+    </ul>
+  </div>
+
+  <div class="deal-block">
+    <h3>Sushi & Sashimi Festival – $49</h3>
+    <p>Indulge in a variety of expertly prepared raw selections.</p>
+    <ul>
+      <li>6 pieces of Chef’s Choice Sushi</li>
+      <li>9 pieces of Chef’s Choice Sashimi</li>
+      <li>Side of White Rice included</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- Chat and Cart Buttons -->
+<div class="action-buttons">
+  <button class="action-button">Chat</button>
+  <button class="action-button">Cart</button>
+</div>
+
+<script>
+  document.querySelector('.menu-toggle')?.addEventListener('click', function () {
+    document.querySelector('.dropdown')?.classList.toggle('active');
+  });
+
+  window.addEventListener('click', function (event) {
+    if (!event.target.matches('.menu-toggle')) {
+      const dropdown = document.querySelector('.dropdown');
+      if (dropdown?.classList.contains('active')) {
+        dropdown.classList.remove('active');
+      }
+    }
+  });
+
+  document.getElementById('logout-button')?.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.location.href = 'login.html';
+  });
+
+  document.getElementById('dropdown-logout')?.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.location.href = 'login.html';
+  });
+</script>
+
+</body>
+</html>
