@@ -1,0 +1,210 @@
+:root {
+    --primary: #1C1C1C;
+    --secondary: #E9D8A6;
+    --accent: #9CAF88;
+    --background: #FDFBF7;
+    --highlight: #A0522D;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background);
+    color: var(--primary);
+  }
+  
+    /* Navbar */
+    .top-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--primary);
+        padding: 15px 25px;
+        color: white;
+      }
+      
+      .top-nav .logo a {
+        color: var(--secondary);
+        font-size: 1.5rem;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+      
+      .nav-links a {
+        color: var(--background);
+        text-decoration: none;
+        font-weight: 500;
+      }
+      
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+  
+  /* Login Form */
+  .login-container {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 30px;
+    background-color: var(--background);
+    border: 1px solid var(--accent);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+  }
+  
+  .login-container h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: var(--highlight);
+  }
+  
+  .login-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  .login-container button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    background-color: var(--accent);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .login-container button:hover {
+    background-color: var(--highlight);
+  }
+  
+  #resetAccount {
+    background-color: var(--secondary);
+    color: var(--primary);
+  }
+  
+  #resetAccount:hover {
+    background-color: var(--highlight);
+    color: white;
+  }
+  
+  #errorTest {
+    margin-top: 10px;
+    color: red;
+    font-size: 0.9rem;
+  }
+  
+  /* Footer */
+  .site-footer {
+    background-color: var(--primary);
+    color: var(--background);
+    padding: 30px 20px;
+    margin-top: 60px;
+    text-align: center;
+  }
+  
+  .footer-container {
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .footer-logo a {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--secondary);
+    text-decoration: none;
+  }
+  
+  .footer-links {
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .footer-links a {
+    color: var(--background);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  
+  .footer-links a:hover {
+    color: var(--accent);
+  }
+  
+  .footer-note {
+    font-size: 0.85rem;
+    color: var(--secondary);
+    margin-top: 15px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 500px) {
+    .login-container {
+      margin: 40px 20px;
+      padding: 20px;
+    }
+  
+    .nav-links {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  
+    .dropdown-content {
+      left: 0;
+      right: auto;
+    }
+  }
+  .dropdown {
+    position: relative;
+  }
+
+  .dropdown-content {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--primary);
+    padding: 15px;
+    border-radius: 6px;
+    z-index: 999;
+    border: 1px solid var(--accent);
+    width: 180px;
+  }
+
+  .dropdown-content a {
+    color: white;
+    text-decoration: none;
+    margin: 8px 0;
+    font-weight: 500;
+  }
+
+  .dropdown-content a:hover {
+    color: var(--accent);
+  }
+
+  .dropdown.active .dropdown-content {
+    display: flex;
+  }
+
+  .menu-toggle {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+    margin-left: 10px;
+  }

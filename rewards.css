@@ -1,0 +1,259 @@
+:root {
+    --primary: #1C1C1C;        /* Charcoal Black */
+    --secondary: #E9D8A6;      /* Warm Sand */
+    --accent: #9CAF88;         /* Sage Green */
+    --background: #FDFBF7;     /* Soft White */
+    --highlight: #A0522D;      /* Burnt Umber */
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background);
+    color: var(--primary);
+  }
+  
+  /* Navbar */
+  .top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary);
+    padding: 15px 25px;
+    color: white;
+  }
+  
+  .top-nav .logo a {
+    color: var(--secondary);
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .nav-links a {
+    color: var(--background);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .nav-links a:hover {
+    color: var(--accent);
+  }
+  
+  .menu-toggle {
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+  
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: var(--primary);
+    border: 1px solid var(--accent);
+    padding: 10px;
+    border-radius: 6px;
+    z-index: 10;
+    flex-direction: column;
+  }
+  
+  .dropdown-content a {
+    color: var(--background);
+    padding: 6px 10px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown.active .dropdown-content {
+    display: flex;
+  }
+  
+  /* Section 1: Rewards Intro */
+  .section-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background-color: var(--background);
+    text-align: center;
+  }
+  
+  .crab-logo {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 20px;
+  }
+  
+  .about-content {
+    max-width: 800px;
+  }
+  
+  .about-content h2 {
+    font-size: 2rem;
+    color: var(--highlight);
+    margin-bottom: 20px;
+  }
+  
+  .about-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--primary);
+    margin-bottom: 15px;
+  }
+  
+  /* Section 2: Rewards Tiers */
+  .section-2 {
+    padding: 40px 20px;
+    background-color: var(--secondary);
+    text-align: center;
+  }
+  
+  .section-2 h3 {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: var(--primary);
+  }
+  
+  .tier {
+    max-width: 600px;
+    background-color: var(--background);
+    margin: 20px auto;
+    padding: 20px;
+    border-left: 5px solid var(--accent);
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+  
+  .tier-heading {
+    font-weight: bold;
+    color: var(--highlight);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .tier-description {
+    font-size: 1rem;
+    color: var(--primary);
+  }
+  
+  /* Final paragraph */
+  .section-2 > p {
+    margin-top: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1rem;
+    color: var(--primary);
+  }
+  
+  /* Floating Action Buttons */
+  .action-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 50;
+  }
+  
+  .action-button {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .action-button:hover {
+    background-color: var(--highlight);
+  }
+  
+  /* Footer */
+  .site-footer {
+    background-color: var(--primary);
+    color: var(--background);
+    padding: 30px 20px;
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .footer-container {
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .footer-logo a {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--secondary);
+    text-decoration: none;
+  }
+  
+  .footer-links {
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .footer-links a {
+    color: var(--background);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  
+  .footer-links a:hover {
+    color: var(--accent);
+  }
+  
+  .footer-note {
+    font-size: 0.85rem;
+    color: var(--secondary);
+    margin-top: 15px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about-content,
+    .section-2 > p {
+      padding: 0 15px;
+    }
+  
+    .crab-logo {
+      width: 100px;
+      height: 100px;
+    }
+  
+    .tier {
+      margin: 15px;
+      padding: 16px;
+    }
+  
+    .nav-links {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  
+    .dropdown-content {
+      right: auto;
+      left: 0;
+    }
+  }
+  

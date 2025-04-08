@@ -1,0 +1,134 @@
+:root {
+    --primary: #1C1C1C;        /* Charcoal Black */
+    --secondary: #E9D8A6;      /* Warm Sand */
+    --accent: #9CAF88;         /* Sage Green */
+    --background: #FDFBF7;     /* Soft White */
+    --highlight: #A0522D;      /* Burnt Umber */
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background);
+    color: var(--primary);
+  }
+  
+  /* Headings */
+  h1, h2 {
+    text-align: center;
+    margin-top: 30px;
+    color: var(--highlight);
+  }
+  
+  /* Table Display */
+  #tables-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    max-width: 800px;
+    margin: 20px auto 40px auto;
+    padding: 0 20px;
+  }
+  
+  .table {
+    background-color: var(--secondary);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .table:hover {
+    background-color: var(--accent);
+    color: white;
+  }
+  
+  .table.reserved {
+    background-color: #e74c3c;
+    color: white;
+    cursor: not-allowed;
+  }
+  
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+    color: var(--primary);
+  }
+  
+  input, select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+  }
+  
+  button[type="submit"] {
+    background-color: var(--highlight);
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: var(--accent);
+  }
+  
+  /* Reservation List */
+  .reservation-list {
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    padding: 0 20px;
+  }
+  
+  .reservation-item {
+    background-color: white;
+    border: 1px solid var(--accent);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.05);
+  }
+  
+  .reservation-item button {
+    margin-top: 10px;
+    background-color: #c0392b;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .reservation-item button:hover {
+    background-color: #a93226;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .form-container, .reservation-list {
+      padding: 20px;
+    }
+  }
+  

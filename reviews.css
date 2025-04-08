@@ -1,0 +1,235 @@
+:root {
+    --primary: #1C1C1C;
+    --secondary: #E9D8A6;
+    --accent: #9CAF88;
+    --background: #FDFBF7;
+    --highlight: #A0522D;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background);
+    color: var(--primary);
+  }
+  
+  /* Navbar */
+  .top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary);
+    padding: 15px 25px;
+    color: white;
+  }
+  
+  .top-nav .logo a {
+    color: var(--secondary);
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .nav-links a {
+    color: var(--background);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .nav-links a:hover {
+    color: var(--accent);
+  }
+  
+  .menu-toggle {
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+  
+  .dropdown {
+    position: relative;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: var(--primary);
+    border: 1px solid var(--accent);
+    padding: 10px;
+    border-radius: 6px;
+    z-index: 10;
+    flex-direction: column;
+  }
+  
+  .dropdown-content a {
+    color: var(--background);
+    padding: 6px 10px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown.active .dropdown-content {
+    display: flex;
+  }
+  
+  /* Main Page */
+  .page-content-container {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  h1 {
+    color: var(--highlight);
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  /* Review Section */
+  #review-form input,
+  #review-form textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    font-size: 1rem;
+    margin: 5px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  #review-form textarea {
+    height: 100px;
+    resize: vertical;
+  }
+  
+  #open-close-review,
+  #review-form button {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 10px;
+  }
+  
+  #open-close-review:hover,
+  #review-form button:hover {
+    background-color: var(--highlight);
+  }
+  
+  #login-prompt p {
+    font-size: 1rem;
+    color: var(--primary);
+  }
+  
+  #login-prompt a {
+    color: var(--highlight);
+    text-decoration: none;
+  }
+  
+  #login-prompt a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Review Cards */
+  .review-card {
+    background-color: var(--secondary);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  .review-card h3 {
+    color: var(--highlight);
+    margin-bottom: 10px;
+  }
+  
+  .review-card p {
+    color: var(--primary);
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  
+  .review-card small {
+    color: #444;
+    font-size: 0.85rem;
+  }
+  
+  /* Footer */
+  .site-footer {
+    background-color: var(--primary);
+    color: var(--background);
+    padding: 30px 20px;
+    margin-top: 40px;
+    text-align: center;
+  }
+  
+  .footer-container {
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  .footer-logo a {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--secondary);
+    text-decoration: none;
+  }
+  
+  .footer-links {
+    margin: 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .footer-links a {
+    color: var(--background);
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  
+  .footer-links a:hover {
+    color: var(--accent);
+  }
+  
+  .footer-note {
+    font-size: 0.85rem;
+    color: var(--secondary);
+    margin-top: 15px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .page-content-container {
+      padding: 20px 15px;
+    }
+  
+    .nav-links {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  
+    .dropdown-content {
+      right: auto;
+      left: 0;
+    }
+  
+    #review-form input,
+    #review-form textarea {
+      width: 100%;
+    }
+  }
+  

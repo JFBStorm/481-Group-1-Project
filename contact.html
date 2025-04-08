@@ -4,207 +4,76 @@
     <title>Contact Us - Momo Sushi</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contact.css"> <!-- External stylesheet -->
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
 
-        .top-nav {
-            background-color: #f4f4f4;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-        }
-
-        .section-1 {
-            background-color: #8B2323;
-            padding: 20px;
-            min-height: 400px;
-            position: relative;
-            color: white;
-        }
-
-        .crab-logo {
-            width: 100px;
-            height: 100px;
-            background: white;
-            border-radius: 8px;
-            position: absolute;
-            left: 20px;
-            top: 20px;
-        }
-
-        .contact-box {
-            width: 60%;
-            background: white;
-            color: #333;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .contact-box h2 {
-            margin-top: 0;
-        }
-
-        .contact-box label {
-            display: block;
-            margin-top: 10px;
-        }
-
-        .contact-box input,
-        .contact-box textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        .contact-box button {
-            margin-top: 15px;
-            padding: 10px 30px;
-            background-color: #8B2323;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-        }
-
-        .section-2 {
-            background-color: #f4e4bc;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .info-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-        }
-
-        .info-item {
-            background: #003366;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 250px;
-        }
-
-        .action-buttons {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .action-button {
-            background: #333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #f9f9f9;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            padding: 12px 16px;
-            display: block;
-            text-align: left;
-        }
-
-        .dropdown.active .dropdown-content {
-            display: block;
-        }
-
-        .menu-toggle {
-            cursor: pointer;
-            font-size: 24px;
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="top-nav">
         <div class="logo"><a href="index.html">Momo Sushi</a></div>
         <div class="nav-links">
-            <a href="./menu.html">Menu</a>
-            <a href="./reservations.html">Reserve</a>
-            <a href="./reviews.html">Reviews</a>
-            <a href="./contact.html">Contact</a>
-            <a href="./aboutus.html">About</a>
-            <a href="./login.html" id="dropdown-logout">Logout</a>
-            <div class="dropdown">
-                <div class="menu-toggle">☰</div>
-                <div class="dropdown-content">
-		                <a href="./profile.html" id="userProfileStatus">Not signed in</a>
-                    <a href="./menu.html">Menu</a>
-                    <a href="./menu.html">Order Now</a>
-                    <a href="./deals.html">Deals</a>
-                    <a href="./rewards.html">Rewards</a>
-                    <a href="./reservations.html">Reservation</a>
-		                <a href="./reviews.html">Reviews</a>
-                    <a href="./contact.html">Contact</a>
-                    <a href="./aboutus.html">About</a>
-                    <a href="./login.html" id="dropdown-logout">Logout</a>
-                </div>
+          <a href="./menu.html">Menu</a>
+          <a href="./reservations.html">Reserve</a>
+          <a href="./reviews.html">Reviews</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./aboutus.html">About</a>
+          <a href="login.html" id="main-auth-link">Login</a>
+          <div class="dropdown">
+            <div class="menu-toggle">☰</div>
+            <div class="dropdown-content">
+              <a href="./profile.html" id="userProfileStatus">Not signed in</a>
+              <a href="./menu.html">Menu</a>
+              <a href="./menu.html">Order Now</a>
+              <a href="./deals.html">Deals</a>
+              <a href="./rewards.html">Rewards</a>
+              <a href="./reservations.html">Reservation</a>
+              <a href="./reviews.html">Reviews</a>
+              <a href="./contact.html">Contact</a>
+              <a href="./aboutus.html">About</a>
+              <a href="login.html" id="dropdown-auth-link">Login</a>
             </div>
+          </div>
         </div>
-    </nav>
+      </nav>
     <!-- Section 1: Contact Form -->
     <section class="section-1">
-        <div class="crab-logo">
-            <img src="images/crab-logo.png" alt="Crab Logo" style="width: 100%; height: 100%; object-fit: contain;">
-        </div>
-        <div class="contact-box">
+        <div class="contact-section-wrapper">
+          
+          <!-- Left Side: Logo + About Text -->
+          <div class="left-info">
+            <div class="crab-logo">
+              <img src="pictures/logo.png" alt="Crab Logo">
+            </div>
+            <div class="about-content">
+              <p>
+                Momo Sushi is committed to providing each and every one of our customers with an exceptional dining experience.
+                </p>
+                <p>
+                If you have any questions, feedback, or simply wish to get in touch, we would love to hear from you!
+              </p>
+            </div>
+          </div>
+      
+          <!-- Right Side: Contact Form -->
+          <div class="contact-box">
             <h2>Contact Us</h2>
             <form method="post" action="#">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-
-                <button type="submit">Send Message</button>
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required>
+      
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required>
+      
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" required></textarea>
+      
+              <button type="submit">Send Message</button>
             </form>
+          </div>
         </div>
-    </section>
+      </section>
+      
 
     <!-- Section 2: Business Info -->
     <section class="section-2">
@@ -225,25 +94,7 @@
         </div>
     </section>
 
-    <!-- Chat and Cart Buttons -->
-    <div class="action-buttons">
-        <button class="action-button">Chat</button>
-        <button class="action-button">Cart</button>
-    </div>
-
     <script>
-        document.querySelector('.menu-toggle')?.addEventListener('click', function() {
-            document.querySelector('.dropdown')?.classList.toggle('active');
-        });
-
-        window.addEventListener('click', function(event) {
-            if (!event.target.matches('.menu-toggle')) {
-                const dropdown = document.querySelector('.dropdown');
-                if (dropdown?.classList.contains('active')) {
-                    dropdown.classList.remove('active');
-                }
-            }
-        });
 
         document.getElementById('logout-button')?.addEventListener('click', function(e) {
             e.preventDefault();
@@ -255,5 +106,79 @@
             window.location.href = 'login.html';
         });
     </script>
+    <script type="module">
+        import { auth } from './FirebaseConfig.js';
+        import {
+          onAuthStateChanged,
+          signOut
+        } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+    
+        onAuthStateChanged(auth, (user) => {
+          const mainAuthLink = document.getElementById("main-auth-link");
+          const dropdownAuthLink = document.getElementById("dropdown-auth-link");
+          const profileLink = document.getElementById("userProfileStatus");
+    
+          if (user) {
+            mainAuthLink.textContent = "Logout";
+            mainAuthLink.href = "#";
+            mainAuthLink.onclick = handleLogout;
+    
+            dropdownAuthLink.textContent = "Logout";
+            dropdownAuthLink.href = "#";
+            dropdownAuthLink.onclick = handleLogout;
+    
+            profileLink.textContent = user.displayName || user.email;
+            profileLink.href = "./account.html";
+          } else {
+            mainAuthLink.textContent = "Login";
+            mainAuthLink.href = "./login.html";
+            mainAuthLink.onclick = null;
+    
+            dropdownAuthLink.textContent = "Login";
+            dropdownAuthLink.href = "./login.html";
+            dropdownAuthLink.onclick = null;
+    
+            profileLink.textContent = "Not signed in";
+            profileLink.href = "./login.html";
+          }
+        });
+    
+        function handleLogout(e) {
+          e.preventDefault();
+          signOut(auth).then(() => {
+            window.location.href = "login.html";
+          });
+        }
+      </script>
+    
+      <!-- Dropdown Toggle Logic -->
+      <script>
+        document.querySelector(".menu-toggle").addEventListener("click", function () {
+  document.querySelector(".dropdown").classList.toggle("active");
+});
+
+window.addEventListener("click", function (event) {
+  if (!event.target.closest(".dropdown")) {
+    document.querySelector(".dropdown").classList.remove("active");
+  }
+});
+
+    </script>
+      <footer class="site-footer">
+        <div class="footer-container">
+          <div class="footer-logo">
+            <a href="index.html">Momo Sushi</a>
+          </div>
+          <div class="footer-links">
+            <a href="menu.html">Menu</a>
+            <a href="reservations.html">Reserve</a>
+            <a href="contact.html">Contact</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="aboutus.html">About</a>
+          </div>
+          <p class="footer-note">© 2025 Momo Sushi · All rights reserved</p>
+        </div>
+      </footer>
+      
 </body>
 </html>

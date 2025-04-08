@@ -4,218 +4,90 @@
     <title>About Us - Momo Sushi</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="aboutus.css"> <!-- External CSS link -->
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        .top-nav {
-            background-color: #f4f4f4;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-        }
-
-        .section-1 {
-            background-color: #8B2323;
-            padding: 20px;
-            min-height: 400px;
-            position: relative;
-            color: white;
-        }
-
-        .crab-logo {
-            width: 100px;
-            height: 100px;
-            background: white;
-            border-radius: 8px;
-            position: absolute;
-            left: 20px;
-            top: 20px;
-        }
-
-        .about-content {
-            width: 60%;
-            background: white;
-            color: #333;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .about-content h2 {
-            margin-top: 0;
-        }
-
-        .section-2 {
-            background-color: #f4e4bc;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .team-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-        }
-
-        .team-member {
-            background: #003366;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            width: 180px;
-        }
-
-        .team-member h4 {
-            margin-top: 10px;
-        }
-
-        .action-buttons {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .action-button {
-            background: #333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #f9f9f9;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            padding: 12px 16px;
-            display: block;
-            text-align: left;
-        }
-
-        .dropdown.active .dropdown-content {
-            display: block;
-        }
-
-        .menu-toggle {
-            cursor: pointer;
-            font-size: 24px;
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="top-nav">
         <div class="logo"><a href="index.html">Momo Sushi</a></div>
         <div class="nav-links">
-            <a href="./menu.html">Menu</a>
-            <a href="./reservations.html">Reserve</a>
-            <a href="./reviews.html">Reviews</a>
-            <a href="./contact.html">Contact</a>
-            <a href="./aboutus.html">About</a>
-            <a href="./login.html" id="dropdown-logout">Logout</a>
-            <div class="dropdown">
-                <div class="menu-toggle">☰</div>
-                <div class="dropdown-content">
-		                <a href="./profile.html" id="userProfileStatus">Not signed in</a>
-                    <a href="./menu.html">Menu</a>
-                    <a href="./menu.html">Order Now</a>
-                    <a href="./deals.html">Deals</a>
-                    <a href="./rewards.html">Rewards</a>
-                    <a href="./reservations.html">Reservation</a>
-		                <a href="./reviews.html">Reviews</a>
-                    <a href="./contact.html">Contact</a>
-                    <a href="./aboutus.html">About</a>
-                    <a href="./login.html" id="dropdown-logout">Logout</a>
-                </div>
+          <a href="./menu.html">Menu</a>
+          <a href="./reservations.html">Reserve</a>
+          <a href="./reviews.html">Reviews</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./aboutus.html">About</a>
+          <a href="login.html" id="main-auth-link">Login</a>
+          <div class="dropdown">
+            <div class="menu-toggle">☰</div>
+            <div class="dropdown-content">
+              <a href="./profile.html" id="userProfileStatus">Not signed in</a>
+              <a href="./menu.html">Menu</a>
+              <a href="./menu.html">Order Now</a>
+              <a href="./deals.html">Deals</a>
+              <a href="./rewards.html">Rewards</a>
+              <a href="./reservations.html">Reservation</a>
+              <a href="./reviews.html">Reviews</a>
+              <a href="./contact.html">Contact</a>
+              <a href="./aboutus.html">About</a>
+              <a href="login.html" id="dropdown-auth-link">Login</a>
             </div>
+          </div>
         </div>
-    </nav>
+      </nav>
+
     <!-- Section 1: About Us Content -->
-    <section class="section-1">
-        <div class="crab-logo">
-            <img src="images/crab-logo.png" alt="Crab Logo" style="width: 100%; height: 100%; object-fit: contain;">
-        </div>
-        <div class="about-content">
-            <h2>About Momo Sushi</h2>
-            <p>Welcome to Momo Sushi, where tradition meets creativity. Established in 2018, our restaurant was founded on a passion for fresh ingredients, beautiful presentation, and bold flavors. From classic rolls to signature sushi burritos, we’re proud to serve a unique fusion of modern and traditional Japanese and Korean cuisine.</p>
-            <p>Our mission is to bring joy and flavor to every dish, whether you're dining in, ordering out, or chatting with our team. Thank you for supporting a local business that truly cares about its community.</p>
-        </div>
-    </section>
-
-    <!-- Section 2: Our Team -->
-    <section class="section-2">
-        <h3 class="section-title">Meet the Team</h3>
-        <div class="team-grid">
-            <div class="team-member">
-                <strong>Owner: Sam</strong>
-                <h4>Founder & Chef</h4>
-                <p>Sam brings heart and heritage to every roll. His vision for Momo Sushi blends classic techniques with modern twists, creating an unforgettable dining experience.</p>
-            </div>
-            <div class="team-member">
-                <strong>Head Chef: Andres</strong>
-                <h4>Head Chef</h4>
-                <p>Andres posesses dedication to precision and flavor shines in every dish, making him the soul behind our kitchen's artistry.                </p>
-            </div>
-            <div class="team-member">
-                <strong>Manager: Taylor</strong>
-                <h4>Lead Server</h4>
-                <p>Taylor welcomes our guests with warmth, manages the front of house, and shapes the visual identity of Momo Sushi</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Chat and Cart Buttons -->
-    <div class="action-buttons">
-        <button class="action-button">Chat</button>
-        <button class="action-button">Cart</button>
+<section class="section-1">
+    <div class="crab-logo">
+      <img src="pictures/logo.png" alt="Crab Logo" style="width: 100%; height: 100%; object-fit: contain;">
     </div>
+    <div class="about-content">
+      <h2>Our Story</h2>
+      <p>
+        Momo Sushi began in 2018 as a small neighborhood spot with a simple goal: serve fresh, high-quality sushi in a space where people feel at home. What started with a handful of recipes and a lot of heart has grown into a go-to destination for Ann Arbor sushi lovers looking for something authentic, approachable, and a little different.
+      </p>
+      <p>
+        Our menu is inspired by a mix of traditional Japanese and Korean dishes, combined with creative modern touches. From classic nigiri and sashimi to sushi burritos and hearty rice and noodle bowls, everything is made with care. 
+      </p>
+      <p>
+        At Momo Sushi, we believe that good food is about more than just ingredients. It's about people — the guests who support us, the team who prepare every plate, and the community we’re proud to be a part of. Whether you’re here for a quick lunch, a family dinner, or a celebration with friends, we’re here to make it special.
+      </p>
+      <p>
+        Thank you for being part of our journey. We’re excited to keep sharing new flavors and memories with you.
+      </p>
+    </div>
+  </section>
+  
+  <!-- Section 2: Our Team -->
+  <section class="section-2">
+    <h3 class="section-title">Meet the Team</h3>
+    <div class="team-grid">
+      <div class="team-member">
+        <strong>Sam — Owner & Executive Chef</strong>
+        <h4>Founder & Culinary Lead</h4>
+        <p>
+            Originally from Seoul, South Korea, Sam has spent over two decades honing his culinary skills. As the founder of Momo Sushi, he brings his experience and passion to every corner of the kitchen — from designing the menu, to overseeing quality and training.
+        </p>
+        </p>
+      </div>
+      <div class="team-member">
+        <strong>Andres — Head Chef</strong>
+        <h4>Kitchen Operations</h4>
+        <p>
+            Andres brings energy to the kitchen every single day. Known for his big smile, loud laugh, and contagious positivity, he keeps the team motivated and the mood light — even during the dinner rush. His strong culinary skills and upbeat attitude make him a favorite among both staff and regulars. Behind the humor is a chef who takes pride in getting every detail right.
+        </p>
+      </div>
+      <div class="team-member">
+        <strong>Taylor — Front of House Manager</strong>
+        <h4>Hospitality & Experience</h4>
+        <p>
+            Taylor is the first smile you see and the heartbeat of our dining room. She ensures your Momo experience is welcoming, seamless, from the moment you walk in to your last bite.
+        </p>
+      </div>
+    </div>
+  </section>
 
     <script>
-        document.querySelector('.menu-toggle')?.addEventListener('click', function() {
-            document.querySelector('.dropdown').classList.toggle('active');
-        });
-
-        window.addEventListener('click', function(event) {
-            if (!event.target.matches('.menu-toggle')) {
-                const dropdown = document.querySelector('.dropdown');
-                if (dropdown?.classList.contains('active')) {
-                    dropdown.classList.remove('active');
-                }
-            }
-        });
 
         document.getElementById('logout-button')?.addEventListener('click', function(e) {
             e.preventDefault();
@@ -227,5 +99,79 @@
             window.location.href = 'login.html';
         });
     </script>
+    <script type="module">
+        import { auth } from './FirebaseConfig.js';
+        import {
+          onAuthStateChanged,
+          signOut
+        } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+    
+        onAuthStateChanged(auth, (user) => {
+          const mainAuthLink = document.getElementById("main-auth-link");
+          const dropdownAuthLink = document.getElementById("dropdown-auth-link");
+          const profileLink = document.getElementById("userProfileStatus");
+    
+          if (user) {
+            mainAuthLink.textContent = "Logout";
+            mainAuthLink.href = "#";
+            mainAuthLink.onclick = handleLogout;
+    
+            dropdownAuthLink.textContent = "Logout";
+            dropdownAuthLink.href = "#";
+            dropdownAuthLink.onclick = handleLogout;
+    
+            profileLink.textContent = user.displayName || user.email;
+            profileLink.href = "./account.html";
+          } else {
+            mainAuthLink.textContent = "Login";
+            mainAuthLink.href = "./login.html";
+            mainAuthLink.onclick = null;
+    
+            dropdownAuthLink.textContent = "Login";
+            dropdownAuthLink.href = "./login.html";
+            dropdownAuthLink.onclick = null;
+    
+            profileLink.textContent = "Not signed in";
+            profileLink.href = "./login.html";
+          }
+        });
+    
+        function handleLogout(e) {
+          e.preventDefault();
+          signOut(auth).then(() => {
+            window.location.href = "login.html";
+          });
+        }
+      </script>
+    
+      <!-- Dropdown Toggle Logic -->
+      <script>
+        document.querySelector(".menu-toggle").addEventListener("click", function () {
+  document.querySelector(".dropdown").classList.toggle("active");
+});
+
+window.addEventListener("click", function (event) {
+  if (!event.target.closest(".dropdown")) {
+    document.querySelector(".dropdown").classList.remove("active");
+  }
+});
+
+    </script>
+      <footer class="site-footer">
+        <div class="footer-container">
+          <div class="footer-logo">
+            <a href="index.html">Momo Sushi</a>
+          </div>
+          <div class="footer-links">
+            <a href="menu.html">Menu</a>
+            <a href="reservations.html">Reserve</a>
+            <a href="contact.html">Contact</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="aboutus.html">About</a>
+          </div>
+          <p class="footer-note">© 2025 Momo Sushi · All rights reserved</p>
+        </div>
+      </footer>
+      
 </body>
 </html>

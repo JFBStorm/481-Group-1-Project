@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Cart - Momo Sushi</title>
+  <link rel="stylesheet" href="cart.css"> <!-- External stylesheet -->
+  
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="top-nav">
+  <div class="logo"><a href="index.html">Momo Sushi</a></div>
+  <div class="nav-links">
+    <a href="./menu.html">Menu</a>
+    <a href="./reservations.html">Reserve</a>
+    <a href="./reviews.html">Reviews</a>
+    <a href="./contact.html">Contact</a>
+    <a href="./aboutus.html">About</a>
+    <a href="#" id="main-auth-link">Login</a>
+    <div class="dropdown">
+      <div class="menu-toggle">☰</div>
+      <div class="dropdown-content">
+        <a href="./profile.html" id="userProfileStatus">Not signed in</a>
+        <a href="./menu.html">Menu</a>
+        <a href="./menu.html">Order Now</a>
+        <a href="./deals.html">Deals</a>
+        <a href="./rewards.html">Rewards</a>
+        <a href="./reservations.html">Reservation</a>
+        <a href="./reviews.html">Reviews</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./aboutus.html">About</a>
+        <a href="#" id="dropdown-auth-link">Login</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<h1 style="text-align:center; margin-top: 20px;">Your Cart</h1>
+<div id="cartContainer" class="cart-container"></div>
+<div class="total-section">Total: $<span id="totalAmount">0.00</span></div>
+
+<div style="text-align: center; margin-top: 30px;">
+  <h3>Order Details</h3>
+  <textarea id="orderNote" rows="4" style="width: 80%; max-width: 600px; padding: 10px; border-radius: 8px; border: 1px solid #ccc;" placeholder="Add delivery instructions, allergies, or other notes here..."></textarea>
+  <br><br>
+  <input id="cardNumber" placeholder="Card Number" style="padding: 8px; width: 250px; border-radius: 6px; border: 1px solid #ccc;">
+</div>
+
+<button class="complete-btn" id="completeOrder">Complete Order</button>
+
+<!-- Modal -->
+<div id="orderModal" class="modal-overlay">
+  <div class="modal-box">
+    <h2>🎉 Order Placed!</h2>
+    <p>Your order has been received. We are preparing it now!</p>
+    <button onclick="document.getElementById('orderModal').style.display='none'; location.reload();">Close</button>
+  </div>
+</div>
+
+<script type="module">
+  import { auth } from './FirebaseConfig.js';
+  import {
+    getFirestore, collection, getDocs, deleteDoc, doc, updateDoc, addDoc, Timestamp
+  } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+  import {
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+  const db = getFirestore();
+  const cartContainer = document.getElementById('cartContainer');
+  const totalAmountSpan = document.getElementById('totalAmount');
+  const completeOrderBtn = document.getElementById('completeOrder');
+  const orderNoteField = document.getElementById('orderNote');
+  const cardNumberField = document.getElementById('cardNumber');
+  const modal = document.getElementById('orderModal');
+
+  function getGuestId() {
+    let guestId = localStorage.getItem("guestId");
+    if (!guestId) {
+      guestId = "guest_" + Math.random().toString(36).substring(2, 10);
+      localStorage.setItem("guestId", guestId);
+    }
+    return guestId;
+  }
+
+  let currentCart = [];
+
+  function updateTotal() {
+    let total = 0;
+    currentCart.forEach(item => {
+      total += item.price * item.quantity;
+    });
+    totalAmountSpan.textContent = total.toFixed(2);
+  }
+
+  onAuthStateChanged(auth, async (user) => {
+    let cartRef;
+    if (user) {
+      cartRef = collection(db, "User Cart", user.uid, "Cart");
+    } else {
+      const guestId = getGuestId();
+      cartRef = collection(db, "Guest Cart", guestId, "Cart");
+    }
+
+    const snapshot = await getDocs(cartRef);
+    if (snapshot.empty) {
+      cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+      completeOrderBtn.style.display = "none";
+      return;
+    }
+
+    snapshot.forEach((docSnap) => {
+      const data = docSnap.data();
+      currentCart.push({ id: docSnap.id, ...data });
+
+      const itemDiv = document.createElement("div");
+      itemDiv.classList.add("cart-item");
+      itemDiv.innerHTML = `
+        <h3>${data.item}</h3>
+        <p>Unit Price: $${data.price.toFixed(2)}</p>
+        <label>Quantity: <input type="number" min="1" value="${data.quantity}" data-id="${docSnap.id}"></label>
+        <p>Subtotal: $<span class="subtotal">${(data.price * data.quantity).toFixed(2)}</span></p>
+        <button onclick="removeFromCart('${docSnap.id}', ${!!user})">Remove</button>
+      `;
+      cartContainer.appendChild(itemDiv);
+
+      const qtyInput = itemDiv.querySelector('input[type="number"]');
+      const subtotalSpan = itemDiv.querySelector(".subtotal");
+
+      qtyInput.addEventListener("input", async () => {
+        const newQty = parseInt(qtyInput.value);
+        const item = currentCart.find(i => i.id === docSnap.id);
+        if (newQty > 0) {
+          item.quantity = newQty;
+          subtotalSpan.textContent = (item.price * newQty).toFixed(2);
+
+          const path = user
+            ? doc(db, "User Cart", user.uid, "Cart", docSnap.id)
+            : doc(db, "Guest Cart", getGuestId(), "Cart", docSnap.id);
+
+          await updateDoc(path, { quantity: newQty });
+          updateTotal();
+        }
+      });
+      
+    });
+
+    updateTotal();
+
+    const mainAuthLink = document.getElementById("main-auth-link");
+    const dropdownAuthLink = document.getElementById("dropdown-auth-link");
+    const profileLink = document.getElementById("userProfileStatus");
+
+    if (user) {
+      mainAuthLink.textContent = "Logout";
+      mainAuthLink.href = "#";
+      mainAuthLink.onclick = window.handleLogout;
+
+      dropdownAuthLink.textContent = "Logout";
+      dropdownAuthLink.href = "#";
+      dropdownAuthLink.onclick = window.handleLogout;
+
+      profileLink.textContent = user.displayName || user.email;
+      profileLink.href = "./account.html";
+    }
+  });
+
+  window.removeFromCart = async function (itemId, isUser) {
+    const user = auth.currentUser;
+    const guestId = getGuestId();
+    const cartPath = isUser
+      ? doc(db, "User Cart", user.uid, "Cart", itemId)
+      : doc(db, "Guest Cart", guestId, "Cart", itemId);
+
+    try {
+      await deleteDoc(cartPath);
+      window.location.reload();
+    } catch (err) {
+      console.error("Error removing item:", err);
+    }
+  };
+
+  function handleLogout(e) {
+    e.preventDefault();
+    signOut(auth).then(() => {
+      window.location.href = "login.html";
+    });
+  }
+  window.handleLogout = handleLogout;
+
+
+  completeOrderBtn.addEventListener("click", async () => {
+    const user = auth.currentUser;
+    const guestId = getGuestId();
+    const isUser = !!user;
+    const userId = isUser ? user.uid : guestId;
+    const cartPath = isUser
+      ? collection(db, "User Cart", userId, "Cart")
+      : collection(db, "Guest Cart", userId, "Cart");
+
+    const snapshot = await getDocs(cartPath);
+
+    const orderData = {
+      userId: userId,
+      type: isUser ? "user" : "guest",
+      items: currentCart,
+      total: parseFloat(totalAmountSpan.textContent),
+      notes: orderNoteField.value.trim(),
+      card: cardNumberField.value.trim(),
+      createdAt: Timestamp.now()
+    };
+
+    await addDoc(collection(db, "Orders"), orderData);
+
+    const deletions = snapshot.docs.map(d => deleteDoc(d.ref));
+    await Promise.all(deletions);
+
+    modal.style.display = 'flex';
+  });
+</script>
+
+<script>
+    document.querySelector(".menu-toggle").addEventListener("click", function () {
+document.querySelector(".dropdown").classList.toggle("active");
+});
+
+window.addEventListener("click", function (event) {
+if (!event.target.closest(".dropdown")) {
+document.querySelector(".dropdown").classList.remove("active");
+}
+});
+
+</script>
+<footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <a href="index.html">Momo Sushi</a>
+      </div>
+      <div class="footer-links">
+        <a href="menu.html">Menu</a>
+        <a href="reservations.html">Reserve</a>
+        <a href="contact.html">Contact</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="aboutus.html">About</a>
+      </div>
+      <p class="footer-note">© 2025 Momo Sushi · All rights reserved</p>
+    </div>
+  </footer>
+  
+</body>
+</html>

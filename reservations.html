@@ -1,268 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurant Reservation</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            text-align: center;
-        }
-        .tables-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .table {
-            background-color: #ddd;
-            padding: 10px;
-            text-align: center;
-            font-size: 1.2rem;
-            cursor: pointer;
-            border-radius: 8px;
-        }
-        .table.reserved {
-            background-color: #ff6961;
-            color: white;
-        }
-        .table.available {
-            background-color: #90ee90;
-        }
-        form {
-            display: flex;
-            flex-direction: column;
-        }
-        label {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        input, select {
-            padding: 10px;
-            margin-bottom: 15px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 15px;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        button:hover {
-            background-color: #555;
-        }
-        .confirmation {
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurant Reservation</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="reservations.css">
+
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav class="top-nav">
-        <div class="logo"><a href="index.html">Momo Sushi</a></div>
-        <div class="nav-links">
-            <a href="./menu.html">Menu</a>
-            <a href="./reservations.html">Reserve</a>
-            <a href="./reviews.html">Reviews</a>
-            <a href="./contact.html">Contact</a>
-            <a href="./aboutus.html">About</a>
-            <a href="./login.html" id="dropdown-logout">Logout</a>
-            <div class="dropdown">
-                <div class="menu-toggle">☰</div>
-                <div class="dropdown-content">
-		            <a href="./profile.html" id="userProfileStatus">Not signed in</a>
-                    <a href="./menu.html">Menu</a>
-                    <a href="./menu.html">Order Now</a>
-                    <a href="./deals.html">Deals</a>
-                    <a href="./rewards.html">Rewards</a>
-                    <a href="./reservations.html">Reservation</a>
-		            <a href="./reviews.html">Reviews</a>
-                    <a href="./contact.html">Contact</a>
-                    <a href="./aboutus.html">About</a>
-                    <a href="./login.html" id="dropdown-logout">Logout</a>
-                </div>
-            </div>
+<!-- Navigation -->
+<nav class="top-nav">
+    <div class="logo"><a href="index.html">Momo Sushi</a></div>
+    <div class="nav-links">
+      <a href="./menu.html">Menu</a>
+      <a href="./reservations.html">Reserve</a>
+      <a href="./reviews.html">Reviews</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./aboutus.html">About</a>
+      <a href="login.html" id="main-auth-link">Login</a>
+      <div class="dropdown">
+        <div class="menu-toggle">☰</div>
+        <div class="dropdown-content">
+          <a href="./profile.html" id="userProfileStatus">Not signed in</a>
+          <a href="./menu.html">Menu</a>
+          <a href="./menu.html">Order Now</a>
+          <a href="./deals.html">Deals</a>
+          <a href="./rewards.html">Rewards</a>
+          <a href="./reservations.html">Reservation</a>
+          <a href="./reviews.html">Reviews</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./aboutus.html">About</a>
+          <a href="login.html" id="dropdown-auth-link">Login</a>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 
 <header>
-    <h1>Restaurant Reservation</h1>
-    <p>Reserve a table or merge tables at our restaurant</p>
+  <h1>Restaurant Reservation</h1>
+  <p>Reserve a table or merge tables at our restaurant</p>
 </header>
 
 <div class="container">
-    <h2>Choose Your Table</h2>
-    <div class="tables-container">
-        <!-- Tables with IDs table1, table2, ..., table8 -->
-        <div id="table1" class="table available" onclick="selectTable(1)">Table 1</div>
-        <div id="table2" class="table available" onclick="selectTable(2)">Table 2</div>
-        <div id="table3" class="table available" onclick="selectTable(3)">Table 3</div>
-        <div id="table4" class="table available" onclick="selectTable(4)">Table 4</div>
-        <div id="table5" class="table available" onclick="selectTable(5)">Table 5</div>
-        <div id="table6" class="table available" onclick="selectTable(6)">Table 6</div>
-        <div id="table7" class="table available" onclick="selectTable(7)">Table 7</div>
-        <div id="table8" class="table available" onclick="selectTable(8)">Table 8</div>
+  <h2>Choose Your Table</h2>
+  <div class="tables-container" id="tablesContainer"></div>
+
+  <h3>Reservation Form</h3>
+  <form id="reservationForm">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" required>
+    <label for="email">Email Address</label>
+    <input type="email" id="email" required>
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" required>
+    <label for="date">Reservation Date</label>
+    <input type="date" id="date" required>
+    <label for="time">Reservation Time</label>
+    <input type="time" id="time" required>
+
+    <label for="guests">Number of Guests</label>
+    <input type="number" id="guests" min="1" max="20" value="1" required>
+
+    <label for="merge">Would you like to merge two tables?</label>
+    <select id="merge" onchange="toggleMergeOption()">
+      <option value="no">No</option>
+      <option value="yes">Yes</option>
+    </select>
+
+    <div id="mergeTables" style="display:none;">
+      <label for="tableSelection">Select Second Table</label>
+      <select id="tableSelection">
+        ${[...Array(8).keys()].map(i => `<option value="${i + 1}">Table ${i + 1}</option>`).join('')}
+      </select>
     </div>
 
-    <h3>Reservation Form</h3>
-    <form id="reservationForm">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" required>
+    <button type="submit">Reserve Table</button>
+  </form>
 
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" required>
-
-        <label for="date">Reservation Date</label>
-        <input type="date" id="date" name="date" required>
-
-        <label for="time">Reservation Time</label>
-        <input type="time" id="time" name="time" required>
-
-        <label for="guests">Number of Guests</label>
-        <select id="guests" name="guests" required>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-        </select>
-
-        <label for="merge">Would you like to merge two tables?</label>
-        <select id="merge" name="merge" onchange="toggleMergeOption()">
-            <option value="no">No</option>
-            <option value="yes">Yes</option>
-        </select>
-
-        <div id="mergeTables" style="display:none;">
-            <label for="tableSelection">Select Second Table to Merge</label>
-            <select id="tableSelection" name="tableSelection">
-                <option value="1">Table 1</option>
-                <option value="2">Table 2</option>
-                <option value="3">Table 3</option>
-                <option value="4">Table 4</option>
-                <option value="5">Table 5</option>
-                <option value="6">Table 6</option>
-                <option value="7">Table 7</option>
-                <option value="8">Table 8</option>
-            </select>
-        </div>
-
-        <button type="submit">Reserve Table</button>
-    </form>
-
-    <div id="confirmationMessage" class="confirmation"></div>
+  <div id="confirmationMessage" class="confirmation"></div>
 </div>
 
-<script>
-    let selectedTable = null;
-    let reservedTables = [];
+<script type="module">
+  import { auth } from './FirebaseConfig.js';
+  import {
+    getFirestore, collection, addDoc, getDocs, Timestamp
+  } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+  import {
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
-    function selectTable(tableId) {
-        if (reservedTables.includes(tableId)) {
-            alert('This table is already reserved.');
-        } else {
-            if (selectedTable === tableId) {
-                document.getElementById('table' + tableId).classList.remove('selected');
-                selectedTable = null;
-            } else {
-                if (selectedTable !== null) {
-                    document.getElementById('table' + selectedTable).classList.remove('selected');
-                }
-                document.getElementById('table' + tableId).classList.add('selected');
-                selectedTable = tableId;
-            }
-        }
+  const db = getFirestore();
+  let selectedTable = null;
+  const reservations = [];
+
+  const tablesContainer = document.getElementById('tablesContainer');
+  for (let i = 1; i <= 8; i++) {
+    const div = document.createElement('div');
+    div.className = "table available";
+    div.id = "table" + i;
+    div.innerText = "Table " + i;
+    div.onclick = () => selectTable(i);
+    tablesContainer.appendChild(div);
+  }
+
+  function selectTable(id) {
+    if (document.getElementById("table" + id).classList.contains("reserved")) return;
+    if (selectedTable !== null) {
+      document.getElementById("table" + selectedTable).classList.remove("selected");
     }
+    selectedTable = id;
+    document.getElementById("table" + id).classList.add("selected");
+  }
 
-    function toggleMergeOption() {
-        const mergeSelect = document.getElementById('merge');
-        const mergeTablesDiv = document.getElementById('mergeTables');
-        if (mergeSelect.value === 'yes') {
-            mergeTablesDiv.style.display = 'block';
-        } else {
-            mergeTablesDiv.style.display = 'none';
-        }
-    }
+  window.toggleMergeOption = () => {
+    const merge = document.getElementById("merge").value;
+    document.getElementById("mergeTables").style.display = merge === "yes" ? "block" : "none";
+  };
 
-    document.getElementById('reservationForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        if (selectedTable === null) {
-            alert('Please select a table.');
-            return;
-        }
+  document.getElementById("reservationForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-        const guests = document.getElementById('guests').value;
-        const merge = document.getElementById('merge').value;
-        const confirmationMessage = `
-            <h3>Reservation Confirmed!</h3>
-            <p>Thank you for your reservation!</p>
-            <p>Details:</p>
-            <ul>
-                <li><strong>Name:</strong> ${document.getElementById('name').value}</li>
-                <li><strong>Email:</strong> ${document.getElementById('email').value}</li>
-                <li><strong>Phone:</strong> ${document.getElementById('phone').value}</li>
-                <li><strong>Date:</strong> ${document.getElementById('date').value}</li>
-                <li><strong>Time:</strong> ${document.getElementById('time').value}</li>
-                <li><strong>Guests:</strong> ${guests}</li>
-                <li><strong>Table:</strong> Table ${selectedTable}</li>
-                ${merge === 'yes' ? `<li><strong>Merged with:</strong> Table ${document.getElementById('tableSelection').value}</li>` : ''}
-            </ul>
-        `;
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+    const key = `table${selectedTable}_${date}T${time}`;
 
-        reservedTables.push(selectedTable);
+    const existing = reservations.find(r => r.key === key || (r.mergeKey && r.mergeKey === key));
 
-        if (merge === 'yes') {
-            const secondTable = document.getElementById('tableSelection').value;
-            reservedTables.push(secondTable);
-        }
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const guests = document.getElementById("guests").value;
+    const merge = document.getElementById("merge").value === "yes";
+    const mergeWith = merge ? parseInt(document.getElementById("tableSelection").value) : null;
+    const mergeKey = mergeWith ? `table${mergeWith}_${date}T${time}` : null;
 
-        document.getElementById('confirmationMessage').innerHTML = confirmationMessage;
-        document.getElementById('reservationForm').reset();
-        selectedTable = null;
-        document.querySelectorAll('.table').forEach(table => {
-            table.classList.remove('selected');
-            if (!reservedTables.includes(parseInt(table.id.replace('table', '')))) {
-                table.classList.add('available');
-            } else {
-                table.classList.add('reserved');
-            }
-        });
+    const data = {
+      name, email, phone, guests,
+      date, time,
+      table: selectedTable,
+      mergeWith,
+      key,
+      mergeKey,
+      createdAt: Timestamp.now()
+    };
+
+    await addDoc(collection(db, "Reservations"), data);
+    document.getElementById("confirmationMessage").innerHTML = `<h3>Reservation Confirmed!</h3><p>Table ${selectedTable}${mergeWith ? " & Table " + mergeWith : ""} reserved.</p>`;
+    document.getElementById("reservationForm").reset();
+    document.getElementById("table" + selectedTable).classList.remove("selected");
+  });
+
+  const snapshot = await getDocs(collection(db, "Reservations"));
+  snapshot.forEach(doc => {
+    const d = doc.data();
+    reservations.push({
+      table: d.table,
+      date: d.date,
+      time: d.time,
+      key: `table${d.table}_${d.date}T${d.time}`,
+      mergeKey: d.mergeWith ? `table${d.mergeWith}_${d.date}T${d.time}` : null
     });
-</script>
+  });
 
+  function handleLogout(e) {
+    e.preventDefault();
+    signOut(auth).then(() => window.location.href = "login.html");
+  }
+
+  onAuthStateChanged(auth, (user) => {
+    const mainAuthLink = document.getElementById("main-auth-link");
+    const dropdownAuthLink = document.getElementById("dropdown-auth-link");
+    const profileLink = document.getElementById("userProfileStatus");
+
+    if (user) {
+      mainAuthLink.textContent = "Logout";
+      mainAuthLink.href = "#";
+      mainAuthLink.onclick = handleLogout;
+      dropdownAuthLink.textContent = "Logout";
+      dropdownAuthLink.href = "#";
+      dropdownAuthLink.onclick = handleLogout;
+      profileLink.textContent = user.displayName || user.email;
+      profileLink.href = "./account.html";
+    } else {
+      mainAuthLink.textContent = "Login";
+      mainAuthLink.href = "login.html";
+      dropdownAuthLink.textContent = "Login";
+      dropdownAuthLink.href = "login.html";
+      profileLink.textContent = "Not signed in";
+      profileLink.href = "login.html";
+    }
+  });
+</script>
+<!-- Dropdown Toggle Logic -->
+<script>
+  document.querySelector(".menu-toggle").addEventListener("click", () => {
+    document.querySelector(".dropdown").classList.toggle("active");
+  });
+  window.addEventListener("click", (event) => {
+    if (!event.target.matches(".menu-toggle")) {
+      const dropdown = document.querySelector(".dropdown");
+      if (dropdown.classList.contains("active")) {
+        dropdown.classList.remove("active");
+      }
+    }
+  });
+</script>
+<footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <a href="index.html">Momo Sushi</a>
+      </div>
+      <div class="footer-links">
+        <a href="menu.html">Menu</a>
+        <a href="reservations.html">Reserve</a>
+        <a href="contact.html">Contact</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="aboutus.html">About</a>
+      </div>
+      <p class="footer-note">© 2025 Momo Sushi · All rights reserved</p>
+    </div>
+  </footer>
+  
 </body>
 </html>

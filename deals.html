@@ -3,138 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="deals.css"> <!-- External stylesheet -->
   <title>Deals - Momo Sushi</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fff;
-      color: #333;
-    }
-
-    .top-nav {
-      background-color: #f4f4f4;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #333;
-    }
-
-    .section-header {
-      background-color: #8B2323;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .deals-section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .deal-block {
-      margin-bottom: 40px;
-    }
-
-    .deal-block h3 {
-      color: #8B2323;
-      margin-bottom: 10px;
-    }
-
-    .deal-block p {
-      margin-top: 0;
-    }
-
-    .action-buttons {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      gap: 10px;
-    }
-
-    .action-button {
-      background: #333;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
-      cursor: pointer;
-    }
-
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      right: 0;
-      background-color: #f9f9f9;
-      min-width: 200px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
-
-    .dropdown-content a {
-      padding: 12px 16px;
-      display: block;
-      color: #333;
-      text-decoration: none;
-    }
-
-    .dropdown.active .dropdown-content {
-      display: block;
-    }
-
-    .menu-toggle {
-      cursor: pointer;
-      font-size: 24px;
-    }
-  </style>
 </head>
+
 <body>
 
   <!-- Navigation -->
   <nav class="top-nav">
     <div class="logo"><a href="index.html">Momo Sushi</a></div>
     <div class="nav-links">
-        <a href="./menu.html">Menu</a>
-        <a href="./reservations.html">Reserve</a>
-        <a href="./reviews.html">Reviews</a>
-        <a href="./contact.html">Contact</a>
-        <a href="./aboutus.html">About</a>
-        <a href="./login.html" id="dropdown-logout">Logout</a>
-        <div class="dropdown">
-            <div class="menu-toggle">☰</div>
-            <div class="dropdown-content">
-                <a href="./profile.html" id="userProfileStatus">Not signed in</a>
-                <a href="./menu.html">Menu</a>
-                <a href="./menu.html">Order Now</a>
-                <a href="./deals.html">Deals</a>
-                <a href="./rewards.html">Rewards</a>
-                <a href="./reservations.html">Reservation</a>
-                <a href="./reviews.html">Reviews</a>
-                <a href="./contact.html">Contact</a>
-                <a href="./aboutus.html">About</a>
-                <a href="./login.html" id="dropdown-logout">Logout</a>
-            </div>
+      <a href="./menu.html">Menu</a>
+      <a href="./reservations.html">Reserve</a>
+      <a href="./reviews.html">Reviews</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./aboutus.html">About</a>
+      <a href="login.html" id="main-auth-link">Login</a>
+      <div class="dropdown">
+        <div class="menu-toggle">☰</div>
+        <div class="dropdown-content">
+          <a href="./profile.html" id="userProfileStatus">Not signed in</a>
+          <a href="./menu.html">Menu</a>
+          <a href="./menu.html">Order Now</a>
+          <a href="./deals.html">Deals</a>
+          <a href="./rewards.html">Rewards</a>
+          <a href="./reservations.html">Reservation</a>
+          <a href="./reviews.html">Reviews</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./aboutus.html">About</a>
+          <a href="login.html" id="dropdown-auth-link">Login</a>
         </div>
+      </div>
     </div>
-</nav>
+  </nav>
 
 <!-- Header -->
 <div class="section-header">
@@ -149,78 +50,57 @@
     <h3>Lunch Specials (11:00 AM – 2:30 PM)</h3>
     <p>Enjoy a balanced midday meal, and when you dine in, a house salad or miso soup is included.</p>
     <ul>
-      <li><strong>Pick Two Rolls – $12.50</strong></li>
-      <li><strong>Pick Three Rolls – $17.50</strong></li>
-      <li><strong>Combo Plate:</strong> California Roll + Udon – $11</li>
-      <li><strong>Chicken Katsu Don / Bibimbob – $12.50</strong></li>
-      <li><strong>Add Any Lunch Roll to a Special Roll – Just $2 More!</strong></li>
+      <li><strong>Pick Two Rolls |</strong> $11</li>
+      <li><strong>Pick Three Rolls | </strong>$15</li>
+      <li><strong>California Roll + Udon | </strong>$11</li>
+      <li><strong>Chicken Katsu Don or Bibimbob | </strong>$11</li>
+      <li><strong>Add Any Lunch Roll to a Special Roll | </strong>Special Roll Price + $2</li>
     </ul>
   </div>
 
   <div class="deal-block">
-    <h3>Family Feast</h3>
+    <h3>Family Feast – $45</h3>
     <p>Perfect for sharing! A hearty sushi bundle built for 3–4 people.</p>
     <ul>
       <li><strong>4 Specialty Rolls</strong> of your choice</li>
       <li><strong>1 Appetizer:</strong> Edamame or Gyoza</li>
       <li><strong>Drinks Included</strong> (choice of sodas or green tea)</li>
-      <li><strong>Only $39.99</strong></li>
     </ul>
   </div>
 
   <div class="deal-block">
-    <h3>Spicy Roll Combo – $19.50</h3>
-    <p>Turn up the heat with this trio of rolls.</p>
+    <h3>Spicy Roll Combo – $17.50</h3>
+    <p>Turn up the heat with this trio of rolls. <em>(Total: 24 pieces)</em></p>
     <ul>
-      <li>Spicy Tuna Roll</li>
-      <li>Spicy Salmon Roll</li>
-      <li>Spicy California Roll</li>
-      <li><em>Total: 24 pieces</em></li>
+      <li><strong>Spicy Tuna Roll</strong></li>
+      <li><strong>Spicy Salmon Roll</strong></li>
+      <li><strong>Spicy California Roll</strong></li>
     </ul>
   </div>
 
   <div class="deal-block">
-    <h3>Vegetarian Roll Combo – $18.00</h3>
-    <p>A colorful spread of fresh veggie-forward rolls.</p>
+    <h3>Vegetarian Roll Combo – $17</h3>
+    <p>A colorful spread of fresh veggie-forward rolls. <em>(Total: 24 pieces)</em></p>
     <ul>
-      <li>Fresh Vegetable Roll</li>
-      <li>CAC Roll (Carrot, Avocado, Cucumber)</li>
-      <li>AAC Roll (Asparagus, Avocado, Cucumber)</li>
-      <li><em>Total: 21 pieces</em></li>
+      <li><strong>Fresh Vegetable Roll</strong></li>
+      <li><strong>CAC Roll (Carrot, Avocado, Cucumber)</strong></li>
+      <li><strong>AAC Roll (Asparagus, Avocado, Cucumber)</strong></li>
     </ul>
   </div>
 
   <div class="deal-block">
     <h3>Sushi & Sashimi Festival – $49</h3>
-    <p>Indulge in a variety of expertly prepared raw selections.</p>
+    <p>A variety of expertly prepared raw selections.</p>
     <ul>
-      <li>6 pieces of Chef’s Choice Sushi</li>
-      <li>9 pieces of Chef’s Choice Sashimi</li>
+      <li><strong>6</strong> pieces of Chef’s Choice Sushi</li>
+      <li><strong>9</strong> pieces of Chef’s Choice Sashimi</li>
       <li>Side of White Rice included</li>
     </ul>
   </div>
 
 </div>
 
-<!-- Chat and Cart Buttons -->
-<div class="action-buttons">
-  <button class="action-button">Chat</button>
-  <button class="action-button">Cart</button>
-</div>
-
 <script>
-  document.querySelector('.menu-toggle')?.addEventListener('click', function () {
-    document.querySelector('.dropdown')?.classList.toggle('active');
-  });
-
-  window.addEventListener('click', function (event) {
-    if (!event.target.matches('.menu-toggle')) {
-      const dropdown = document.querySelector('.dropdown');
-      if (dropdown?.classList.contains('active')) {
-        dropdown.classList.remove('active');
-      }
-    }
-  });
 
   document.getElementById('logout-button')?.addEventListener('click', function (e) {
     e.preventDefault();
@@ -232,6 +112,79 @@
     window.location.href = 'login.html';
   });
 </script>
+<script type="module">
+  import { auth } from './FirebaseConfig.js';
+  import {
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+  onAuthStateChanged(auth, (user) => {
+    const mainAuthLink = document.getElementById("main-auth-link");
+    const dropdownAuthLink = document.getElementById("dropdown-auth-link");
+    const profileLink = document.getElementById("userProfileStatus");
+
+    if (user) {
+      mainAuthLink.textContent = "Logout";
+      mainAuthLink.href = "#";
+      mainAuthLink.onclick = handleLogout;
+
+      dropdownAuthLink.textContent = "Logout";
+      dropdownAuthLink.href = "#";
+      dropdownAuthLink.onclick = handleLogout;
+
+      profileLink.textContent = user.displayName || user.email;
+      profileLink.href = "./account.html";
+    } else {
+      mainAuthLink.textContent = "Login";
+      mainAuthLink.href = "./login.html";
+      mainAuthLink.onclick = null;
+
+      dropdownAuthLink.textContent = "Login";
+      dropdownAuthLink.href = "./login.html";
+      dropdownAuthLink.onclick = null;
+
+      profileLink.textContent = "Not signed in";
+      profileLink.href = "./login.html";
+    }
+  });
+
+  function handleLogout(e) {
+    e.preventDefault();
+    signOut(auth).then(() => {
+      window.location.href = "login.html";
+    });
+  }
+</script>
+
+<!-- Dropdown Toggle Logic -->
+<script>
+  document.querySelector(".menu-toggle").addEventListener("click", function () {
+document.querySelector(".dropdown").classList.toggle("active");
+});
+
+window.addEventListener("click", function (event) {
+if (!event.target.closest(".dropdown")) {
+document.querySelector(".dropdown").classList.remove("active");
+}
+});
+
+</script>
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <a href="index.html">Momo Sushi</a>
+    </div>
+    <div class="footer-links">
+      <a href="menu.html">Menu</a>
+      <a href="reservations.html">Reserve</a>
+      <a href="contact.html">Contact</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="aboutus.html">About</a>
+    </div>
+    <p class="footer-note">© 2025 Momo Sushi · All rights reserved</p>
+  </div>
+</footer>
 
 </body>
 </html>

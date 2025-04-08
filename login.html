@@ -9,7 +9,7 @@
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
     <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="login.css"> <!-- NEW -->
 </head>
 <body>
 
@@ -17,60 +17,165 @@
     <nav class="top-nav">
         <div class="logo"><a href="index.html">Momo Sushi</a></div>
         <div class="nav-links">
-            <a href="./menu.html">Menu</a>
-            <a href="./reservations.html">Reserve</a>
-            <a href="./reviews.html">Reviews</a>
-            <a href="./contact.html">Contact</a>
-            <a href="./aboutus.html">About</a>
-            <a href="./login.html" id="dropdown-logout">Logout</a>
-            <div class="dropdown">
-                <div class="menu-toggle">☰</div>
-                <div class="dropdown-content">
-		            <a href="./profile.html" id="userProfileStatus">Not signed in</a>
-                    <a href="./menu.html">Menu</a>
-                    <a href="./menu.html">Order Now</a>
-                    <a href="./deals.html">Deals</a>
-                    <a href="./rewards.html">Rewards</a>
-                    <a href="./reservations.html">Reservation</a>
-		            <a href="./reviews.html">Reviews</a>
-                    <a href="./contact.html">Contact</a>
-                    <a href="./aboutus.html">About</a>
-                    <a href="./login.html" id="dropdown-logout">Logout</a>
-                </div>
+          <a href="./menu.html">Menu</a>
+          <a href="./reservations.html">Reserve</a>
+          <a href="./reviews.html">Reviews</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./aboutus.html">About</a>
+          <a href="login.html" id="main-auth-link">Login</a>
+          <div class="dropdown">
+            <div class="menu-toggle">☰</div>
+            <div class="dropdown-content">
+              <a href="./profile.html" id="userProfileStatus">Not signed in</a>
+              <a href="./menu.html">Menu</a>
+              <a href="./menu.html">Order Now</a>
+              <a href="./deals.html">Deals</a>
+              <a href="./rewards.html">Rewards</a>
+              <a href="./reservations.html">Reservation</a>
+              <a href="./reviews.html">Reviews</a>
+              <a href="./contact.html">Contact</a>
+              <a href="./aboutus.html">About</a>
+              <a href="login.html" id="dropdown-auth-link">Login</a>
             </div>
+          </div>
         </div>
-    </nav>
-
+      </nav>
+  
     <div class="login-container">
-        <h2>Login</h2>
-        <form id="login-form">
-            <input type="text" name="email-box" id="emailBox" placeholder="Email" required>
-            <input type="password" name="password-box" id="passwordBox" placeholder="Password" required>
-            <button type="button" id="resetAccount">Forgot Password</button>
-            <button type="button" id="loginButton">Login</button>
-            <button href="signup.html" type="button" id="signupPage">Sign Up</button>
-        </form>
-
-        <p id="errorTest"></p>
+      <h2>Login</h2>
+      <form id="login-form">
+        <input type="email" id="emailBox" placeholder="Email" required />
+        <input type="password" id="passwordBox" placeholder="Password" required />
+        <button type="button" id="resetAccount">Forgot Password</button>
+        <button type="submit" id="loginButton">Login</button>
+        <button type="button" onclick="window.location.href='signup.html'">Go to Sign Up</button>
+      </form>
+      <p id="errorTest"></p>
     </div>
+  
+    <script type="module">
+      import { auth } from './FirebaseConfig.js';
+      import {
+        signInWithEmailAndPassword,
+        sendPasswordResetEmail,
+        onAuthStateChanged,
+        signOut
+      } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+      
+      // Redirect if already logged in
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          window.location.href = "index.html";
+        }
+      });
+  
+      // Login form
+      document.getElementById("login-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = document.getElementById("emailBox").value;
+        const password = document.getElementById("passwordBox").value;
+  
+        try {
+          await signInWithEmailAndPassword(auth, email, password);
+          window.location.href = "index.html";
+        } catch (error) {
+          document.getElementById("errorTest").innerText = error.message;
+        }
+      });
+  
+      // Forgot password
+      document.getElementById("resetAccount").addEventListener("click", async () => {
+        const email = document.getElementById("emailBox").value;
+  
+        try {
+          await sendPasswordResetEmail(auth, email);
+        } catch (err) {
+        }
+      });
+  
 
-    <script src="firebaseadmin.js"></script>
-    <script src="firebaseauth.js"></script>
-    <script>
-        // Toggle dropdown menu
-        document.querySelector('.menu-toggle').addEventListener('click', function () {
-            document.querySelector('.dropdown').classList.toggle('active');
-        });
-
-        // Close dropdown when clicking outside
-        window.addEventListener('click', function (event) {
-            if (!event.target.matches('.menu-toggle')) {
-                const dropdown = document.querySelector('.dropdown');
-                if (dropdown.classList.contains('active')) {
-                    dropdown.classList.remove('active');
-                }
-            }
-        });
+      // Show user profile status
+      onAuthStateChanged(auth, (user) => {
+        const profileLink = document.getElementById("userProfileStatus");
+        if (user) {
+          profileLink.textContent = user.email;
+          profileLink.href = "./account.html";
+        } else {
+          profileLink.textContent = "Not signed in";
+          profileLink.href = "./login.html";
+        }
+      });
+  
+  
+  
+      // navBar
+  
+  onAuthStateChanged(auth, (user) => {
+    const mainAuthLink = document.getElementById("main-auth-link");
+    const dropdownAuthLink = document.getElementById("dropdown-auth-link");
+    const profileLink = document.getElementById("userProfileStatus");
+  
+    if (user) {
+      mainAuthLink.textContent = "Logout";
+      mainAuthLink.href = "#";
+      mainAuthLink.onclick = handleLogout;
+  
+      dropdownAuthLink.textContent = "Logout";
+      dropdownAuthLink.href = "#";
+      dropdownAuthLink.onclick = handleLogout;
+  
+      profileLink.textContent = user.displayName || user.email;
+      profileLink.href = "./account.html";
+    } else {
+      mainAuthLink.textContent = "Login";
+      mainAuthLink.href = "login.html";
+      mainAuthLink.onclick = null;
+  
+      dropdownAuthLink.textContent = "Login";
+      dropdownAuthLink.href = "login.html";
+      dropdownAuthLink.onclick = null;
+  
+      profileLink.textContent = "Not signed in";
+      profileLink.href = "login.html";
+    }
+  });
+  
+  function handleLogout(e) {
+    e.preventDefault();
+    signOut(auth).then(() => {
+      window.location.href = "login.html";
+    });
+  }
+  
     </script>
-</body>
-</html>
+    <footer class="site-footer">
+        <div class="footer-container">
+          <div class="footer-logo">
+            <a href="index.html">Momo Sushi</a>
+          </div>
+          <div class="footer-links">
+            <a href="menu.html">Menu</a>
+            <a href="reservations.html">Reserve</a>
+            <a href="contact.html">Contact</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="aboutus.html">About</a>
+          </div>
+          <p class="footer-note">© 2025 Momo Sushi · All rights reserved</p>
+        </div>
+      </footer>
+
+      <script>
+        document.querySelector(".menu-toggle").addEventListener("click", function () {
+  document.querySelector(".dropdown").classList.toggle("active");
+});
+
+window.addEventListener("click", function (event) {
+  if (!event.target.closest(".dropdown")) {
+    document.querySelector(".dropdown").classList.remove("active");
+  }
+});
+
+    </script>
+      
+  </body>
+  </html>

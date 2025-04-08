@@ -1,246 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Momo Sushi</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-      /* Section 1: Main Order Area */
-      .section-1 {
-        background-color: #8b2323;
-        padding: 20px;
-        min-height: 400px;
-        position: relative;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Momo Sushi</title>
+  <link rel="stylesheet" href="chat.css" />
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&family=Material+Symbols+Rounded" />
+</head>
+<body>
 
-      .crab-logo {
-        width: 100px;
-        height: 100px;
-        background: white;
-        border-radius: 8px;
-        position: absolute;
-        left: 20px;
-        top: 20px;
-      }
-
-      .menu-display {
-        width: 60%;
-        height: 200px;
-        background: white;
-        margin: 20px auto;
-        position: relative;
-      }
-
-      .order-button-container {
-        text-align: center;
-        margin-top: 10px;
-      }
-
-      .order-button {
-        background: #f4e4bc;
-        color: #333;
-        border: none;
-        padding: 10px 40px;
-        cursor: pointer;
-        font-size: 16px;
-      }
-
-      /* Section 2: Menu Categories */
-      .section-2 {
-        background-color: #f4e4bc;
-        padding: 40px 20px;
-      }
-
-      .section-title {
-        margin-bottom: 30px;
-        text-align: left;
-        padding-left: 40px;
-      }
-
-      .diamond-grid {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 40px;
-        margin: 30px 0;
-      }
-
-      .diamond {
-        width: 120px;
-        height: 120px;
-        background: #003366;
-        transform: rotate(45deg);
-        position: relative;
-        margin: 30px;
-      }
-
-      .diamond span {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(-45deg);
-        color: white;
-        width: 100%;
-        text-align: center;
-        font-size: 14px;
-        padding: 0 5px;
-        white-space: pre-wrap;
-      }
-
-      .see-full-menu {
-        background: white;
-        border: none;
-        padding: 10px 30px;
-        cursor: pointer;
-        margin-top: 20px;
-        display: block;
-        margin: 20px auto;
-      }
-
-      
-    </style>
-    <!-- Google Fonts for Chatbot Icons -->
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0"
-    />
-
-    <!-- Chatbot Styles (optional: merge into existing CSS if needed) -->
-    <link rel="stylesheet" href="chat.css" />
-    
-  </head>
-  <body>
-    <!-- Navigation -->
-    <nav class="top-nav">
-        <div class="logo"><a href="index.html">Momo Sushi</a></div>
-        <div class="nav-links">
-            <a href="./menu.html">Menu</a>
-            <a href="./reservations.html">Reserve</a>
-            <a href="./reviews.html">Reviews</a>
-            <a href="./contact.html">Contact</a>
-            <a href="./aboutus.html">About</a>
-            <a href="./login.html" id="dropdown-logout">Logout</a>
-            <div class="dropdown">
-                <div class="menu-toggle">☰</div>
-                <div class="dropdown-content">
-		                <a href="./profile.html" id="userProfileStatus">Not signed in</a>
-                    <a href="./menu.html">Menu</a>
-                    <a href="./menu.html">Order Now</a>
-                    <a href="./deals.html">Deals</a>
-                    <a href="./rewards.html">Rewards</a>
-                    <a href="./reservations.html">Reservation</a>
-		                <a href="./reviews.html">Reviews</a>
-                    <a href="./contact.html">Contact</a>
-                    <a href="./aboutus.html">About</a>
-                    <a href="./login.html" id="dropdown-logout">Logout</a>
-                </div>
-            </div>
+  <!-- Navbar -->
+  <nav class="top-nav">
+    <div class="logo"><a href="index.html">Momo Sushi</a></div>
+    <div class="nav-links">
+      <a href="./menu.html">Menu</a>
+      <a href="./reservations.html">Reserve</a>
+      <a href="./reviews.html">Reviews</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./aboutus.html">About</a>
+      <a href="#" id="main-auth-link">Login</a>
+      <div class="dropdown">
+        <div class="menu-toggle">☰</div>
+        <div class="dropdown-content">
+          <a href="./profile.html" id="userProfileStatus">Not signed in</a>
+          <a href="./menu.html">Menu</a>
+          <a href="./deals.html">Deals</a>
+          <a href="./rewards.html">Rewards</a>
+          <a href="./reservations.html">Reservation</a>
+          <a href="./reviews.html">Reviews</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./aboutus.html">About</a>
+          <a href="#" id="dropdown-auth-link">Login</a>
         </div>
-    </nav>
-
-    <!-- Section 1: Main Order Area -->
-    <section class="section-1">
-      <div class="crab-logo">
-        <img
-          src="images/crab-logo.png"
-          alt="Crab Logo"
-          style="width: 100%; height: 100%; object-fit: contain"
-        />
       </div>
-      <div class="menu-display">
-        <!-- This area will be for menu pictures -->
-      </div>
-      <div class="order-button-container">
-        <button class="order-button">Order</button>
-      </div>
-    </section>
-
-    <!-- Section 2: Menu Categories -->
-    <section class="section-2">
-      <h3 class="section-title">Menu Categories</h3>
-      <div class="diamond-grid">
-        <div class="diamond"><span>Sushi/Sashimi</span></div>
-        <div class="diamond"><span>Sushi Burritos</span></div>
-        <div class="diamond"><span>Rolls</span></div>
-        <div class="diamond"><span>Poke Bowls</span></div>
-        <div class="diamond"><span>Kitchen</span></div>
-      </div>
-      <button class="see-full-menu">See Full Menu</button>
-    </section>
-
-    <!-- Chat and Cart Buttons -->
-    <div class="action-buttons">
-      <button class="action-button">Chat</button>
-      <button class="action-button">Cart</button>
     </div>
-	  
-    <script src="firebaseadmin.js"></script>
-    <script src="firebaseauth.js"></script>
-    <script>
-      // Toggle dropdown menu
-      document
-        .querySelector(".menu-toggle")
-        .addEventListener("click", function () {
-          document.querySelector(".dropdown").classList.toggle("active");
-        });
+  </nav>
 
-      // Close dropdown when clicking outside
-      window.addEventListener("click", function (event) {
-        if (!event.target.matches(".menu-toggle")) {
-          const dropdown = document.querySelector(".dropdown");
-          if (dropdown.classList.contains("active")) {
-            dropdown.classList.remove("active");
-          }
+  <section class="carousel-section">
+    <div class="carousel-wrapper">
+      <button class="carousel-arrow left" id="prevBtn">&#10094;</button>
+  
+      <div class="carousel" id="carousel">
+        <img src="Pictures/copbop_zoom.png" alt="Copbop" />
+        <img src="Pictures/gyoza.jpg" alt="Gyoza" />
+        <img src="Pictures/seaweed_salad.png" alt="Seaweed Salad" />
+        <img src="Pictures/sundubu.jpg" alt="Sundubu" />
+        <img src="Pictures/sushi1.jpg" alt="Sushi 1" />
+        <img src="Pictures/sushi_festival.jpg" alt="Sushi Festival" />
+      </div>
+  
+      <button class="carousel-arrow right" id="nextBtn">&#10095;</button>
+    </div>
+  
+    <div class="order-button-container">
+      <a href="menu.html"><button class="order-button">Order Now</button></a>
+    </div>
+  </section>
+  
+  
+  
+
+  <!-- Filters Section -->
+<<section class="filters-section">
+  <h3 class="section-title">Filter By</h3>
+  <div class="diamond-grid">
+    <div class="diamond" onclick="window.location.href='menu.html?filter=Vegetarian'">🥗 Vegetarian</div>
+    <div class="diamond" onclick="window.location.href='menu.html?filter=Dairy'">🧀 Dairy</div>
+    <div class="diamond" onclick="window.location.href='menu.html?filter=Soy'">🌰 Soy</div>
+    <div class="diamond" onclick="window.location.href='menu.html?filter=Raw'">🍣 Raw</div>
+    <div class="diamond" onclick="window.location.href='menu.html?filter=Gluten'">🍞 Gluten</div>
+    <div class="diamond" onclick="window.location.href='menu.html?filter=Spicy'">🌶️ Spicy</div>
+    <div class="diamond" onclick="window.location.href='menu.html?filter=Vegan'">🥑 Vegan</div>
+  </div>
+</section>
+
+  
+
+  <!-- Rewards & Deals -->
+  <section class="rewards-deals">
+    <a href="rewards.html"><button>View Rewards</button></a>
+    <a href="deals.html"><button>See Deals</button></a>
+  </section>
+
+  <!-- Review Section -->
+  <section class="review-section">
+    <h3>What Our Customers Say</h3>
+    <div id="reviewContainer" class="reviews-grid"></div>
+    <a href="reviews.html"><button class="see-all-btn">See All Reviews</button></a>
+  </section>
+  
+<!-- Location & Hours Section -->
+<section class="section-2">
+  <h3 class="section-title">Our Location & Hours</h3>
+  <div class="info-grid">
+    <div class="info-item">
+      <strong>Address</strong>
+      <p>895 W Eisenhower Pkwy<br>Ann Arbor, MI 48103</p>
+    </div>
+    <div class="info-item">
+      <strong>Phone</strong>
+      <p>(123) 456-7890</p>
+    </div>
+    <div class="info-item">
+      <strong>Hours</strong>
+      <p>Mon–Sat: 11:00 am – 9:00 pm<br>Sun: 4:00 pm – 9:00 pm</p>
+    </div>
+  </div>
+
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2923.491998396981!2d-83.78195882402448!3d42.25203377119714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x883cb240e9c0f321%3A0x5b162df3cb4c9b76!2s895%20W%20Eisenhower%20Pkwy%2C%20Ann%20Arbor%2C%20MI%2048103!5e0!3m2!1sen!2sus!4v1712554000000!5m2!1sen!2sus"
+      width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <a href="index.html">Momo Sushi</a>
+      </div>
+      <div class="footer-links">
+        <a href="menu.html">Menu</a>
+        <a href="reservations.html">Reserve</a>
+        <a href="contact.html">Contact</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="aboutus.html">About</a>
+      </div>
+      <p class="footer-note">© 2025 Momo Sushi · All rights reserved</p>
+    </div>
+  </footer>
+  <!-- Chatbot -->
+  <button class="chatbot-toggler">
+    <span class="material-symbols-rounded">mode_comment</span>
+    <span class="material-symbols-outlined">close</span>
+  </button>
+  <div class="chatbot">
+    <header>
+      <h2>Momo Sushi Chatbot</h2>
+      <span class="close-btn material-symbols-outlined">close</span>
+    </header>
+    <ul class="chatbox">
+      <li class="chat incoming">
+        <span class="material-symbols-outlined">smart_toy</span>
+        <p>Hi there 👋<br />How can I help you today?</p>
+      </li>
+    </ul>
+    <div class="chat-input">
+      <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+      <span id="send-btn" class="material-symbols-rounded">send</span>
+    </div>
+  </div>
+
+  <!-- Firebase Auth Script -->
+  <script type="module">
+    import { auth } from './FirebaseConfig.js';
+    import {
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+    onAuthStateChanged(auth, (user) => {
+      const mainAuthLink = document.getElementById("main-auth-link");
+      const dropdownAuthLink = document.getElementById("dropdown-auth-link");
+      const profileLink = document.getElementById("userProfileStatus");
+
+      if (user) {
+        mainAuthLink.textContent = "Logout";
+        mainAuthLink.href = "#";
+        mainAuthLink.onclick = handleLogout;
+
+        dropdownAuthLink.textContent = "Logout";
+        dropdownAuthLink.href = "#";
+        dropdownAuthLink.onclick = handleLogout;
+
+        profileLink.textContent = user.displayName || user.email;
+        profileLink.href = "./account.html";
+      } else {
+        mainAuthLink.textContent = "Login";
+        mainAuthLink.href = "./login.html";
+        mainAuthLink.onclick = null;
+
+        dropdownAuthLink.textContent = "Login";
+        dropdownAuthLink.href = "./login.html";
+        dropdownAuthLink.onclick = null;
+
+        profileLink.textContent = "Not signed in";
+        profileLink.href = "./login.html";
+      }
+    });
+
+    function handleLogout(e) {
+      e.preventDefault();
+      signOut(auth).then(() => {
+        window.location.href = "login.html";
+      });
+    }
+  </script>
+
+  <!-- Dropdown Toggle Logic -->
+  <script>
+    document.querySelector(".menu-toggle").addEventListener("click", function () {
+document.querySelector(".dropdown").classList.toggle("active");
+});
+
+window.addEventListener("click", function (event) {
+if (!event.target.closest(".dropdown")) {
+document.querySelector(".dropdown").classList.remove("active");
+}
+});
+
+</script>
+
+<script type="module">
+  import { auth } from './FirebaseConfig.js';
+  import {
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+  onAuthStateChanged(auth, (user) => {
+    const mainAuthLink = document.getElementById("main-auth-link");
+    const dropdownAuthLink = document.getElementById("dropdown-auth-link");
+    const profileLink = document.getElementById("userProfileStatus");
+
+    if (user) {
+      mainAuthLink.textContent = "Logout";
+      mainAuthLink.href = "javascript:void(0)";
+      mainAuthLink.onclick = handleLogout;
+
+      dropdownAuthLink.textContent = "Logout";
+      dropdownAuthLink.href = "javascript:void(0)";
+      dropdownAuthLink.onclick = handleLogout;
+
+      profileLink.textContent = user.displayName || user.email;
+      profileLink.href = "./account.html";
+    } else {
+      mainAuthLink.textContent = "Login";
+      mainAuthLink.href = "login.html";
+      mainAuthLink.onclick = null;
+
+      dropdownAuthLink.textContent = "Login";
+      dropdownAuthLink.href = "login.html";
+      dropdownAuthLink.onclick = null;
+
+      profileLink.textContent = "Not signed in";
+      profileLink.href = "login.html";
+    }
+  });
+
+  function handleLogout(e) {
+    e.preventDefault();
+    signOut(auth).then(() => {
+      window.location.href = "login.html";
+    });
+  }
+</script>
+
+<script>
+  document.querySelector(".menu-toggle").addEventListener("click", function () {
+    document.querySelector(".dropdown").classList.toggle("active");
+  });
+
+  window.addEventListener("click", function (event) {
+    if (!event.target.matches(".menu-toggle")) {
+      const dropdown = document.querySelector(".dropdown");
+      if (dropdown.classList.contains("active")) {
+        dropdown.classList.remove("active");
+      }
+    }
+  });
+</script>
+
+<script type="module">
+  import { getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+  const db = getFirestore();
+
+  const menuContainer = document.getElementById("menuItems");
+  const filterButtons = document.querySelectorAll(".diamond");
+
+  // Load all menu items on page load
+  loadMenu();
+
+  // Load menu by filter
+  async function loadMenu(filter = null) {
+    menuContainer.innerHTML = "";
+
+    let menuQuery = collection(db, "Momo Menu");
+
+    if (filter) {
+      // Use where clause to match dietary value == 1
+      menuQuery = query(menuQuery, where(filter, "==", 1));
+    }
+
+    const snapshot = await getDocs(menuQuery);
+    if (snapshot.empty) {
+      menuContainer.innerHTML = "<p>No items match this dietary filter.</p>";
+      return;
+    }
+
+    snapshot.forEach(doc => {
+      const item = doc.data();
+      const card = document.createElement("div");
+      card.classList.add("menu-card");
+      card.innerHTML = `
+        <h3>${item.Item}</h3>
+        <p>${item.Description}</p>
+        <strong>Price: $${item.Price.toFixed(2)}</strong>
+      `;
+      menuContainer.appendChild(card);
+    });
+  }
+
+  // Add event listeners to filter buttons
+  filterButtons.forEach(btn => {
+    const filter = btn.dataset.filter;
+    btn.addEventListener("click", () => loadMenu(filter));
+  });
+</script>
+
+<script type="module">
+  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+  const db = getFirestore();
+  const reviewContainer = document.getElementById("reviewContainer");
+
+  async function loadRandomReviews() {
+    try {
+      const snapshot = await getDocs(collection(db, "Reviews"));
+      const reviews = [];
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        if (data.title && data.message && data.username) {
+          reviews.push(data);
         }
       });
 
-      // Logout functionality
-      document
-        .getElementById("logout-button")
-        .addEventListener("click", function (e) {
-          e.preventDefault();
-          window.location.href = "login.html";
-        });
+      if (reviews.length === 0) {
+        reviewContainer.innerHTML = "<p>No reviews available.</p>";
+        return;
+      }
 
-      document
-        .getElementById("dropdown-logout")
-        .addEventListener("click", function (e) {
-          e.preventDefault();
-          window.location.href = "login.html";
-        });
-    </script>
+      const shuffled = reviews.sort(() => 0.5 - Math.random()).slice(0, 3);
 
-    <!-- Chatbot Toggle Button -->
-    <button class="chatbot-toggler">
-      <span class="material-symbols-rounded">mode_comment</span>
-      <span class="material-symbols-outlined">close</span>
-    </button>
+      shuffled.forEach(review => {
+        const card = document.createElement("div");
+        card.className = "review-card";
+        card.innerHTML = `
+          <h4>${review.title}</h4>
+          <p>${review.message}</p>
+          <p class="review-user">- ${review.username}</p>
+        `;
+        reviewContainer.appendChild(card);
+      });
+    } catch (error) {
+      console.error("Error loading reviews:", error);
+      reviewContainer.innerHTML = "<p>Error loading reviews.</p>";
+    }
+  }
 
-    <!-- Chatbot Container -->
-    <div class="chatbot">
-      <header>
-        <h2>Momo Sushi Chatbot</h2>
-        <span class="close-btn material-symbols-outlined">close</span>
-      </header>
-      <ul class="chatbox">
-        <li class="chat incoming">
-          <span class="material-symbols-outlined">smart_toy</span>
-          <p>Hi there 👋<br />How can I help you today?</p>
-        </li>
-      </ul>
-      <div class="chat-input">
-        <textarea
-          placeholder="Enter a message..."
-          spellcheck="false"
-          required
-        ></textarea>
-        <span id="send-btn" class="material-symbols-rounded">send</span>
-      </div>
-    </div>
-  </body>
+  loadRandomReviews();
+</script>
+
+<script>
+  const carousel = document.getElementById("carousel");
+  const images = carousel.querySelectorAll("img");
+  let currentIndex = 0;
+
+  function updateCarousel() {
+    const width = images[0].clientWidth;
+    carousel.style.transform = `translateX(-${currentIndex * width}px)`;
+  }
+
+  window.addEventListener("resize", updateCarousel);
+
+  document.querySelector(".carousel-arrow.left").addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateCarousel();
+  });
+
+  document.querySelector(".carousel-arrow.right").addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateCarousel();
+  });
+</script>
+
+<script src="chat.js"></script>
+<script>
+  document.querySelector(".menu-toggle").addEventListener("click", function () {
+  document.querySelector(".dropdown").classList.toggle("active");
+});
+
+window.addEventListener("click", function (event) {
+  if (!event.target.closest(".dropdown")) {
+    document.querySelector(".dropdown").classList.remove("active");
+  }
+});
+
+</script>
+</body>
 </html>

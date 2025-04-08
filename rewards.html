@@ -4,171 +4,43 @@
     <title>Rewards - Momo Sushi</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-
-        .top-nav {
-            background-color: #f4f4f4;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-        }
-
-        .section-1 {
-            background-color: #8B2323;
-            padding: 20px;
-            min-height: 400px;
-            position: relative;
-            color: white;
-        }
-
-        .crab-logo {
-            width: 100px;
-            height: 100px;
-            background: white;
-            border-radius: 8px;
-            position: absolute;
-            left: 20px;
-            top: 20px;
-        }
-
-        .about-content {
-            width: 60%;
-            background: white;
-            color: #333;
-            margin: 20px auto;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .about-content h2 {
-            margin-top: 0;
-        }
-
-        .section-2 {
-            background-color: #f4e4bc;
-            padding: 40px 20px;
-            text-align: left;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .section-2 h3 {
-            color: #8B2323;
-            margin-bottom: 30px;
-        }
-
-        .tier-heading {
-            font-weight: bold;
-            font-size: 18px;
-            margin-bottom: 6px;
-        }
-
-        .tier-description {
-            margin-bottom: 30px;
-        }
-
-        .action-buttons {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .action-button {
-            background: #333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #f9f9f9;
-            min-width: 200px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            padding: 12px 16px;
-            display: block;
-            text-align: left;
-            color: #333;
-            text-decoration: none;
-        }
-
-        .dropdown.active .dropdown-content {
-            display: block;
-        }
-
-        .menu-toggle {
-            cursor: pointer;
-            font-size: 24px;
-        }
-    </style>
+    <link rel="stylesheet" href="rewards.css">
 </head>
+
 <body>
 
     <!-- Navigation -->
     <nav class="top-nav">
         <div class="logo"><a href="index.html">Momo Sushi</a></div>
         <div class="nav-links">
-            <a href="./menu.html">Menu</a>
-            <a href="./reservations.html">Reserve</a>
-            <a href="./reviews.html">Reviews</a>
-            <a href="./contact.html">Contact</a>
-            <a href="./aboutus.html">About</a>
-            <a href="./login.html" id="dropdown-logout">Logout</a>
-            <div class="dropdown">
-                <div class="menu-toggle">☰</div>
-                <div class="dropdown-content">
-		            <a href="./profile.html" id="userProfileStatus">Not signed in</a>
-                    <a href="./menu.html">Menu</a>
-                    <a href="./menu.html">Order Now</a>
-                    <a href="./deals.html">Deals</a>
-                    <a href="./rewards.html">Rewards</a>
-                    <a href="./reservations.html">Reservation</a>
-		            <a href="./reviews.html">Reviews</a>
-                    <a href="./contact.html">Contact</a>
-                    <a href="./aboutus.html">About</a>
-                    <a href="./login.html" id="dropdown-logout">Logout</a>
-                </div>
+          <a href="./menu.html">Menu</a>
+          <a href="./reservations.html">Reserve</a>
+          <a href="./reviews.html">Reviews</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./aboutus.html">About</a>
+          <a href="login.html" id="main-auth-link">Login</a>
+          <div class="dropdown">
+            <div class="menu-toggle">☰</div>
+            <div class="dropdown-content">
+              <a href="./profile.html" id="userProfileStatus">Not signed in</a>
+              <a href="./menu.html">Menu</a>
+              <a href="./menu.html">Order Now</a>
+              <a href="./deals.html">Deals</a>
+              <a href="./rewards.html">Rewards</a>
+              <a href="./reservations.html">Reservation</a>
+              <a href="./reviews.html">Reviews</a>
+              <a href="./contact.html">Contact</a>
+              <a href="./aboutus.html">About</a>
+              <a href="login.html" id="dropdown-auth-link">Login</a>
             </div>
+          </div>
         </div>
-    </nav>
+      </nav>
 
 <!-- Section 1: Rewards Introduction -->
 <section class="section-1">
     <div class="crab-logo">
-        <img src="images/crab-logo.png" alt="Crab Logo" style="width: 100%; height: 100%; object-fit: contain;">
+        <img src="pictures/logo.png" alt="Crab Logo" style="width: 100%; height: 100%; object-fit: contain;">
     </div>
     <div class="about-content">
         <h2>Momo Rewards</h2>
@@ -237,5 +109,81 @@
     });
 </script>
 
+<script type="module">
+    import { auth } from './FirebaseConfig.js';
+    import {
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+    onAuthStateChanged(auth, (user) => {
+      const mainAuthLink = document.getElementById("main-auth-link");
+      const dropdownAuthLink = document.getElementById("dropdown-auth-link");
+      const profileLink = document.getElementById("userProfileStatus");
+
+      if (user) {
+        mainAuthLink.textContent = "Logout";
+        mainAuthLink.href = "#";
+        mainAuthLink.onclick = handleLogout;
+
+        dropdownAuthLink.textContent = "Logout";
+        dropdownAuthLink.href = "#";
+        dropdownAuthLink.onclick = handleLogout;
+
+        profileLink.textContent = user.displayName || user.email;
+        profileLink.href = "./account.html";
+      } else {
+        mainAuthLink.textContent = "Login";
+        mainAuthLink.href = "./login.html";
+        mainAuthLink.onclick = null;
+
+        dropdownAuthLink.textContent = "Login";
+        dropdownAuthLink.href = "./login.html";
+        dropdownAuthLink.onclick = null;
+
+        profileLink.textContent = "Not signed in";
+        profileLink.href = "./login.html";
+      }
+    });
+
+    function handleLogout(e) {
+      e.preventDefault();
+      signOut(auth).then(() => {
+        window.location.href = "login.html";
+      });
+    }
+  </script>
+
+  <!-- Dropdown Toggle Logic -->
+  <script>
+    document.querySelector(".menu-toggle").addEventListener("click", function () {
+      document.querySelector(".dropdown").classList.toggle("active");
+    });
+
+    window.addEventListener("click", function (event) {
+      if (!event.target.matches(".menu-toggle")) {
+        const dropdown = document.querySelector(".dropdown");
+        if (dropdown.classList.contains("active")) {
+          dropdown.classList.remove("active");
+        }
+      }
+    });
+  </script>
+<footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <a href="index.html">Momo Sushi</a>
+      </div>
+      <div class="footer-links">
+        <a href="menu.html">Menu</a>
+        <a href="reservations.html">Reserve</a>
+        <a href="contact.html">Contact</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="aboutus.html">About</a>
+      </div>
+      <p class="footer-note">© 2025 Momo Sushi · All rights reserved</p>
+    </div>
+  </footer>
+  
 </body>
 </html>

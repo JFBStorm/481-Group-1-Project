@@ -3,84 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="reservationsStaff.css">
+
     <title>Restaurant Reservation Staff System</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1{
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-        }
-        h2 {
-            text-align: center;
-        }
-        .table {
-            background-color: #ddd;
-            padding: 10px;
-            text-align: center;
-            font-size: 1.2rem;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .reserved {
-            background-color: #ff6961;
-            color: white;
-        }
-
-        .form-container {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-container input, .form-container select {
-            display: flex;
-            flex-direction: column;
-        }
-        .form-container button {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 15px;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .reservation-list {
-            margin-top: 20px;
-        }
-
-        .reservation-item {
-            margin-bottom: 10px;
-        }
-
-        .reservation-item button {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 15px;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        .reservation-item button:hover {
-            background-color: #555;
-        }
-    </style>
+    
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="top-nav">
+        <div class="logo"><a href="index.html">Momo Sushi</a></div>
+        <div class="nav-links">
+          <a href="./menu.html">Menu</a>
+          <a href="./reservations.html">Reserve</a>
+          <a href="./reviews.html">Reviews</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./aboutus.html">About</a>
+          <a href="login.html" id="main-auth-link">Login</a>
+          <div class="dropdown">
+            <div class="menu-toggle">☰</div>
+            <div class="dropdown-content">
+              <a href="./profile.html" id="userProfileStatus">Not signed in</a>
+              <a href="./menu.html">Menu</a>
+              <a href="./menu.html">Order Now</a>
+              <a href="./deals.html">Deals</a>
+              <a href="./rewards.html">Rewards</a>
+              <a href="./reservations.html">Reservation</a>
+              <a href="./reviews.html">Reviews</a>
+              <a href="./contact.html">Contact</a>
+              <a href="./aboutus.html">About</a>
+              <a href="login.html" id="dropdown-auth-link">Login</a>
+            </div>
+          </div>
+        </div>
+      </nav>
 
 <h1>Restaurant Reservation Staff System</h1>
 
@@ -267,5 +222,81 @@
     updateTableDisplay();
 </script>
 
+<script type="module">
+    import { auth } from './FirebaseConfig.js';
+    import {
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+    onAuthStateChanged(auth, (user) => {
+      const mainAuthLink = document.getElementById("main-auth-link");
+      const dropdownAuthLink = document.getElementById("dropdown-auth-link");
+      const profileLink = document.getElementById("userProfileStatus");
+
+      if (user) {
+        mainAuthLink.textContent = "Logout";
+        mainAuthLink.href = "#";
+        mainAuthLink.onclick = handleLogout;
+
+        dropdownAuthLink.textContent = "Logout";
+        dropdownAuthLink.href = "#";
+        dropdownAuthLink.onclick = handleLogout;
+
+        profileLink.textContent = user.displayName || user.email;
+        profileLink.href = "./account.html";
+      } else {
+        mainAuthLink.textContent = "Login";
+        mainAuthLink.href = "./login.html";
+        mainAuthLink.onclick = null;
+
+        dropdownAuthLink.textContent = "Login";
+        dropdownAuthLink.href = "./login.html";
+        dropdownAuthLink.onclick = null;
+
+        profileLink.textContent = "Not signed in";
+        profileLink.href = "./login.html";
+      }
+    });
+
+    function handleLogout(e) {
+      e.preventDefault();
+      signOut(auth).then(() => {
+        window.location.href = "login.html";
+      });
+    }
+  </script>
+
+  <!-- Dropdown Toggle Logic -->
+  <script>
+    document.querySelector(".menu-toggle").addEventListener("click", function () {
+      document.querySelector(".dropdown").classList.toggle("active");
+    });
+
+    window.addEventListener("click", function (event) {
+      if (!event.target.matches(".menu-toggle")) {
+        const dropdown = document.querySelector(".dropdown");
+        if (dropdown.classList.contains("active")) {
+          dropdown.classList.remove("active");
+        }
+      }
+    });
+  </script>
+<footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <a href="index.html">Momo Sushi</a>
+      </div>
+      <div class="footer-links">
+        <a href="menu.html">Menu</a>
+        <a href="reservations.html">Reserve</a>
+        <a href="contact.html">Contact</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="aboutus.html">About</a>
+      </div>
+      <p class="footer-note">© 2025 Momo Sushi · All rights reserved</p>
+    </div>
+  </footer>
+  
 </body>
 </html>

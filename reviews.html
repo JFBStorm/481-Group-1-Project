@@ -1,99 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reviews - Momo Sushi</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reviews - Momo Sushi</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reviews.css">
+
 </head>
 <body>
 
-<style>
-    body {
-        background-color: #8b2323;
-    }
-    #review-content {
-    width: 80%; 
-    padding: 10px;
-}
-
-</style>
-
-    <!-- Navigation -->
-    <nav class="top-nav">
-        <div class="logo"><a href="index.html">Momo Sushi</a></div>
-        <div class="nav-links">
-            <a href="./menu.html">Menu</a>
-            <a href="./reservations.html">Reserve</a>
-            <a href="./reviews.html">Reviews</a>
-            <a href="./contact.html">Contact</a>
-            <a href="./aboutus.html">About</a>
-            <a href="./login.html" id="dropdown-logout">Logout</a>
-            <div class="dropdown">
-                <div class="menu-toggle">☰</div>
-                <div class="dropdown-content">
-		                <a href="./profile.html" id="userProfileStatus">Not signed in</a>
-                    <a href="./menu.html">Menu</a>
-                    <a href="./menu.html">Order Now</a>
-                    <a href="./deals.html">Deals</a>
-                    <a href="./rewards.html">Rewards</a>
-                    <a href="./reservations.html">Reservation</a>
-		                <a href="./reviews.html">Reviews</a>
-                    <a href="./contact.html">Contact</a>
-                    <a href="./aboutus.html">About</a>
-                    <a href="./login.html" id="dropdown-logout">Logout</a>
-                </div>
-            </div>
+<!-- Navigation -->
+<nav class="top-nav">
+    <div class="logo"><a href="index.html">Momo Sushi</a></div>
+    <div class="nav-links">
+      <a href="./menu.html">Menu</a>
+      <a href="./reservations.html">Reserve</a>
+      <a href="./reviews.html">Reviews</a>
+      <a href="./contact.html">Contact</a>
+      <a href="./aboutus.html">About</a>
+      <a href="login.html" id="main-auth-link">Login</a>
+      <div class="dropdown">
+        <div class="menu-toggle">☰</div>
+        <div class="dropdown-content">
+          <a href="./profile.html" id="userProfileStatus">Not signed in</a>
+          <a href="./menu.html">Menu</a>
+          <a href="./menu.html">Order Now</a>
+          <a href="./deals.html">Deals</a>
+          <a href="./rewards.html">Rewards</a>
+          <a href="./reservations.html">Reservation</a>
+          <a href="./reviews.html">Reviews</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./aboutus.html">About</a>
+          <a href="login.html" id="dropdown-auth-link">Login</a>
         </div>
-    </nav>
-    <div class="page-content-container">
-    
-        <h1>Reviews</h1>
-
-        <!-- Form to leave a review -->
-        <!-- Only shows if logged in -->
-        <div id="user-section" style="display:block;">
-          <p id="welcome-message"></p>
-          <button id="open-close-review" onclick="toggleForm()">Leave a Review</button>
-    
-          <div id="review-form" style="display:none;">
-            <input type="text" id="review-title" placeholder="Review Title" required><br><br>
-            <textarea id="review-content" placeholder="Your review..." required></textarea><br>
-            <button onclick="postReview()">Post</button>
-          </div>
-        </div>
-    
-        <!-- If user is not loggd in -->
-        <div id="login-prompt" style="display:none;">
-          <p>Care to leave a review? <a href="login.html">Log in</a> or <a href="signup.html">sign up</a>.</p>
-        </div>
-    
-        <hr>
-
-    <p>All reviews</p>
-    <div id="reviews-container">
-        <!-- Reviews will load here -->
-
+      </div>
     </div>
+  </nav>
 
-    <script src="firebaseadmin.js"></script>
-    <script src="firebaseauth.js"></script>
-    <script src="firebasereviews.js"></script>
-    <script>
-        // Toggle dropdown menu
-        document.querySelector('.menu-toggle').addEventListener('click', function () {
-            document.querySelector('.dropdown').classList.toggle('active');
-        });
+<!-- Content -->
+<div class="page-content-container">
+  <h1 style="text-align: center;">Reviews</h1>
 
-        // Close dropdown when clicking outside
-        window.addEventListener('click', function (event) {
-            if (!event.target.matches('.menu-toggle')) {
-                const dropdown = document.querySelector('.dropdown');
-                if (dropdown.classList.contains('active')) {
-                    dropdown.classList.remove('active');
-                }
-            }
-        });
-    </script>
+  <div id="user-section" style="display:none; text-align:center;">
+    <p id="welcome-message"></p>
+    <button id="open-close-review" onclick="toggleForm()">Leave a Review</button>
+    <div id="review-form" style="display:none; margin-top: 10px;">
+      <input type="text" id="review-title" placeholder="Review Title" required><br><br>
+      <textarea id="review-content" placeholder="Your review..." required></textarea><br>
+      <button onclick="postReview()">Post</button>
+    </div>
+  </div>
+
+  <div id="login-prompt" style="display:none; text-align:center;">
+    <p>Care to leave a review? <a href="login.html">Log in</a> or <a href="signup.html">Sign up</a>.</p>
+  </div>
+
+  <hr>
+  <p style="text-align: center;">All reviews</p>
+  <div id="reviews-container"></div>
+</div>
+
+<!-- Firebase -->
+<script type="module">
+  import { auth } from './FirebaseConfig.js';
+  import {
+    onAuthStateChanged,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+  import {
+    getFirestore,
+    collection,
+    getDocs,
+    addDoc,
+    Timestamp
+  } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+  const db = getFirestore();
+  const container = document.getElementById("reviews-container");
+  const welcomeMsg = document.getElementById("welcome-message");
+  const userSection = document.getElementById("user-section");
+  const loginPrompt = document.getElementById("login-prompt");
+
+  const mainAuthLink = document.getElementById("main-auth-link");
+  const dropdownAuthLink = document.getElementById("dropdown-auth-link");
+  const profileLink = document.getElementById("userProfileStatus");
+
+  onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      mainAuthLink.textContent = "Logout";
+      mainAuthLink.href = "#";
+      mainAuthLink.onclick = handleLogout;
+
+      dropdownAuthLink.textContent = "Logout";
+      dropdownAuthLink.href = "#";
+      dropdownAuthLink.onclick = handleLogout;
+
+      profileLink.textContent = user.displayName || user.email;
+      profileLink.href = "./account.html";
+
+      userSection.style.display = "block";
+      loginPrompt.style.display = "none";
+      welcomeMsg.textContent = `Welcome, ${user.displayName || user.email}`;
+    } else {
+      userSection.style.display = "none";
+      loginPrompt.style.display = "block";
+    }
+
+    const snapshot = await getDocs(collection(db, "Reviews"));
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      const card = document.createElement("div");
+      card.className = "review-card";
+      card.innerHTML = `
+        <h3>${data.title}</h3>
+        <p>${data.message}</p>
+        <small>By ${data.username || "anon"} on ${data.date}</small>
+      `;
+      container.appendChild(card);
+    });
+  });
+
+  window.toggleForm = () => {
+    const form = document.getElementById("review-form");
+    form.style.display = form.style.display === "none" ? "block" : "none";
+  }
+
+  window.postReview = async () => {
+    const user = auth.currentUser;
+    if (!user) return alert("You must be logged in to post a review.");
+
+    const title = document.getElementById("review-title").value.trim();
+    const message = document.getElementById("review-content").value.trim();
+
+    if (!title || !message) return alert("Please fill out both fields.");
+
+    await addDoc(collection(db, "Reviews"), {
+      title,
+      message,
+      username: user.displayName || "anon",
+      date: new Date().toDateString()
+    });
+
+    alert("Review submitted!");
+    location.reload();
+  }
+
+  function handleLogout(e) {
+    e.preventDefault();
+    signOut(auth).then(() => {
+      window.location.href = "login.html";
+    });
+  }
+
+  window.handleLogout = handleLogout;
+</script>
+
+<!-- Dropdown toggle -->
+<script>
+  document.querySelector(".menu-toggle").addEventListener("click", function () {
+    document.querySelector(".dropdown").classList.toggle("active");
+  });
+
+  window.addEventListener("click", function (event) {
+    if (!event.target.matches(".menu-toggle")) {
+      const dropdown = document.querySelector(".dropdown");
+      if (dropdown.classList.contains("active")) {
+        dropdown.classList.remove("active");
+      }
+    }
+  });
+</script>
+<footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <a href="index.html">Momo Sushi</a>
+      </div>
+      <div class="footer-links">
+        <a href="menu.html">Menu</a>
+        <a href="reservations.html">Reserve</a>
+        <a href="contact.html">Contact</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="aboutus.html">About</a>
+      </div>
+      <p class="footer-note">© 2025 Momo Sushi · All rights reserved</p>
+    </div>
+  </footer>
+  
 </body>
 </html>

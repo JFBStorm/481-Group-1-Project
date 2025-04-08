@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up - Momo Sushi</title>
-
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="signup.css">
+
+    <title>Sign Up - Momo Sushi</title>
 
 </head>
 <body>
@@ -15,59 +16,113 @@
     <nav class="top-nav">
         <div class="logo"><a href="index.html">Momo Sushi</a></div>
         <div class="nav-links">
-            <a href="./menu.html">Menu</a>
-            <a href="./reservations.html">Reserve</a>
-            <a href="./reviews.html">Reviews</a>
-            <a href="./contact.html">Contact</a>
-            <a href="./aboutus.html">About</a>
-            <a href="./login.html" id="dropdown-logout">Logout</a>
-            <div class="dropdown">
-                <div class="menu-toggle">☰</div>
-                <div class="dropdown-content">
-		                <a href="./profile.html" id="userProfileStatus">Not signed in</a>
-                    <a href="./menu.html">Menu</a>
-                    <a href="./menu.html">Order Now</a>
-                    <a href="./deals.html">Deals</a>
-                    <a href="./rewards.html">Rewards</a>
-                    <a href="./reservations.html">Reservation</a>
-		                <a href="./reviews.html">Reviews</a>
-                    <a href="./contact.html">Contact</a>
-                    <a href="./aboutus.html">About</a>
-                    <a href="./login.html" id="dropdown-logout">Logout</a>
-                </div>
+          <a href="./menu.html">Menu</a>
+          <a href="./reservations.html">Reserve</a>
+          <a href="./reviews.html">Reviews</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./aboutus.html">About</a>
+          <a href="login.html" id="main-auth-link">Login</a>
+          <div class="dropdown">
+            <div class="menu-toggle">☰</div>
+            <div class="dropdown-content">
+              <a href="./profile.html" id="userProfileStatus">Not signed in</a>
+              <a href="./menu.html">Menu</a>
+              <a href="./menu.html">Order Now</a>
+              <a href="./deals.html">Deals</a>
+              <a href="./rewards.html">Rewards</a>
+              <a href="./reservations.html">Reservation</a>
+              <a href="./reviews.html">Reviews</a>
+              <a href="./contact.html">Contact</a>
+              <a href="./aboutus.html">About</a>
+              <a href="login.html" id="dropdown-auth-link">Login</a>
             </div>
+          </div>
         </div>
-    </nav>
-
+      </nav>
+  
     <div class="login-container">
-        <h2>Sign Up</h2>
-        <form id="signup-form">
-            <input type="text" id="signupEmailBox" placeholder="Email" required>
-            <input type="text" id="signupUsernameBox" placeholder="Username" required>
-            <input type="password" id="signupPasswordBox" placeholder="Password" required>
-            <button type="button" id="registerButton">Register</button>
-            <button href="login.html" type="button" id="loginRedirect">Have an account? Login</button>
-        </form>
-        <p id="errorTest"></p>
+      <h2>Sign Up</h2>
+      <form id="signup-form">
+        <input type="email" id="signupEmailBox" placeholder="Email" required />
+        <input type="text" id="signupUsernameBox" placeholder="Username" required />
+        <input type="password" id="signupPasswordBox" placeholder="Password" required />
+        <button type="submit" id="registerButton">Register</button>
+        <button type="button" onclick="window.location.href='login.html'">Have an account? Login</button>
+      </form>
+      <p id="errorTest"></p>
     </div>
-
-    <script src="firebaseadmin.js"></script>
-    <script src="firebaseauth.js"></script>
-    <script>
-        // Toggle dropdown menu
-        document.querySelector('.menu-toggle').addEventListener('click', function () {
-            document.querySelector('.dropdown').classList.toggle('active');
-        });
-
-        // Close dropdown when clicking outside
-        window.addEventListener('click', function (event) {
-            if (!event.target.matches('.menu-toggle')) {
-                const dropdown = document.querySelector('.dropdown');
-                if (dropdown.classList.contains('active')) {
-                    dropdown.classList.remove('active');
-                }
-            }
-        });
+  
+    <script type="module">
+   import { auth } from './FirebaseConfig.js';
+  import {
+    createUserWithEmailAndPassword,
+    updateProfile,
+    onAuthStateChanged
+  } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+  
+  import {
+    getFirestore,
+    doc,
+    setDoc
+  } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+  
+  const db = getFirestore(); // Connect to Firestore
+  
+  // Handle sign-up
+  document.getElementById("signup-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+  
+    const email = document.getElementById("signupEmailBox").value;
+    const username = document.getElementById("signupUsernameBox").value;
+    const password = document.getElementById("signupPasswordBox").value;
+  
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+  
+      await updateProfile(user, { displayName: username });
+  
+      // Add user to Firestore (Users collection)
+      await setDoc(doc(db, "Users", user.uid), {
+        Email: email,
+        Username: username,
+        Admin: false
+      });
+  
+      window.location.href = "index.html";
+    } catch (error) {
+      document.getElementById("errorTest").innerText = error.message;
+    }
+  });
+  
+  // Update navbar user status
+  onAuthStateChanged(auth, (user) => {
+    const profileLink = document.getElementById("userProfileStatus");
+    if (user) {
+      profileLink.textContent = user.displayName || user.email;
+      profileLink.href = "./profile.html";
+    } else {
+      profileLink.textContent = "Not signed in";
+      profileLink.href = "./login.html";
+    }
+  });
+  
     </script>
-</body>
-</html>
+<footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-logo">
+        <a href="index.html">Momo Sushi</a>
+      </div>
+      <div class="footer-links">
+        <a href="menu.html">Menu</a>
+        <a href="reservations.html">Reserve</a>
+        <a href="contact.html">Contact</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="aboutus.html">About</a>
+      </div>
+      <p class="footer-note">© 2025 Momo Sushi · All rights reserved</p>
+    </div>
+  </footer>
+  
+  </body>
+  </html>

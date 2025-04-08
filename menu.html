@@ -1,95 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu - Momo Sushi</title>
-    <script src="src/order.js" async></script>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Menu - Momo Sushi</title>
+  <link rel="stylesheet" href="menu.css" />
+  
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="top-nav">
-        <div class="logo"><a href="index.html">Momo Sushi</a></div>
-        <div class="nav-links">
-            <a href="./menu.html">Menu</a>
-            <a href="./reservations.html">Reserve</a>
-            <a href="./reviews.html">Reviews</a>
-            <a href="./contact.html">Contact</a>
-            <a href="./aboutus.html">About</a>
-            <a href="./login.html" id="dropdown-logout">Logout</a>
-            <div class="dropdown">
-                <div class="menu-toggle">☰</div>
-                <div class="dropdown-content">
-		            <a href="./profile.html" id="userProfileStatus">Not signed in</a>
-                    <a href="./menu.html">Menu</a>
-                    <a href="./menu.html">Order Now</a>
-                    <a href="./deals.html">Deals</a>
-                    <a href="./rewards.html">Rewards</a>
-                    <a href="./reservations.html">Reservation</a>
-		            <a href="./reviews.html">Reviews</a>
-                    <a href="./contact.html">Contact</a>
-                    <a href="./aboutus.html">About</a>
-                    <a href="./login.html" id="dropdown-logout">Logout</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    
-    <div class="menu-header-container">
-        <header class="menu-section-header">
-            <div class="menu-header-title">Menu</div>
-            <div class="cart-icon">
-                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"/>
-                </svg>
-                <span class="cart-icon-span">0</span>
-            </div>
-        </header>
+
+<!-- Navigation -->
+<nav class="top-nav">
+  <div class="logo"><a href="index.html">Momo Sushi</a></div>
+  <div class="nav-links">
+    <a href="./menu.html">Menu</a>
+    <a href="./reservations.html">Reserve</a>
+    <a href="./reviews.html">Reviews</a>
+    <a href="./contact.html">Contact</a>
+    <a href="./aboutus.html">About</a>
+    <a href="login.html" id="main-auth-link">Login</a>
+    <div class="dropdown">
+      <div class="menu-toggle">☰</div>
+      <div class="dropdown-content">
+        <a href="./account.html" id="userProfileStatus">Not signed in</a>
+        <a href="./menu.html">Menu</a>
+        <a href="./menu.html">Order Now</a>
+        <a href="./deals.html">Deals</a>
+        <a href="./rewards.html">Rewards</a>
+        <a href="./reservations.html">Reservation</a>
+        <a href="./reviews.html">Reviews</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./aboutus.html">About</a>
+        <a href="login.html" id="dropdown-auth-link">Login</a>
+      </div>
     </div>
+  </div>
+</nav>
 
-    <section id="menu-section" class="container content-section">
-        <script src="firebasemenu.js"></script>
-    </section>
+<h1 style="text-align:center; margin-top: 20px;">Our Menu</h1>
+<div id="menuContainer" style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px; padding: 20px;"></div>
 
-    <section class="container content-section">
-        <div class="cart-tab">
-            <h2 class="section-header">CART</h2>
-            <div class="cart-row">
-                <span class="cart-item cart-header cart-column">ITEM</span>
-                <span class="cart-price cart-header cart-column">PRICE</span>
-                <span class="cart-quantity cart-header cart-column">QUANTITY</span>
-            </div>
-            <div class="cart-items">
-                <div class="cart-row">
-                   <! Cart Item Elements added by Order.js>
-                </div>
-            </div>
-            <div class="cart-total">
-                <strong class="cart-total-title">Total</strong>
-                <span class="cart-total-price">$0.00</span>
-            </div>
-            <button class="btn btn-primary btn-purchase" type="button">Check Out</button>
-            <button class="btn btn-primary btn-closeCart" type="button">Close</button>
+<!-- Firebase & Logic -->
+<script type="module">
+    import { auth } from './FirebaseConfig.js';
+    import {
+      getFirestore, collection, getDocs, doc, addDoc
+    } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+    import {
+      onAuthStateChanged,
+      signOut
+    } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+  
+    const db = getFirestore();
+    const menuContainer = document.getElementById('menuContainer');
+  
+    function getGuestId() {
+      let guestId = localStorage.getItem("guestId");
+      if (!guestId) {
+        guestId = "guest_" + Math.random().toString(36).substring(2, 10);
+        localStorage.setItem("guestId", guestId);
+      }
+      return guestId;
+    }
+  
+    async function updateCartCount(user) {
+      let cartRef;
+      if (user) {
+        cartRef = collection(db, "User Cart", user.uid, "Cart");
+      } else {
+        const guestId = getGuestId();
+        cartRef = collection(db, "Guest Cart", guestId, "Cart");
+      }
+  
+      const snapshot = await getDocs(cartRef);
+      let cartButton = document.querySelector('.cart-button');
+      if (!cartButton) {
+        const link = document.createElement('a');
+        link.href = "cart.html";
+        link.style.textDecoration = "none";
+  
+        cartButton = document.createElement('button');
+        cartButton.className = 'cart-button';
+        link.appendChild(cartButton);
+  
+        document.querySelector('.top-nav .nav-links').appendChild(link);
+      }
+      cartButton.textContent = `Cart (${snapshot.size})`;
+    }
+  
+    const params = new URLSearchParams(window.location.search);
+    const filterKey = params.get("filter");
+  
+    const querySnapshot = await getDocs(collection(db, "Momo Menu"));
+    querySnapshot.forEach((docSnap) => {
+      const data = docSnap.data();
+  
+      if (filterKey && !data[filterKey]) return; // Skip items not matching the filter
+  
+      const card = document.createElement('div');
+      card.classList.add('menu-card');
+  
+      const dietaryId = `dietary-${Math.random().toString(36).substring(2, 8)}`;
+  
+      card.innerHTML = `
+        <h3>${data.Item}</h3>
+        <p>${data.Description}</p>
+<p class="price">Price: $${data.Price.toFixed(2)}</p>
+  
+        <div class="menu-actions">
+        <button class="toggle-facts" data-target="${dietaryId}">View Dietary Facts</button>
+        <div id="${dietaryId}" class="dietary-facts hidden">
+          <p>Dairy: ${data.Dairy ? "Yes" : "No"}</p>
+          <p>Gluten: ${data.Gluten ? "Yes" : "No"}</p>
+          <p>Soy: ${data.Soy ? "Yes" : "No"}</p>
+          <p>Raw: ${data.Raw ? "Yes" : "No"}</p>
+          <p>Spicy: ${data.Spicy ? "Yes" : "No"}</p>
+          <p>Vegan: ${data.Vegan ? "Yes" : "No"}</p>
+          <p>Vegetarian: ${data.Vegetarian ? "Yes" : "No"}</p>
         </div>
-    </section>
-    <script src="firebaseadmin.js"></script>
-    <script src="firebaseauth.js"></script>
-    <script>
-        // Toggle dropdown menu
-        document.querySelector('.menu-toggle').addEventListener('click', function () {
-            document.querySelector('.dropdown').classList.toggle('active');
-        });
+  
+        <button class="add-cart-btn">Add to Cart</button>
+        </div>
+      `;
+  
+      menuContainer.appendChild(card);
+  
+      const toggleBtn = card.querySelector('.toggle-facts');
+      const factsBox = card.querySelector(`#${dietaryId}`);
+      toggleBtn.addEventListener('click', () => {
+        factsBox.classList.toggle('hidden');
+        toggleBtn.textContent = factsBox.classList.contains('hidden') ? 'View Dietary Facts' : 'Hide Dietary Facts';
+      });
+  
+      card.querySelector('.add-cart-btn').addEventListener('click', async () => {
+        const user = auth.currentUser;
+        let cartRef = user
+          ? collection(db, "User Cart", user.uid, "Cart")
+          : collection(db, "Guest Cart", getGuestId(), "Cart");
+  
+        try {
+          await addDoc(cartRef, {
+            item: data.Item,
+            price: data.Price,
+            quantity: 1
+          });
+          updateCartCount(user);
+        } catch (err) {
+          console.error("Error adding to cart:", err);
+        }
+      });
+    });
+  
+    onAuthStateChanged(auth, (user) => {
+      const mainAuthLink = document.getElementById("main-auth-link");
+      const dropdownAuthLink = document.getElementById("dropdown-auth-link");
+      const profileLink = document.getElementById("userProfileStatus");
+  
+      if (user) {
+        mainAuthLink.textContent = "Logout";
+        mainAuthLink.href = "javascript:void(0)";
+        mainAuthLink.onclick = handleLogout;
+  
+        dropdownAuthLink.textContent = "Logout";
+        dropdownAuthLink.href = "javascript:void(0)";
+        dropdownAuthLink.onclick = handleLogout;
+  
+        profileLink.textContent = user.displayName || user.email;
+        profileLink.href = "./account.html";
+      } else {
+        mainAuthLink.textContent = "Login";
+        mainAuthLink.href = "login.html";
+        dropdownAuthLink.textContent = "Login";
+        dropdownAuthLink.href = "login.html";
+        profileLink.textContent = "Not signed in";
+        profileLink.href = "login.html";
+      }
+  
+      updateCartCount(user);
+    });
+  
+    function handleLogout(e) {
+      e.preventDefault();
+      signOut(auth).then(() => {
+        window.location.href = "login.html";
+      });
+    }
+    
+</script>
 
-        // Close dropdown when clicking outside
-        window.addEventListener('click', function (event) {
-            if (!event.target.matches('.menu-toggle')) {
-                const dropdown = document.querySelector('.dropdown');
-                if (dropdown.classList.contains('active')) {
-                    dropdown.classList.remove('active');
-                }
-            }
-        });
-    </script>
+<!-- Dropdown toggle -->
+<script>
+    document.querySelector(".menu-toggle").addEventListener("click", function () {
+document.querySelector(".dropdown").classList.toggle("active");
+});
+
+window.addEventListener("click", function (event) {
+if (!event.target.closest(".dropdown")) {
+document.querySelector(".dropdown").classList.remove("active");
+}
+});
+
+</script>
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-logo">
+      <a href="index.html">Momo Sushi</a>
+    </div>
+    <div class="footer-links">
+      <a href="menu.html">Menu</a>
+      <a href="reservations.html">Reserve</a>
+      <a href="contact.html">Contact</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="aboutus.html">About</a>
+    </div>
+    <p class="footer-note">© 2025 Momo Sushi · All rights reserved</p>
+  </div>
+</footer>
+
 </body>
 </html>
