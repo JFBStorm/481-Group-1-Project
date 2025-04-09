@@ -4,7 +4,8 @@
   "description": "Sam Jacobson | \r Anurag Singh Rawat |\r Chigozirim Akubugwo |\r Connor Hoey |\r Evan Prieskorn |\r Hana Daniel Tolera |\r Joshua Barren |\r Kade Bruner |\r Taylor Peterson",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
